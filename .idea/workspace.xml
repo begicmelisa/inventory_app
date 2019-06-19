@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4e8144af-a252-4ef4-8f95-e5b012ad10c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/settings/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/settings/settings.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/users/profile.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="4e8144af-a252-4ef4-8f95-e5b012ad10c7" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,6 +211,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -283,12 +280,12 @@
       <workItem from="1560858841125" duration="4630000" />
       <workItem from="1560864044427" duration="4920000" />
       <workItem from="1560869300864" duration="5685000" />
-      <workItem from="1560933822946" duration="1759000" />
+      <workItem from="1560933822946" duration="2092000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96493000" />
+    <option name="totallyTimeSpent" value="96826000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
