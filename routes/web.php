@@ -1,8 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Input;
 use App\Category;
 use App\Post;
+use App\Notifications\DatabaseNotification;
+use App\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +20,24 @@ Auth::routes();
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+Route::get('/x', function (){
+    //  $user =Auth::user();
+    // $user->notify(new NewFollower(User::findorFail(1)));
 
+    foreach (Auth::user()->notifications as $notification){
+        dd($notification);
+    }
+});
+
+
+Route::get('/notify',function (){
+    $users=User::all();
+    $letter = collect(['title'=>'New Policy Update','We have updated our TOS and privacy Policy, Kidly Read it!']);
+
+    Notification::send($users,new DatabaseNotification($letter));
+
+    echo ("Notification Sent to All Users!");
+});
 
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
