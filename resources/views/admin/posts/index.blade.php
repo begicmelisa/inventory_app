@@ -64,6 +64,7 @@
                             <th class="centerText">Category</th>
                             <th class="centerText">Created</th>
                             <th class="centerText">Updated</th>
+                            <th class="centerText">Author</th>
                             <th class="centerText">Action</th>
                         </tr>
                         </thead>
@@ -74,9 +75,11 @@
                                  <td>{{$values->id}}</td>
                                  <td><img src="{{$values->featured}}" alt="{{$values->title}}" width="80px" height="50px"> </td>
                                  <td>{{$values->title}}</td>
-                                 <td>CATEGORYYYYYYYYYYYY</td>
+                                 <td>{{$values->category->name}}</td>
                                  <td>{{ \Carbon\Carbon::parse($values->created_at)->diffForHumans() }}</td>
                                  <td>{{ \Carbon\Carbon::parse($values->updated_at)->diffForHumans() }}</td>
+                                 <td> {{Auth::user()->name}}</td>
+
                                  <td>
                                      <a href="{{route('post.edit',['id'=>$values->id])}}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> </a>
                                      <a href="{{route('post.delete',['id'=>$values->id])}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>

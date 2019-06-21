@@ -45,10 +45,10 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="/img/laravel-logo.jpg" class="img-circle" alt="User Image">
+                    <img   alt="" >
                 </div>
                 <div class="pull-left info">
-                    <p>Alexander Pierce</p>
+                    <p> {{Auth::user()->name}} </p>
                 </div>
             </div><br>
             <!-- search form -->

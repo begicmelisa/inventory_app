@@ -12,13 +12,18 @@
 
         <div class="panel panel-default" id="formDiv1">
             <div  id="titlePost">
-                <h3> Create a new post</h3>
+                <h3> Create a new product</h3>
             </div>
 
             <div class="panel-body" >
                 <form action="{{route('post.store')}}" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
 
+                    <div class="form-group">
+                        <label for="title">Author</label>
+                        <input type="text" name="title" class="form-control" value="{{Auth::user()->name}}" readonly>
+                        <br>
+                    </div>
 
                     <div class="form-group">
                         <label for="title">Title</label>

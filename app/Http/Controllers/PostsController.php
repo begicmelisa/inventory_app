@@ -14,7 +14,8 @@ class PostsController extends Controller
 
     public function index()
     {
-        return view('admin.posts.index')->with('posts',Post::all());
+        $posts = Post::with('category')->get();
+        return view('admin.posts.index')->with('posts',$posts);
     }
 
 

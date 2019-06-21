@@ -12,12 +12,15 @@ use App\Post;
 Route::get('/', function () { return view('home'); });
 
 Auth::routes();
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 
 
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('/home',['uses'=>'HomeController@index','as'=>'home']);
+
 
     /* ---------------------------------------- POST ---------------------------------------- */
 
