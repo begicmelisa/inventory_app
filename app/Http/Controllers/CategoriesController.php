@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use Session;
-
+use DB;
 class CategoriesController extends Controller
 {
 
@@ -17,6 +17,13 @@ class CategoriesController extends Controller
     public function create()
     {
         return view('admin.categories.create');
+    }
+
+    public function searchCat(Request $request){
+        $search=$request->get('search');
+        $categories=DB::table('categories')->where('name', 'like', '%'.$search.'%')->paginate(5);
+
+        return view('admin.categories.index',['categories'=>$categories]);
     }
 
     public function store(Request $request)

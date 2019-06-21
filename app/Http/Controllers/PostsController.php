@@ -7,6 +7,7 @@ use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
 use Session;
+use DB;
 
 class PostsController extends Controller
 {
@@ -15,6 +16,7 @@ class PostsController extends Controller
     {
         return view('admin.posts.index')->with('posts',Post::all());
     }
+
 
     public function create()
     {
@@ -25,18 +27,36 @@ class PostsController extends Controller
 
             Session::flash('info','You must have some categories before attempting to create a post.');
             return view('admin.categories.create');
-
         }
 
         if( $tags->count()== 0)
         {
             Session::flash('info','You must have some tages before attempting to create a post.');
             return view('admin.tags.create');
-
         }
         return view('admin.posts.create')->with('categories',$categories)
                                                ->with('tags', Tag::all());
     }
+
+
+    public function searchPost(Request $request){
+        $search=$request->get('search');
+        $posts=DB::table('posts')->where('title', 'like', '%'.$search.'%')
+        ->orWhere('content', 'like', '%'.$search.'%')->paginate(5);
+
+        return view('admin.posts.index',['posts'=>$posts]);
+    }
+
+
+    public function searchPostTrashed(Request $request){
+        $search=$request->get('search');
+       // $posts=Post::find('name'==1)->all();
+        $posts=DB::table('posts')->where('title', 'like', '%'.$search.'%')
+            ->orWhere('content', 'like', '%'.$search.'%')->paginate(5);
+
+        return view('admin.posts.index',['posts'=>$posts]);
+    }
+
 
     public function store(Request $request)
     {
@@ -60,17 +80,12 @@ class PostsController extends Controller
             'slug'=>str_slug($request->title)
         ]);
 
-
         $post->tags()->attach($request->tags);
         Session::flash('success','Post created succesfully.');
 
         return redirect()->route('posts');
     }
 
-    public function show($id)
-    {
-        //
-    }
 
     public function edit($id)
     {
@@ -81,9 +96,9 @@ class PostsController extends Controller
                                              ->with('tags',Tag::all());
     }
 
+
     public function update(Request $request, $id)
     {
-
         $this->validate($request,[
             'title'=>'required',
             'content'=>'required',
@@ -94,11 +109,8 @@ class PostsController extends Controller
 
         if($request->hasFile('featured')){
             $featured =$request->featured;
-
             $featured_new_name = time() . $featured->getClientOriginalName();
-
             $featured->move('uploads/posts', $featured_new_name);
-
             $post->featured = 'uploads/posts/'.$featured_new_name;
         }
 
@@ -107,15 +119,12 @@ class PostsController extends Controller
         $post->category_id=$request->category_id;
 
         $post->save();
-
         $post->tags()->sync($request->tags);
 
-        Session::flash('success','Post updated succesfully.');
-
+        Session::flash('success','Post updated successfully.');
         return redirect()->route('posts');
-
-
     }
+
 
     public function destroy($id)
     {
@@ -123,35 +132,31 @@ class PostsController extends Controller
         $post->delete();
 
         Session::flash('success','The post was just trashed.');
-
-
         return redirect()->route('posts');
     }
+
 
     public function trashed()
     {
         $posts =Post::onlyTrashed()->get();
-
         return view('admin.posts.trashed')->with('posts',$posts);
     }
 
     public function kill($id)
     {
         Post::where('id', $id)->forceDelete();
-
         Session::flash('success','Post deleted permanently.');
 
         return redirect()->route('posts.trashed');
     }
 
+
     public function restore($id)
     {
         $post =Post::withTrashed()->where('id',$id)->first();
-
         $post->restore();
 
-        Session::flash('success','Post restored succesfully.');
-
+        Session::flash('success','Post restored successfully.');
         return redirect()->route('posts.trashed');
     }
 }

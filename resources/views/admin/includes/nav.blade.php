@@ -29,7 +29,7 @@
                           </a>
                           <ul class="dropdown-menu" role="menu">
                               <li><a href="{{route('user.profile')}}"><i class="fa fa-btn fa-user"></i>Profile</a> </li>
-                              <li><a href="{{route('logout')}}"><i class="fa fa-btn fa-sign-out"></i>Logout</a> </li>
+                              <li><a href="{{url('/logout')}}"><i class="fa fa-btn fa-sign-out"></i>Logout</a> </li>
                           </ul>
                       </li>
 
@@ -50,30 +50,23 @@
                 <div class="pull-left info">
                     <p>Alexander Pierce</p>
                 </div>
-            </div>
+            </div><br>
             <!-- search form -->
-            <form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-                </div>
-            </form>
+
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
+            <div id="nav">
             <ul class="sidebar-menu" data-widget="tree">
-                <li class="header">NAVIGATION</li>
+                <li class="header">NAVIGATION</li><br>
                 <li>
                     <a href="{{route('home')}}">
                         <i class="fa fa-home"></i> <span>Home</span>
                         </span>
                     </a>
-                </li>
+                </li><br>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-clone"></i>
+                        <i class="fa fa-file-photo-o"></i>
                         <span>Post</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -85,7 +78,7 @@
                         <li><a href="{{route('posts.trashed')}}"><i class="fa fa-trash"></i> Trashed Posts</a></li>
 
                     </ul>
-                </li>
+                </li><br>
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-clone"></i>
@@ -98,10 +91,10 @@
                         <li><a href="{{route('categories')}}"><i class="fa fa-list-alt"></i> List</a></li>
                         <li><a href="{{route('category.create')}}"><i class="fa fa-plus"></i> Add</a></li>
                     </ul>
-                </li>
+                </li><br>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-clone"></i>
+                        <i class="fa fa-tags"></i>
                         <span>Tag</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -113,12 +106,13 @@
 
 
                     </ul>
-                </li>
+                </li><br>
+                @if(Auth::User()) <?php // add this line to check if user logged in or not ?>
             @if(Auth::user()->admin)
                     <li class="treeview">
                         <a href="#">
-                            <i class="fa fa-clone"></i>
-                            <span>User</span>
+                            <i class="fa fa-address-card"></i>
+                            <span>Users</span>
                             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -130,10 +124,11 @@
                     </li>
 
             @endif
-
+            @endif
+                <br>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-clone"></i>
+                        <i class="fa fa-cog"></i>
                         <span>Settings</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -141,15 +136,16 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="{{route('settings.index')}}"><i class="fa fa-list-alt"></i> Settings</a></li>
-
+                        @if(Auth::User()) <?php // add this line to check if user logged in or not ?>
                         @if(Auth::user()->admin)
                         <li><a href="{{route('settings')}}"><i class="fa fa-refresh"></i> Update Settings</a></li>
                         @endif
+                        @endif
                     </ul>
-                </li>
+                </li><br>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-clone"></i>
+                        <i class="fa fa-shopping-cart"></i>
                         <span>Products</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -160,40 +156,13 @@
                         <li><a href="addProducts"><i class="fa fa-plus"></i> Add</a></li>
 
                     </ul>
-                </li>
+                </li><br>
+
 
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-clone"></i>
-                        <span>Store</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="stores"><i class="fa fa-list-alt"></i> List</a></li>
-                        <li><a href="addStore"><i class="fa fa-plus"></i> Add</a></li>
-
-
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-user"></i>
-                        <span>Employees</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="employees"><i class="fa fa-list-alt"></i> List</a></li>
-                        <li><a href="/addEmployee"><i class="fa fa-plus"></i> Add</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <span>Locations</span>
+                        <i class="fa fa-bell" aria-hidden="true"></i>
+                        <span>Notifications</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -202,31 +171,19 @@
                         <li><a href="locations"><i class="fa fa-list-alt"></i> List</a></li>
                         <li><a href="/addLocation"><i class="fa fa-plus"></i> Add</a></li>
                     </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-table"></i> <span>Tables</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-                        <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="pages/calendar.html">
-                        <i class="fa fa-calendar"></i> <span>Calendar</span>
-                        <span class="pull-right-container">
-              <small class="label pull-right bg-red">3</small>
-              <small class="label pull-right bg-blue">17</small>
-            </span>
-                    </a>
-                </li>
-
+                </li><br>
 
             </ul>
+            </div>
+
+<div style="margin-top:180px; margin-left: 10px;">
+          <a href="https://www.facebook.com/" target="_blank"><button class="btn btn-primary btn-lg"><i class="fa fa-facebook-f"></i> </button></a>
+          <a href="https://www.instagram.com/?hl=hr" target="_blank"><button class="btn btn-primary btn-lg"><i class="fa fa-instagram"></i> </button></a>
+          <a href="https://www.global.ba/" target="_blank"><button class="btn btn-primary btn-lg"><i class="fa fa-globe"></i> </button></a>
+          <a href="https://www.amazon.com/" target="_blank"><button class="btn btn-primary btn-lg"><i class="fa fa-amazon"></i> </button></a>
+
+
+</div>
         </section>
         <!-- /.sidebar -->
     </aside>

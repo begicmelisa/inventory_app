@@ -7,28 +7,17 @@ use App\Post;
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
-Route::get('/test', function () {
-    return App\Profile::find(1)->user;
-});
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', function () { return view('home'); });
 
 Auth::routes();
-Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('/home',['uses'=>'HomeController@index','as'=>'home']);
-
 
     /* ---------------------------------------- POST ---------------------------------------- */
 
@@ -50,6 +39,11 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('post/edit/{id}',['uses'=>'PostsController@edit','as'=>'post.edit']);
 
+    Route::get('post/searchPost',['uses'=>'PostsController@searchPost','as'=>'post.searchPost']);
+
+    Route::get('post/searchPostTrashed',['uses'=>'PostsController@searchPostTrashed','as'=>'post.searchPostTrashed']);
+
+
     /* ---------------------------------------- CATEGORY ---------------------------------------- */
 
     Route::get('category/create',['uses'=>'CategoriesController@create','as'=>'category.create']);
@@ -64,6 +58,9 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::post('category/update/{id}',['uses'=>'CategoriesController@update','as'=>'category.update']);
 
+    Route::get('category/searchCat',['uses'=>'CategoriesController@searchCat','as'=>'category.searchCat']);
+
+
     /* ---------------------------------------- TAG ---------------------------------------- */
 
     Route::get('tags',['uses'=>'TagsController@index','as'=>'tags']);
@@ -77,6 +74,9 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     Route::post('tag/update/{id}',['uses'=>'TagsController@update','as'=>'tag.update']);
 
     Route::get('tag/delete/{id}',['uses'=>'TagsController@destroy','as'=>'tag.delete']);
+
+    Route::get('tag/searchTag',['uses'=>'TagsController@searchTag','as'=>'tag.searchTag']);
+
 
     /* ---------------------------------------- USER ---------------------------------------- */
 
@@ -94,7 +94,9 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('user/profile',['uses'=>'UsersController@profile','as'=>'user.profile']);
 
-    Route::post('user/update_avatar',['uses'=>'UsersController@update_avatar','as'=>'user.update_avatar']);
+    Route::name('user.update_avatar')->post('user/update_avatar',['uses'=>'UsersController@update_avatar']);
+
+    Route::get('user/searchUser',['uses'=>'UsersController@searchUser', 'as'=>'user.searchUser']);
 
 
     /* ---------------------------------------- SETTINGS ---------------------------------------- */
@@ -106,7 +108,6 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     Route::post('settings/update',['uses'=>'SettingsController@update','as'=>'settings.update'])->middleware('admin');
 
     /* ---------------------------------------- SETTINGS ---------------------------------------- */
-
 
 
 

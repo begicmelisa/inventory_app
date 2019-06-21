@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Tag;
 use Session;
+use DB;
 
 class TagsController extends Controller
 {
@@ -13,11 +14,20 @@ class TagsController extends Controller
         return view('admin.tags.index')->with('tags', Tag::all());
     }
 
+
+    public function searchTag(Request $request){
+        $search=$request->get('search');
+        $tags=DB::table('tags')->where('tag', 'like', '%'.$search.'%')->paginate(5);
+
+        return view('admin.tags.index',['tags'=>$tags]);
+    }
+
+
     public function create()
     {
         return view('admin.tags.create');
-
     }
+
 
     public function store(Request $request)
     {
@@ -29,22 +39,17 @@ class TagsController extends Controller
            'tag'=>$request->tag
         ]);
 
-        Session::flash('success','Tag created succesfully.');
-
+        Session::flash('success','Tag created successfully.');
         return redirect()->route('tags');
     }
 
-    public function show($id)
-    {
-        //
-    }
 
     public function edit($id)
     {
         $tag =Tag::find($id);
-
         return view('admin.tags.edit')->with('tag',$tag);
     }
+
 
     public function update(Request $request, $id)
     {
@@ -53,24 +58,19 @@ class TagsController extends Controller
         ]);
 
         $tag=Tag::find($id);
-
         $tag->tag=$request->tag;
-
         $tag->save();
 
-        Session::flash('success','Tag updated succesfully.');
-
+        Session::flash('success','Tag updated successfully.');
         return redirect()->route('tags');
-
     }
+
 
     public function destroy($id)
     {
         Tag::destroy($id);
 
-        Session::flash('success','Tag deleted succesfully.');
-
+        Session::flash('success','Tag deleted successfully.');
         return redirect()->back();
-
     }
 }
