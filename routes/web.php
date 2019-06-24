@@ -48,6 +48,9 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('posts',['uses'=>'PostsController@index','as'=>'posts']);
 
+
+    Route::get('postsIndex',['uses'=>'PostsController@postsIndex','as'=>'postsIndex']);
+
     Route::get('/posts/trashed',['uses'=>'PostsController@trashed','as'=>'posts.trashed']);
 
     Route::get('post/create',['uses'=>'PostsController@create','as'=>'post.create']);
@@ -108,6 +111,10 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     /* ---------------------------------------- USER ---------------------------------------- */
 
     Route::get('users',['uses'=>'UsersController@index', 'as'=>'users']);
+
+    Route::post('user/update/{id}',['uses'=>'UsersController@update','as'=>'user.update']);
+
+    Route::get('user/edit/{id}',['uses'=>'UsersController@edit','as'=>'user.edit']);
 
     Route::get('user/create',['uses'=>'UsersController@create', 'as'=>'user.create']);
 

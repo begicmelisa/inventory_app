@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->double('price');
+            $table->boolean('isTrashed')->default(0);
             $table->integer('category_id');
             $table->string('author');
             $table->string('featured');

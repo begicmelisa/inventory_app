@@ -18,6 +18,11 @@ class PostsController extends Controller
         return view('admin.posts.index')->with('posts',$posts);
     }
 
+    public function postsIndex()
+    {
+        $posts = Post::with('category')->get();
+        return view('admin.posts.postsIndex')->with('posts',$posts);
+    }
 
     public function create()
     {
@@ -67,7 +72,7 @@ class PostsController extends Controller
             'content'=>'required',
             'featured'=>'required|image',
             'category_id'=>'required',
-            'price'=>'required',
+            'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
             'tags'=>'required'
         ]);
 
@@ -144,6 +149,9 @@ class PostsController extends Controller
     public function trashed()
     {
         $posts =Post::onlyTrashed()->get();
+        $posts->isTrashed=1;
+
+
         return view('admin.posts.trashed')->with('posts',$posts);
     }
 

@@ -14,7 +14,8 @@
         <br>
         <h2>{{$user->name}}'s Profile</h2>
                                 <?php  // add this action by route function and use the name of route?>
-        <form enctype="multipart/form-data" action="{{route('user.update_avatar')}}" method="post">
+            <form action="{{route('user.edit',['id'=>$user->id])}}" method="post" enctype="multipart/form-data"  >
+
             <label>Update Profile Image</label>
             <input type="file" name="avatar">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -39,12 +40,29 @@
             </div>
 
             <div class="form-group">
-                <div class="text-center">
-                    <button class="btn btn-success" type="submit">Upload Profile</button>
-                </div>
+                <label for="address">Address</label>
+                <input type="text" name="address" value="{{$user->address}}" class="form-control">
             </div>
 
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" name="phone" value="{{$user->phone}}" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="bornDate">Born Date</label>
+                <input type="date" name="bornDate"  value="{{$user->bornDate}}" class="form-control">
+                <br>
+            </div>
+
+
+
         </form>
+        <div class="form-group">
+            <div class="text-center">
+                <a href="{{route('user.edit',['id'=>$user->id])}}" class="btn btn-success" type="submit">Upload Profile</a>
+            </div>
+        </div>
     </div>
 </div>
 

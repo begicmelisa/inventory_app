@@ -19,51 +19,54 @@
     </div>
 
     <div class="panel-body" >
-        <form action="{{route('user.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('user.update',['id'=>$user->id])}}" method="post" >
+
             <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
 
 
             <div class="form-group">
                 <label for="tag">User</label>
-                <input type="text" name="name" class="form-control">
+                <input type="text" name="name"  value="{{$user->name}}" class="form-control">
                 <br>
             </div>
 
 
 
             <div class="form-group">
-                <label for="tag">Email</label>
-                <input type="email" name="email" class="form-control">
+                <label for="email">Email</label>
+                <input type="email" name="email" value="{{$user->email}}" class="form-control">
                 <br>
             </div>
 
             <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" name="address" class="form-control">
+                <input type="text" name="address" value="{{$user->address}}" class="form-control">
                 <br>
             </div>
 
             <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="text" name="phone" class="form-control">
+                <input type="text" name="phone" value="{{$user->phone}}" class="form-control">
                 <br>
             </div>
 
             <div class="form-group">
                 <label for="bornDate">Born Date</label>
-                <input type="date" name="bornDate" class="form-control">
+                <input type="date" name="bornDate" value="{{$user->bornDate}}" class="form-control">
                 <br>
             </div>
 
+                @if(Auth::id() !== $user->id)
             <div class="form-group">
                 <label for="hiringDate">Hiring Date</label>
-                <input type="date" name="hiringDate" class="form-control">
+                <input type="date" name="hiringDate" value="{{$user->hiringDate}}" class="form-control">
                 <br>
             </div>
+                @endif
 
             <div class="form-group">
                 <div class="text-center">
-                    <button class="btn btn-success" type="submit">Add User</button>
+                    <button class="btn btn-success" type="submit">Update User</button>
                 </div>
             </div>
 

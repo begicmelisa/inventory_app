@@ -23,14 +23,6 @@
                         <li><a href="{{url('/login')}}">Login</a> </li>
                         <li><a href="{{url('/register')}}">Register</a> </li>
                   @else
-                        <li class="dropdown">
-                            <a href="#" style="margin-right: 50px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <i class="fa fa-bell" aria-hidden="true"></i>
-                              </a>
-                            <ul class="dropdown-menu" role="menu" style="margin-right: 50px; ">
-                                <li><a href="{{route('user.profile')}}"> Notifications<span style="margin-left: 10px;" class="badge">{{count(auth()->user()->notifications)}}</span></a></li>
-                            </ul>
-                        </li>
 
                       <li class="dropdown">
 
@@ -77,7 +69,7 @@
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-file-photo-o"></i>
-                        <span>Post</span>
+                        <span>Products</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -123,7 +115,7 @@
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-address-card"></i>
-                            <span>Users</span>
+                            <span>Employees</span>
                             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Profile;
+use App\Tag;
 use Illuminate\Http\Request;
 use App\User;
 use Session;
@@ -13,10 +14,10 @@ use DB;
 class UsersController extends Controller
 {
 
-    /*public function __construct()
+    public function __construct()
     {
         $this->middleware('admin');
-    }*/
+    }
 
     public function index()
     {
@@ -33,9 +34,40 @@ class UsersController extends Controller
     public function searchUser(Request $request){
         $search=$request->get('search');
         $users=DB::table('users')->where('name', 'like', '%'.$search.'%')
+                                 ->orWhere('address', 'like', '%'.$search.'%')
+                                 ->orWhere('phone', 'like', '%'.$search.'%')
+                              //   ->orWhere('IDcard', 'like', '%'.$search.'%')
                                  ->orWhere('email', 'like', '%'.$search.'%')->paginate(5);
 
         return view('admin.users.index',['users'=>$users]);
+    }
+
+
+    public function edit($id)
+    {
+        $user =User::find($id);
+        return view('admin.users.edit')->with('user',$user);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request,[
+            'name'=>'required',
+            'email'=>'required'
+        ]);
+
+        $user=User::find($id);
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->address=$request->address;
+        $user->phone=$request->phone;
+        $user->hiringDate=$request->hiringDate;
+        $user->bornDate=$request->bornDate;
+        $user->hiringDate=$request->hiringDate;
+        $user->save();
+
+        Session::flash('success','User updated successfully.');
+        return redirect()->route('users');
     }
 
 
@@ -43,16 +75,24 @@ class UsersController extends Controller
     {
         $this->validate($request,[
             'name'=>'required',
+            'address'=>'required',
+            'phone'=>'required',
+            'hiringDate'=>'required',
             'email'=>'required|email',
         ]);
 
         $user =User::create([
             'name'=>$request->name,
             'email'=>$request->email,
-            'password'=>bcrypt('password')
+            'address'=>$request->address,
+            'phone'=>$request->phone,
+            'bornDate'=>$request->bornDate,
+            'hiringDate'=>$request->hiringDate,
+        //    'password'=>bcrypt('password')
+        $this->attributes['password']
         ]);
 
-        Session::flash('success','User added successfully.');
+        Session::flash('success','User updated successfully.');
         return redirect()->route('users');
     }
 
@@ -97,7 +137,7 @@ class UsersController extends Controller
         $user->admin=1;
         $user->save();
 
-        Session::flash('success','Succesfully changed user permissions.');
+        Session::flash('success','Successfully changed user permissions.');
         return redirect()->route('users');
     }
 

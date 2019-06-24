@@ -62,6 +62,10 @@
                     <th class="centerText">ID</th>
                     <th class="centerText">Name</th>
                     <th class="centerText">Email</th>
+                    <th class="centerText">Address</th>
+                    <th class="centerText">Phone</th>
+                    <th class="centerText">Born Date</th>
+                    <th class="centerText">Hiring Date</th>
                     <th class="centerText">Permissions</th>
                     <th class="centerText">Created</th>
                     <th class="centerText">Updated</th>
@@ -75,6 +79,10 @@
                             <td>{{$values->id}}</td>
                             <td>{{$values->name}}</td>
                             <td>{{$values->email}}</td>
+                            <td>{{$values->address}}</td>
+                            <td>{{$values->phone}}</td>
+                            <td>{{$values->bornDate}}</td>
+                            <td>{{$values->hiringDate}}</td>
                             <td>
                                 @if(@$values->admin )
                                   @if(Auth::id() !== $values->id)
@@ -84,14 +92,13 @@
                                     <a href="{{route('user.admin',['id'=>$values->id])}}" class="btn btn-xs btn-success" style="width: 120px">Make admin</a>
 
                                 @endif
-
-
                             </td>
                             <td>{{ \Carbon\Carbon::parse($values->created_at)->diffForHumans() }}</td>
                             <td>{{ \Carbon\Carbon::parse($values->updated_at)->diffForHumans() }}</td>
                             <td>
                                 @if(Auth::id() !== $values->id)
-                                <a href="{{route('user.delete',['id'=>$values->id])}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>
+                                    <a href="{{route('user.edit',['id'=>$values->id])}}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> </a>
+                                    <a href="{{route('user.delete',['id'=>$values->id])}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>
                                 @endif
                             </td>
 
