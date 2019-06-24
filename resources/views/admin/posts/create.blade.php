@@ -26,6 +26,12 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="text" name="price" class="form-control">
+                        <br>
+                    </div>
+
+                    <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" name="title" class="form-control">
                         <br>

@@ -16,7 +16,7 @@ class Post extends Model
         'category_id',
         'author',
         'featured',
-        'slug'
+        'price',
    ];
 
     public function tags(){

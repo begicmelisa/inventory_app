@@ -17,8 +17,8 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->text('content');
+            $table->double('price');
             $table->integer('category_id');
-            $table->foreign('category_id')->refences('id')->on('categories');
             $table->string('author');
             $table->string('featured');
 

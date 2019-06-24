@@ -67,6 +67,7 @@ class PostsController extends Controller
             'content'=>'required',
             'featured'=>'required|image',
             'category_id'=>'required',
+            'price'=>'required',
             'tags'=>'required'
         ]);
 
@@ -76,6 +77,8 @@ class PostsController extends Controller
         $post= Post::create([
             'title'=>$request->title,
             'content'=>$request->content,
+            'author'=>'',
+            'price'=>$request->price,
             'featured'=>'uploads/posts/' . $featured_new_name,
             'category_id'=>$request->category_id,
             'slug'=>str_slug($request->title)
@@ -103,6 +106,7 @@ class PostsController extends Controller
         $this->validate($request,[
             'title'=>'required',
             'content'=>'required',
+            'price'=>'required',
             'category_id'=>'required'
         ]);
 

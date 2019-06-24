@@ -106,9 +106,10 @@
 
 
                     </ul>
-                </li><br>
+                </li>
                 @if(Auth::User()) <?php // add this line to check if user logged in or not ?>
             @if(Auth::user()->admin)
+                <br>
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-address-card"></i>
@@ -190,4 +191,3 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->

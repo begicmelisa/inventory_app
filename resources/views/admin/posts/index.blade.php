@@ -61,6 +61,7 @@
                             <th class="centerText">ID</th>
                             <th class="centerText">Image</th>
                             <th class="centerText">Title</th>
+                            <th class="centerText">Price</th>
                             <th class="centerText">Category</th>
                             <th class="centerText">Created</th>
                             <th class="centerText">Updated</th>
@@ -75,6 +76,7 @@
                                  <td>{{$values->id}}</td>
                                  <td><img src="{{$values->featured}}" alt="{{$values->title}}" width="80px" height="50px"> </td>
                                  <td>{{$values->title}}</td>
+                                 <td>{{$values->price}}</td>
                                  <td>{{$values->category->name}}</td>
                                  <td>{{ \Carbon\Carbon::parse($values->created_at)->diffForHumans() }}</td>
                                  <td>{{ \Carbon\Carbon::parse($values->updated_at)->diffForHumans() }}</td>

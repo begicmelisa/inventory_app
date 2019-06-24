@@ -86,7 +86,7 @@
         }
         #formDiv1{
             width: 900px;
-            height: 750px;
+            height: 950px;
             margin: auto;
             margin-left: 150px;
             margin-top: 20px;

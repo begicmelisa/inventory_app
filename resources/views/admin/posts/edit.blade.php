@@ -65,7 +65,11 @@
                         <input type="file" name="featured" class="form-control">
                     </div>
 
-
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <textarea name="price" id="price" cols="5" rows="5" class="form-control">{{$post->price}}</textarea>
+                        <br>
+                    </div>
 
                     <div class="form-group">
                         <label for="content">Content</label>
