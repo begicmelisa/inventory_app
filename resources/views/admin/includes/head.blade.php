@@ -45,6 +45,14 @@
             margin-left: 950px;
             margin-top: 65px;
         }
+        #tableCategoriesTags{
+            width: 1200px;
+            margin-left: 180px;
+            position: fixed;
+            margin-top: 160px;
+            height: 500px;
+            background: red;
+        }
 
         #tableCategories{
             width: 1200px;
@@ -89,6 +97,14 @@
             height: 950px;
             margin: auto;
             margin-left: 150px;
+            margin-top: 20px;
+        }
+
+        #formDivInfoPosts{
+            width: 900px;
+            height: 850px;
+            margin: auto;
+            margin-right: 400px;
             margin-top: 20px;
         }
 

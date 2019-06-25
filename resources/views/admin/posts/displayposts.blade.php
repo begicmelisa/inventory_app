@@ -1,54 +1,39 @@
 @include('admin.includes.head')
 @include('admin.includes.nav')
 
+<div>
+        @if($posts->count()>0)
 
-<div class="row medium-padding120">
-    <div class="product-details">
-        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-            <div class="product-details-thumb">
-                <div class="swiper-container swiper-swiper-unique-id-0 initialized swiper-container-horizontal swiper-container-fade" data-effect="fade" id="swiper-unique-id-0">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper" style="transition-duration: 0ms;"><div class="product-details-img-wrap swiper-slide swiper-slide-duplicate swiper-slide-prev" data-swiper-slide-index="0" style="width: 172px; transform: translate3d(0px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                            <img src="img/product-details.png" alt="product" data-swiper-parallax="-10" style="transform: translate3d(-10px, 0px, 0px); transition-duration: 0ms;">
-                        </div>
-                        <!-- Slides -->
-                        <div class="product-details-img-wrap swiper-slide swiper-slide-active" data-swiper-slide-index="0" style="width: 172px; transform: translate3d(-172px, 0px, 0px); opacity: 1; transition-duration: 0ms;">
-                            <img src="img/product-details.png" alt="product" data-swiper-parallax="-10" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
-                        </div>
-                        <div class="product-details-img-wrap swiper-slide swiper-slide-duplicate swiper-slide-next" data-swiper-slide-index="0" style="width: 172px; transform: translate3d(-344px, 0px, 0px); opacity: 0; transition-duration: 0ms;">
-                            <img src="img/product-details.png" alt="product" data-swiper-parallax="-10" style="transform: translate3d(10px, 0px, 0px); transition-duration: 0ms;">
-                        </div></div>
+        @foreach( $posts as $key =>$values)
+
+                <div style=" float: left;
+-moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow:         3px 3px 5px 6px #ccc;
+  width: 500px;
+  border-radius: 30px;
+
+  height: 300px;
+  margin: 1em;
+margin-left: 200px;
+padding-top: 20px;
+margin-top: 50px;">
+                   <div style="float: left;   width: 250px; height: 50px; padding-top: 10px; padding-left: 20px;"><span style="float: left; font-size: 20px; padding-left: 20px;" >{{$values->title}}</span></div>
+
+                    <div style="float: right;  width: 250px; height: 50px; padding-top: 5px;"><span style="float: right; font-size: 30px; padding-right: 20px;" > 36 $</span></div>
+                    <div >
+       <div style="float: left;"><img style="margin-top: 15px; margin-left: 30px; border-radius: 5px" src="{{$values->featured}}" alt="{{$values->title}}" width="300px" height="200px"></div>
+                        <div style="float: right; padding-right: 20px; margin-top: 50px;"><span>Category: {{$values->category->name}}</span></div>
+                    </div>
+
+                    <a href="{{route('post.info',['id'=>$values->id])}}" style="float: right; margin-right:20px; margin-top:120px;">View details</a>
+
                 </div>
-            </div>
-        </div>
+            @endforeach
+            @endif
 
+                        </div>
 
-        <div class="col-lg-6 col-lg-offset-1 col-md-6 col-md-offset-1 col-sm-6 col-sm-offset-1 col-xs-12 col-xs-offset-0">
-            <div class="product-details-info">
-                <div class="product-details-info-price">$16.99</div>
-                <h3 class="product-details-info-title">Marketing Strategy</h3>
-                <p class="product-details-info-text">Qolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-                    nibham liber tempor cum soluta nobis eleifend option congue nihil uarta decima et quinta.
-                    Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis.
-                </p>
-
-                <div class="quantity">
-                    <a href="#" class="quantity-minus">-</a>
-                    <input title="Qty" class="email input-text qty text" type="text" value="2">
-                    <a href="#" class="quantity-plus">+</a>
-                </div>
-
-                <a href="19_cart.html" class="btn btn-medium btn--primary">
-                    <span class="text">Add to Cart</span>
-                    <i class="seoicon-commerce"></i>
-                    <span class="semicircle"></span>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
+test
 @include('admin.includes.footer')
 

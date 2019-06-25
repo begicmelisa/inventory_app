@@ -35,7 +35,7 @@
                        </form>
                    </div>
 
-               <div class="Row" style="text-align: center;" id="tableCategories" >
+               <div class="Row" style="text-align: center;" id="tableCategoriesTags" >
                    <div class="panel-heading" style="text-align: left;">
                        <a href="{{route('tags')}}">All Tags</a>
 
@@ -81,8 +81,10 @@
 
            </div>
        </div>
-   </div>
+<div style="margin-top: 700px; margin-left: 600px;">
+<span ">{{$tags->links()}}</span>
+</div>
 
 @include('admin.includes.footer')
 
->
+

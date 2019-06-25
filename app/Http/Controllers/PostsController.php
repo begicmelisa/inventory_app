@@ -18,6 +18,23 @@ class PostsController extends Controller
         return view('admin.posts.index')->with('posts',$posts);
     }
 
+    public function info($id)
+    {
+        $post=Post::find($id);
+
+        return view('admin.posts.info')->with('post',$post)
+            ->with('categories',Category::all())
+            ->with('tags',Tag::all());
+
+    }
+
+    public function displayposts()
+    {
+        $posts = Post::with('category')->get();
+        return view('admin.posts.displayposts')->with('posts',$posts) ;
+    }
+
+
     public function postsIndex()
     {
         $posts = Post::with('category')->get();

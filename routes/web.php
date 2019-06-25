@@ -51,6 +51,10 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('posts',['uses'=>'PostsController@index','as'=>'posts']);
 
+    Route::get('post/info/{id}',['uses'=>'PostsController@info','as'=>'post.info']);
+
+
+    Route::get('displayposts',['uses'=>'PostsController@displayposts','as'=>'displayposts']);
 
     Route::get('postsIndex',['uses'=>'PostsController@postsIndex','as'=>'postsIndex']);
 
