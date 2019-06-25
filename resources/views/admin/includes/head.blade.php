@@ -49,16 +49,15 @@
             width: 1200px;
             margin-left: 180px;
             position: fixed;
-            margin-top: 160px;
+            margin-top: 140px;
             height: 500px;
-            background: red;
         }
 
         #tableCategories{
             width: 1200px;
             margin-left: 180px;
             position: fixed;
-            margin-top: 160px;
+            margin-top: 140px;
         }
         .centerText{
             text-align: center;
@@ -69,6 +68,14 @@
         }
         #divList{
             width: 920px;
+        }
+        #formDivSettings
+        {
+            width: 900px;
+            height: 550px;
+            margin: auto;
+            margin-left: 150px;
+            margin-top: 20px;
         }
         #formDiv{
             width: 900px;

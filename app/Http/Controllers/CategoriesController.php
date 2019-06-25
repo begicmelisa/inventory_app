@@ -11,7 +11,8 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        return view('admin.categories.index')->with('categories',Category::all());
+        $categories=DB::table('categories')->paginate(10);
+        return view('admin.categories.index')->with('categories',$categories);
     }
 
     public function create()
@@ -21,7 +22,7 @@ class CategoriesController extends Controller
 
     public function searchCat(Request $request){
         $search=$request->get('search');
-        $categories=DB::table('categories')->where('name', 'like', '%'.$search.'%')->paginate(5);
+        $categories=DB::table('categories')->where('name', 'like', '%'.$search.'%')->paginate(8);
 
         return view('admin.categories.index',['categories'=>$categories]);
     }

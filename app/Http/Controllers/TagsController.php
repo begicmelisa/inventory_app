@@ -11,13 +11,14 @@ class TagsController extends Controller
 {
     public function index()
     {
-        return view('admin.tags.index')->with('tags', Tag::all());
+        $tags=DB::table('tags')->paginate(10);
+        return view('admin.tags.index')->with('tags', $tags);
     }
 
 
     public function searchTag(Request $request){
         $search=$request->get('search');
-        $tags=DB::table('tags')->where('tag', 'like', '%'.$search.'%')->paginate(2);
+        $tags=DB::table('tags')->where('tag', 'like', '%'.$search.'%')->paginate(10);
 
         return view('admin.tags.index',['tags'=>$tags]);
     }

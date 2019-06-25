@@ -90,7 +90,6 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{route('display_posts')}} "><i class="fa fa-list-alt"></i> List</a></li>
                         <li><a href="{{route('displayposts')}} "><i class="fa fa-list-alt"></i> List</a></li>
                     </ul>
                 </li><br>

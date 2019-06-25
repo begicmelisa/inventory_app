@@ -95,10 +95,13 @@
 
             </div>
         </div>
-            </div>
 
 
+
+<div style="padding-top: 800px; padding-left: 600px;">
+    {{$categories->links()}}
+</div>
 
 
 @include('admin.includes.footer')
-')
+

@@ -6,54 +6,39 @@
 
         <section class="content-header">
             <h1>
-                POSTS
+                PRODUCTS
                 <!-- <small>Control panel</small>-->
             </h1>
 
         </section>
 
+<div id="all">
 
+    <div class="col-md-6" id="add1">
+        <div class="col-lg-10 col-lg-offset-2" id="addBtn">
+            <a href="{{route('post.create')}}" class="btn btn-success" style="height: 35px">New Posts</a>
+        </div>
+    </div>
 
+    <div>
 
-        <div id="all">
-
-            <div class="col-md-6" id="add1">
-
-                <form method="POST" action="{{route('post.create')}}" enctype="multipart/form-data">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                    <fieldset>
-
-
-                        <div class="form-group" >
-                            <div class="col-lg-10 col-lg-offset-2" id="addBtn">
-                                <a href="{{route('post.create')}}" class="btn btn-success" style="height: 35px">New Post</a>
-
-                            </div>
-                        </div>
-
-                    </fieldset>
-                </form>
-            </div>
-            <div>
-
-                <div class="col-md-4" id="searchBtn">
-                    <form action="{{route('post.searchPost')}}" method="get">
-                        <div class="form-group">
-                            <input type="search" name="search" class="form-control" placeholder="Search Post" style="width: 350px;">
-                            <div id="btnSearch">
+        <div class="col-md-4" id="searchBtn">
+            <form action="{{route('post.searchPost')}}" method="get">
+                <div class="form-group">
+                    <input type="search" name="search" class="form-control" placeholder="Search Posts" style="width: 350px;">
+                    <div id="btnSearch">
                                             <span class="form-control-btn">
                                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                                             </span>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
+            </form>
+        </div>
 
 
                 <div class="Row" style="text-align: center;" id="tableCategories" >
                     <div class="panel-heading" style="text-align: left;">
-                        <a href="{{route('posts')}} ">Published posts</a>
+                        <a href="{{route('posts')}} ">Published products</a>
                     </div><br>
                     <table class="table table-bordered">
                         <thead>
@@ -105,6 +90,8 @@
             </div>
         </div>
 
-
+<div style="padding-top: 800px; padding-left: 600px;">
+    {{$posts->links()}}
+</div>
 @include('admin.includes.footer')
 

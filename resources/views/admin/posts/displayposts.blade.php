@@ -24,6 +24,7 @@ margin-top: 50px;">
                     <div >
        <div style="float: left;"><img style="margin-top: 15px; margin-left: 30px; border-radius: 5px" src="{{$values->featured}}" alt="{{$values->title}}" width="300px" height="200px"></div>
                         <div style="float: right; padding-right: 20px; margin-top: 50px;"><span>Category: {{$values->category->name}}</span></div>
+
                     </div>
 
                     <a href="{{route('post.info',['id'=>$values->id])}}" style="float: right; margin-right:20px; margin-top:120px;">View details</a>
@@ -34,6 +35,8 @@ margin-top: 50px;">
 
                         </div>
 
-test
+<div style="padding-top: 800px; padding-left: 600px;">
+  {{$posts->links()}}
+</div>
 @include('admin.includes.footer')
 

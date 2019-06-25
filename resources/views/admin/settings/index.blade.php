@@ -9,7 +9,7 @@
     <h1></h1>
 </section>
 
-<div class="panel panel-default" id="formDiv">
+<div class="panel panel-default" id="formDivSettings">
     <div  id="titlePost">
         <h3> Settings</h3>
     </div>

@@ -14,10 +14,10 @@ use DB;
 class UsersController extends Controller
 {
 
-    public function __construct()
+   /* public function __construct()
     {
         $this->middleware('admin');
-    }
+    }  */
 
     public function index()
     {
@@ -36,7 +36,6 @@ class UsersController extends Controller
         $users=DB::table('users')->where('name', 'like', '%'.$search.'%')
                                  ->orWhere('address', 'like', '%'.$search.'%')
                                  ->orWhere('phone', 'like', '%'.$search.'%')
-                              //   ->orWhere('IDcard', 'like', '%'.$search.'%')
                                  ->orWhere('email', 'like', '%'.$search.'%')->paginate(5);
 
         return view('admin.users.index',['users'=>$users]);

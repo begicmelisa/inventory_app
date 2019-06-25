@@ -17,7 +17,6 @@
                            <div class="col-lg-10 col-lg-offset-2" id="addBtn">
                                <a href="{{route('tag.create')}}" class="btn btn-success" style="height: 35px">New Tag</a>
                            </div>
-               </form>
            </div>
 
                <div>
@@ -81,7 +80,8 @@
 
            </div>
        </div>
-<div style="margin-top: 700px; margin-left: 600px;">
+<div style="padding-top: 800px; padding-left: 600px;">
+    {{$tags->links()}}
 </div>
 
 @include('admin.includes.footer')

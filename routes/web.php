@@ -22,14 +22,7 @@ Auth::routes();
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Route::get('/x', function (){
-    //  $user =Auth::user();
-    // $user->notify(new NewFollower(User::findorFail(1)));
 
-    foreach (Auth::user()->notifications as $notification){
-        dd($notification);
-    }
-});
 
 
 Route::get('/notify',function (){
@@ -52,11 +45,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('post/info/{id}',['uses'=>'PostsController@info','as'=>'post.info']);
 
-
     Route::get('displayposts',['uses'=>'PostsController@displayposts','as'=>'displayposts']);
-
-    Route::get('display_posts',['uses'=>'PostsController@display_posts','as'=>'display_posts']);
-
 
     Route::get('postsIndex',['uses'=>'PostsController@postsIndex','as'=>'postsIndex']);
 
@@ -77,6 +66,8 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     Route::get('post/edit/{id}',['uses'=>'PostsController@edit','as'=>'post.edit']);
 
     Route::get('post/searchPost',['uses'=>'PostsController@searchPost','as'=>'post.searchPost']);
+
+    Route::get('post/searchTrashedPost',['uses'=>'PostsController@searchTrashedPost','as'=>'post.searchTrashedPost']);
 
     Route::get('post/searchPostTrashed',['uses'=>'PostsController@searchPostTrashed','as'=>'post.searchPostTrashed']);
 

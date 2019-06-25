@@ -15,7 +15,7 @@ class PostsController extends Controller
     public function index()
     {
 
-        $posts = Post::with('category')->get();
+        $posts = Post::with('category')->paginate(8);
         return view('admin.posts.index')->with('posts',$posts);
     }
 
@@ -31,20 +31,8 @@ class PostsController extends Controller
 
     public function displayposts()
     {
-        $posts = Post::with('category')->paginate(5);
+        $posts = Post::with('category')->paginate(4);
         return view('admin.posts.displayposts')->with('posts',$posts) ;
-    }
-
-    public function display_posts()
-    {
-        $posts = Post::with('category')->get();
-        return view('admin.posts.display_posts')->with('posts',$posts) ;
-    }
-
-    public function postsIndex()
-    {
-        $posts = Post::with('category')->get();
-        return view('admin.posts.postsIndex')->with('posts',$posts);
     }
 
     public function create()
@@ -53,16 +41,14 @@ class PostsController extends Controller
         $tags =Tag::all();
 
         if($categories->count()== 0 ){
-
             Session::flash('info','You must have some categories before attempting to create a post.');
             return view('admin.categories.create');
         }
-
-        if( $tags->count()== 0)
-        {
+        if( $tags->count()== 0){
             Session::flash('info','You must have some tages before attempting to create a post.');
             return view('admin.tags.create');
         }
+
         return view('admin.posts.create')->with('categories',$categories)
                                                ->with('tags', Tag::all());
     }
@@ -70,26 +56,27 @@ class PostsController extends Controller
 
     public function searchPost(Request $request){
         $search=$request->get('search');
-        $posts=DB::table('posts')->where('title', 'like', '%'.$search.'%')
-        ->orWhere('content', 'like', '%'.$search.'%')->paginate(5);
+        $posts=Post::with('Category')->where('title', 'like', '%'.$search.'%')
+                                              ->orWhere('price', 'like', '%'.$search.'%')->paginate(8);
 
-        return view('admin.posts.index',['posts'=>$posts]);
+        return view('admin.posts.index')->with('posts',$posts);
     }
 
 
-    public function searchPostTrashed(Request $request){
+    public function searchTrashedPost(Request $request){
         $search=$request->get('search');
-       // $posts=Post::find('name'==1)->all();
-        $posts=DB::table('posts')->where('title', 'like', '%'.$search.'%')
-            ->orWhere('content', 'like', '%'.$search.'%')->paginate(5);
 
-        return view('admin.posts.index',['posts'=>$posts]);
+           $posts = Post::onlyTrashed()->where('title', 'like', '%' . $search . '%')
+                ->orWhere('price', 'like', '%' . $search . '%')->paginate(8);
+
+
+        return view('admin.posts.trashed')->with('posts',$posts);
     }
+
 
 
     public function store(Request $request)
     {
-
         $this->validate($request,[
             'title'=>'required|max:50',
             'content'=>'required',
@@ -111,7 +98,6 @@ class PostsController extends Controller
             'category_id'=>$request->category_id,
             'slug'=>str_slug($request->title)
         ]);
-
         $post->tags()->attach($request->tags);
         Session::flash('success','Post created succesfully.');
 
@@ -171,9 +157,7 @@ class PostsController extends Controller
 
     public function trashed()
     {
-        $posts =Post::onlyTrashed()->get();
-        $posts->isTrashed=1;
-
+        $posts =Post::onlyTrashed()->paginate(8);
 
         return view('admin.posts.trashed')->with('posts',$posts);
     }

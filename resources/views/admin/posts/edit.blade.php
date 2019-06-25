@@ -13,7 +13,7 @@
 
         <div class="panel panel-default" id="formDiv1">
             <div  id="titlePost">
-                <h3> Update post </h3>
+                <h3> Update products </h3>
             </div>
 
             <div class="panel-body" >
