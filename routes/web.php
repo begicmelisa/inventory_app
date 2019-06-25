@@ -16,6 +16,9 @@ use App\User;
 
 Route::get('/', function () { return view('home'); });
 
+Route::get('/test', function () { return view('admin/posts/displayposts'); });
+
+
 Auth::routes();
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

@@ -68,7 +68,7 @@
                 </li><br>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-file-photo-o"></i>
+                        <i class="fa fa-shopping-cart"></i>
                         <span>Products</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -79,6 +79,18 @@
                         <li><a href="{{route('post.create')}}"><i class="fa fa-plus"></i> Create</a></li>
                         <li><a href="{{route('posts.trashed')}}"><i class="fa fa-trash"></i> Trashed Posts</a></li>
 
+                    </ul>
+                </li><br>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-picture-o" aria-hidden="true"></i>
+                        <span>Posts</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('posts')}} "><i class="fa fa-list-alt"></i> List</a></li>
                     </ul>
                 </li><br>
                 <li class="treeview">
@@ -146,22 +158,6 @@
                         @endif
                     </ul>
                 </li><br>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-shopping-cart"></i>
-                        <span>Products</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="products"><i class="fa fa-list-alt"></i> List</a></li>
-                        <li><a href="addProducts"><i class="fa fa-plus"></i> Add</a></li>
-
-                    </ul>
-                </li><br>
-
-
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-bell" aria-hidden="true"></i>
