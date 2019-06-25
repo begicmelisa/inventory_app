@@ -14,6 +14,7 @@ class PostsController extends Controller
 
     public function index()
     {
+
         $posts = Post::with('category')->get();
         return view('admin.posts.index')->with('posts',$posts);
     }
@@ -30,10 +31,15 @@ class PostsController extends Controller
 
     public function displayposts()
     {
-        $posts = Post::with('category')->get();
+        $posts = Post::with('category')->paginate(5);
         return view('admin.posts.displayposts')->with('posts',$posts) ;
     }
 
+    public function display_posts()
+    {
+        $posts = Post::with('category')->get();
+        return view('admin.posts.display_posts')->with('posts',$posts) ;
+    }
 
     public function postsIndex()
     {

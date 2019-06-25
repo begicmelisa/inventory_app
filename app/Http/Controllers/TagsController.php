@@ -17,7 +17,7 @@ class TagsController extends Controller
 
     public function searchTag(Request $request){
         $search=$request->get('search');
-        $tags=DB::table('tags')->where('tag', 'like', '%'.$search.'%')->paginate(5);
+        $tags=DB::table('tags')->where('tag', 'like', '%'.$search.'%')->paginate(2);
 
         return view('admin.tags.index',['tags'=>$tags]);
     }

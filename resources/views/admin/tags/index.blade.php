@@ -82,7 +82,6 @@
            </div>
        </div>
 <div style="margin-top: 700px; margin-left: 600px;">
-<span ">{{$tags->links()}}</span>
 </div>
 
 @include('admin.includes.footer')

@@ -16,7 +16,6 @@ use App\User;
 
 Route::get('/', function () { return view('home'); });
 
-Route::get('/test', function () { return view('admin/posts/displayposts'); });
 
 
 Auth::routes();
@@ -55,6 +54,9 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
 
     Route::get('displayposts',['uses'=>'PostsController@displayposts','as'=>'displayposts']);
+
+    Route::get('display_posts',['uses'=>'PostsController@display_posts','as'=>'display_posts']);
+
 
     Route::get('postsIndex',['uses'=>'PostsController@postsIndex','as'=>'postsIndex']);
 
