@@ -55,6 +55,12 @@
                 <br>
             </div>
 
+            <div class="form-group">
+                <label for="address">Password</label>
+                <input type="text" name="address" value="{{$user->password}}" class="form-control">
+            </div>
+
+
 
 
         </form>

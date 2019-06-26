@@ -37,7 +37,7 @@ class UsersController extends Controller
         $users=DB::table('users')->where('name', 'like', '%'.$search.'%')
                                  ->orWhere('address', 'like', '%'.$search.'%')
                                  ->orWhere('phone', 'like', '%'.$search.'%')
-                                 ->orWhere('email', 'like', '%'.$search.'%')->paginate(5);
+                                 ->orWhere('email', 'like', '%'.$search.'%')->paginate(10);
 
         return view('admin.users.index',['users'=>$users]);
     }

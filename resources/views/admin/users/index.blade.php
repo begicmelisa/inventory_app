@@ -81,8 +81,8 @@
                             <td>{{$values->email}}</td>
                             <td>{{$values->address}}</td>
                             <td>{{$values->phone}}</td>
-                            <td>{{$values->bornDate}}</td>
-                            <td>{{$values->hiringDate}}</td>
+                            <td> {{Carbon\Carbon::parse($values->bornDate)->format('Y-m-d')}}</td>
+                            <td> {{Carbon\Carbon::parse($values->hiringDate)->format('Y-m-d')}}</td>
                             <td>
                                 @if(Auth::id() !== $values->id)
 
