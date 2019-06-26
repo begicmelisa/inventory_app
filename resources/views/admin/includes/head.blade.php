@@ -77,6 +77,14 @@
             margin-left: 150px;
             margin-top: 20px;
         }
+
+        #formDivAddUser{
+            width: 900px;
+            height: 400px;
+            margin: auto;
+            margin-left: 150px;
+            margin-top: 20px;
+        }
         #formDiv{
             width: 900px;
             height: 750px;

@@ -84,13 +84,14 @@
                             <td>{{$values->bornDate}}</td>
                             <td>{{$values->hiringDate}}</td>
                             <td>
+                                @if(Auth::id() !== $values->id)
+
                                 @if(@$values->admin )
-                                  @if(Auth::id() !== $values->id)
                                     <a href="{{route('user.not.admin',['id'=>$values->id])}}" class="btn btn-xs btn-danger" style="width: 120px">Remove permissions</a>
-                                  @endif
                                 @else
                                     <a href="{{route('user.admin',['id'=>$values->id])}}" class="btn btn-xs btn-success" style="width: 120px">Make admin</a>
 
+                                    @endif
                                 @endif
                             </td>
                             <td>{{ \Carbon\Carbon::parse($values->created_at)->diffForHumans() }}</td>

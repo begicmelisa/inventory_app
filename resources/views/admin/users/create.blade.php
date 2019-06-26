@@ -13,7 +13,7 @@
 
 
 
-<div class="panel panel-default" id="formDiv">
+<div class="panel panel-default" id="formDivAddUser">
     <div  id="titlePost">
         <h3> Create a new user</h3>
     </div>
@@ -37,29 +37,7 @@
                 <br>
             </div>
 
-            <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" name="address" class="form-control">
-                <br>
-            </div>
-
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="text" name="phone" class="form-control">
-                <br>
-            </div>
-
-            <div class="form-group">
-                <label for="bornDate">Born Date</label>
-                <input type="date" name="bornDate" class="form-control">
-                <br>
-            </div>
-
-            <div class="form-group">
-                <label for="hiringDate">Hiring Date</label>
-                <input type="date" name="hiringDate" class="form-control">
-                <br>
-            </div>
+<br>
 
             <div class="form-group">
                 <div class="text-center">

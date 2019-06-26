@@ -96,7 +96,6 @@ class PostsController extends Controller
             'price'=>$request->price,
             'featured'=>'uploads/posts/' . $featured_new_name,
             'category_id'=>$request->category_id,
-            'slug'=>str_slug($request->title)
         ]);
         $post->tags()->attach($request->tags);
         Session::flash('success','Post created succesfully.');

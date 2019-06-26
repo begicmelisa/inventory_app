@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 class CreateUsersTable extends Migration
 {
      public function up()
@@ -12,10 +14,10 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email');
-            $table->string('address')->default('your address...');
-            $table->string('phone')->default('your phone...');
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
             $table->date('bornDate')->nullable();
-            $table->date('hiringDate')->nullable();
+            $table->timestamp('hiringDate')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->boolean('admin')->default(0);
             $table->string('avatar')->default('default.jpg');
             $table->string('password');

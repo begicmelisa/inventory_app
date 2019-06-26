@@ -74,9 +74,6 @@ class UsersController extends Controller
     {
         $this->validate($request,[
             'name'=>'required',
-            'address'=>'required',
-            'phone'=>'required',
-            'hiringDate'=>'required',
             'email'=>'required|email',
         ]);
 
@@ -87,8 +84,8 @@ class UsersController extends Controller
             'phone'=>$request->phone,
             'bornDate'=>$request->bornDate,
             'hiringDate'=>$request->hiringDate,
-        //    'password'=>bcrypt('password')
-        $this->attributes['password']
+            'password'=>bcrypt('password'),
+       // $this->attributes['password']
         ]);
 
         Session::flash('success','User updated successfully.');
@@ -132,6 +129,7 @@ class UsersController extends Controller
 
     public function admin($id)
     {
+
         $user = User::find($id);
         $user->admin=1;
         $user->save();
