@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
-            $table->date('bornDate')->nullable();
+            $table->timestamp('bornDate')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('hiringDate')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->boolean('admin')->default(0);
             $table->string('avatar')->default('default.jpg');

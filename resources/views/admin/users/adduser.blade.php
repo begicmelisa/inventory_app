@@ -19,24 +19,10 @@
     </div>
 
     <div class="panel-body" >
-            <form action="{{route('user.update',['id'=>$user->id])}}" method="post" >
+        <form action="{{route('user.update',['id'=>$user->id])}}" method="post" >
 
             <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
 
-
-            <div class="form-group">
-                <label for="tag">User</label>
-                <input type="text" name="name"  value="{{$user->name}}" class="form-control">
-                <br>
-            </div>
-
-
-
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" value="{{$user->email}}" class="form-control">
-                <br>
-            </div>
 
             <div class="form-group">
                 <label for="address">Address</label>
@@ -56,13 +42,13 @@
                 <br>
             </div>
 
-                @if(Auth::id() !== $user->id)
-            <div class="form-group">
-                <label for="hiringDate">Hiring Date</label>
-                <input type="text" name="hiringDate" value="{{$user->hiringDate}}" class="form-control">
-                <br>
-            </div>
-                @endif
+            @if(Auth::id() !== $user->id)
+                <div class="form-group">
+                    <label for="hiringDate">Hiring Date</label>
+                    <input type="date" name="hiringDate" value="{{$user->hiringDate}}" class="form-control">
+                    <br>
+                </div>
+            @endif
 
             <div class="form-group">
                 <div class="text-center">

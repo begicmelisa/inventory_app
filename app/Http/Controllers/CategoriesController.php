@@ -37,7 +37,7 @@ class CategoriesController extends Controller
         $category->name=$request->name;
         $category->save();
 
-        Session::flash('success','You succesfully created a category.');
+        Session::flash('success','You successfully created a category.');
 
         return redirect()->route('categories');
 

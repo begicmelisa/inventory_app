@@ -21,7 +21,8 @@ class UsersController extends Controller
 
     public function index()
     {
-        return view('admin.users.index')->with('users',User::all());
+        $users=DB::table('users')->paginate(10);
+        return view('admin.users.index')->with('users',$users);
     }
 
 
@@ -46,6 +47,32 @@ class UsersController extends Controller
     {
         $user =User::find($id);
         return view('admin.users.edit')->with('user',$user);
+    }
+
+    public function add_user($id)
+    {
+        $user =User::find($id);
+        return view('admin.users.add_user')->with('user',$user);
+    }
+    public function update_add_user (Request $request, $id)
+    {
+        $this->validate($request,[
+            'address'=>'required',
+            'phone'=>'required',
+            'bornDate'=>'required',
+        ]);
+
+        $user=User::find($id);
+
+        $user->address=$request->address;
+        $user->phone=$request->phone;
+        $user->hiringDate=$request->hiringDate;
+        $user->bornDate=$request->bornDate;
+        $user->hiringDate=$request->hiringDate;
+        $user->save();
+
+        Session::flash('success','User added successfully.');
+        return redirect()->route('users');
     }
 
     public function update(Request $request, $id)
@@ -80,16 +107,12 @@ class UsersController extends Controller
         $user =User::create([
             'name'=>$request->name,
             'email'=>$request->email,
-            'address'=>$request->address,
-            'phone'=>$request->phone,
-            'bornDate'=>$request->bornDate,
-            'hiringDate'=>$request->hiringDate,
             'password'=>bcrypt('password'),
        // $this->attributes['password']
         ]);
 
-        Session::flash('success','User updated successfully.');
-        return redirect()->route('users');
+      //  Session::flash('success','User added successfully.');
+        return view('admin.users.add_user')->with('user',$user);
     }
 
 

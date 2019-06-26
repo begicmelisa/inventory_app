@@ -102,15 +102,11 @@
                                     <a href="{{route('user.delete',['id'=>$values->id])}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>
                                 @endif
                             </td>
-
-
-
                         </tr>
                     @endforeach
 
                 @else
                     <tr>
-                        <!-- class="text-center" -->
                         <th colspan="5" >No users.</th>
                     </tr>
 
@@ -122,6 +118,9 @@
 
     </div>
 </div>
+
+<div style="padding-top: 750px; padding-left: 600px;">
+    {{$users->links()}}
 </div>
 
 

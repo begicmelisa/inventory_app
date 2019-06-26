@@ -115,6 +115,9 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     Route::post('user/update/{id}',['uses'=>'UsersController@update','as'=>'user.update']);
 
     Route::get('user/edit/{id}',['uses'=>'UsersController@edit','as'=>'user.edit']);
+    Route::get('user/add_user/{id}',['uses'=>'UsersController@add_user','as'=>'user.add_user']);
+    Route::post('user/update_add_user/{id}',['uses'=>'UsersController@update_add_user','as'=>'user.update_add_user']);
+
 
     Route::get('user/create',['uses'=>'UsersController@create', 'as'=>'user.create']);
 
