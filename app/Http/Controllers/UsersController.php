@@ -7,7 +7,7 @@ use App\Tag;
 use Illuminate\Http\Request;
 use App\User;
 use Session;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Faker\Provider\Image;
 use DB;
 
@@ -60,6 +60,7 @@ class UsersController extends Controller
             'address'=>'required',
             'phone'=>'required',
             'bornDate'=>'required',
+            'gender'=>'required',
         ]);
 
         $user=User::find($id);
@@ -69,6 +70,7 @@ class UsersController extends Controller
         $user->hiringDate=$request->hiringDate;
         $user->bornDate=$request->bornDate;
         $user->hiringDate=$request->hiringDate;
+        $user->gender=$request->gender;
         $user->save();
 
         Session::flash('success','User added successfully.');

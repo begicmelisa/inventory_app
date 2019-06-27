@@ -1,6 +1,8 @@
+
+
+
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
     <header class="main-header">
         <!-- Logo -->
         <a href="/" class="logo">
@@ -46,11 +48,16 @@
         <section class="sidebar">
             <!-- Sidebar user panel -->
             <div class="user-panel">
-                <div class="pull-left image">
-                    <img   alt="" >
+                <div class="pull-left image" style="height: 15px;">
+                    <img src="/public/storage/profile_photos/{{ Auth::user()->avatar }}"  alt="{{Auth::user()->name}}"
+                                                    style="width:32px; height:32px; position:absolute; top:15px; left: 25px; border-radius:50%">
+
                 </div>
-                <div class="pull-left info">
-                    <p> {{Auth::user()->name}} </p>
+                <div class="pull-left info" >
+                   <!-- <img src="/public/storage/profile_photos/{{Auth::user()->avatar}}" alt="{{Auth::user()->name}}"
+                   style=" width: 32px; height:32px; position: absolute;  top: 10px; left: 10px;border-radius: 50px; "> -->
+                    <p style="font-size: 16x;"> {{Auth::user()->name}} </p>
+
                 </div>
             </div><br>
             <!-- search form -->
@@ -63,12 +70,23 @@
                 <li>
                     <a href="{{route('home')}}">
                         <i class="fa fa-home"></i> <span>Home</span>
-                        </span>
                     </a>
                 </li><br>
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-shopping-cart"></i>
+                        <span>Purchase</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('purchase')}} "><i class="fa fa-plus"></i> Add</a></li>
+                    </ul>
+                </li><br>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-picture-o" aria-hidden="true"></i>
                         <span>Products</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -175,7 +193,7 @@
             </ul>
             </div>
 
-<div style="margin-top:180px; margin-left: 10px;">
+<div style="margin-top:140px; margin-left: 10px;">
           <a href="https://www.facebook.com/" target="_blank"><button class="btn btn-primary btn-lg"><i class="fa fa-facebook-f"></i> </button></a>
           <a href="https://www.instagram.com/?hl=hr" target="_blank"><button class="btn btn-primary btn-lg"><i class="fa fa-instagram"></i> </button></a>
           <a href="https://www.global.ba/" target="_blank"><button class="btn btn-primary btn-lg"><i class="fa fa-globe"></i> </button></a>

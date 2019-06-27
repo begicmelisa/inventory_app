@@ -16,10 +16,12 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
+            $table->string('barcode');
             $table->text('content');
             $table->double('price');
             $table->boolean('isTrashed')->default(0);
             $table->integer('category_id');
+            $table->integer('quantity');
             $table->string('author');
             $table->string('featured');
 

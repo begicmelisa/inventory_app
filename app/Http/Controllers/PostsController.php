@@ -83,7 +83,10 @@ class PostsController extends Controller
             'featured'=>'required|image',
             'category_id'=>'required',
             'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
-            'tags'=>'required'
+            'tags'=>'required',
+            'quantity'=>'required',
+            'barcode'=>'required',
+
         ]);
 
         $featured = $request->featured;
@@ -96,6 +99,8 @@ class PostsController extends Controller
             'price'=>$request->price,
             'featured'=>'uploads/posts/' . $featured_new_name,
             'category_id'=>$request->category_id,
+            'quantity'=>$request->quantity,
+            'barcode'=>$request->barcode,
         ]);
         $post->tags()->attach($request->tags);
         Session::flash('success','Post created succesfully.');
@@ -103,6 +108,28 @@ class PostsController extends Controller
         return redirect()->route('posts');
     }
 
+    public function purchase()
+    {
+        $posts = Post::with('category')->get();
+        return view('admin.posts.purchase')->with('posts',$posts);
+    }
+
+    public function purchase_update(Request $request, $id)
+    {
+        $this->validate($request,[
+            'quantity'=>'required'
+        ]);
+
+        $post=Post::find($id);
+
+
+        $post->quantity=$request->quantity;
+
+        $post->save();
+
+        Session::flash('success','Purchase added successfully.');
+        return redirect()->route('posts');
+    }
 
     public function edit($id)
     {
@@ -112,7 +139,6 @@ class PostsController extends Controller
                                              ->with('categories',Category::all())
                                              ->with('tags',Tag::all());
     }
-
 
     public function update(Request $request, $id)
     {

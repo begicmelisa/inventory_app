@@ -42,7 +42,17 @@
                 <br>
             </div>
 
-            @if(Auth::id() !== $user->id)
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select name="gender" id="gender" class="form-control" >
+                    <option value="Male">M</option>
+                    <option value="Female">F</option>
+                </select>
+                <br>
+            </div>
+
+
+        @if(Auth::id() !== $user->id)
                 <div class="form-group">
                     <label for="hiringDate">Hiring Date</label>
                     <input type="date" name="hiringDate" value="{{Carbon\Carbon::today()->toDateString()}}" class="form-control">

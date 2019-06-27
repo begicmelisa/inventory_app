@@ -14,6 +14,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email');
+            $table->string('gender')->nullable();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->timestamp('bornDate')->default(DB::raw('CURRENT_TIMESTAMP'));

@@ -64,6 +64,7 @@
                     <th class="centerText">Email</th>
                     <th class="centerText">Address</th>
                     <th class="centerText">Phone</th>
+                    <th class="centerText">Gender</th>
                     <th class="centerText">Born Date</th>
                     <th class="centerText">Hiring Date</th>
                     <th class="centerText">Permissions</th>
@@ -81,6 +82,7 @@
                             <td>{{$values->email}}</td>
                             <td>{{$values->address}}</td>
                             <td>{{$values->phone}}</td>
+                            <td>{{$values->gender}}</td>
                             <td> {{Carbon\Carbon::parse($values->bornDate)->format('Y-m-d')}}</td>
                             <td> {{Carbon\Carbon::parse($values->hiringDate)->format('Y-m-d')}}</td>
                             <td>

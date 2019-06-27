@@ -72,6 +72,11 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     Route::get('post/searchPostTrashed',['uses'=>'PostsController@searchPostTrashed','as'=>'post.searchPostTrashed']);
 
 
+    //Route::post('post/update/{id}',['uses'=>'PostsController@update','as'=>'post.update']);
+
+    Route::get('purchase',['uses'=>'PostsController@purchase','as'=>'purchase']);
+
+
     /* ---------------------------------------- CATEGORY ---------------------------------------- */
 
 

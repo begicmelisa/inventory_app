@@ -14,7 +14,7 @@
         <br>
         <h2>{{$user->name}}'s Profile</h2>
                                 <?php  // add this action by route function and use the name of route?>
-            <form action="{{route('user.edit',['id'=>$user->id])}}" method="post" enctype="multipart/form-data"  >
+            <form action="{{route('user.update_avatar')}}" method="post" enctype="multipart/form-data"  >
 
             <label>Update Profile Image</label>
             <input type="file" name="avatar">
@@ -25,7 +25,7 @@
     </div>
 
     <div class="panel-body" >
-        <form action="{{route('user.store')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('user.update',['id'=>$user->id])}}" method="post" enctype="multipart/form-data">
             <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
 
 <br><br><br><br><br><br><br><br>
@@ -49,6 +49,21 @@
                 <input type="text" name="phone" value="{{$user->phone}}" class="form-control">
             </div>
 
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select name="gender" id="gender" class="form-control" >
+                    @if($user->gender =="Male")
+                        <option value="Male">M</option>
+                        <option value="Female">F</option>
+
+                    @else
+                        <option value="Female">F</option>
+                        <option value="Male">M</option>
+                    @endif
+                </select>
+                <br>
+            </div>
             <div class="form-group">
                 <label for="bornDate">Born Date</label>
                 <input type="date" name="bornDate"  value="{{$user->bornDate}}" class="form-control">
@@ -60,15 +75,17 @@
                 <input type="text" name="address" value="{{$user->password}}" class="form-control">
             </div>
 
-
-
-
+            <div class="form-group">
+                <div class="text-center">
+                    <button class="btn btn-success" type="submit">Upload Profile</button>
+                </div>
+            </div>
         </form>
-        <div class="form-group">
+      <!--  <div class="form-group">
             <div class="text-center">
                 <a href="{{route('user.edit',['id'=>$user->id])}}" class="btn btn-success" type="submit">Upload Profile</a>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 

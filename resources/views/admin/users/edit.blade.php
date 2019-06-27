@@ -50,7 +50,22 @@
                 <br>
             </div>
 
-            <div class="form-group">
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select name="gender" id="gender" class="form-control" >
+                        @if($user->gender =="Male")
+                            <option value="Male">M</option>
+                            <option value="Female">F</option>
+
+                            @else
+                            <option value="Female">F</option>
+                            <option value="Male">M</option>
+                        @endif
+                    </select>
+                    <br>
+                </div>
+
+                <div class="form-group">
                 <label for="bornDate">Born Date</label>
                 <input type="date" name="bornDate" value="{{$user->bornDate}}" class="form-control">
                 <br>

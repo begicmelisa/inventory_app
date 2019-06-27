@@ -26,21 +26,37 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="price">Price</label>
-                        <input type="text" name="price" class="form-control">
-                        <br>
-                    </div>
-
-                    <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" name="title" class="form-control">
                         <br>
                     </div>
 
                     <div class="form-group">
+                        <label for="barcode">Barcode</label>
+                        <input type="text" name="barcode" class="form-control">
+                        <br>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="number" min="1" name="price" class="form-control">
+                        <br>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" min="1" name="quantity" class="form-control">
+                        <br>
+                    </div>
+
+
+
+                    <div class="form-group">
                         <label for="category">Select a Category</label>
                         <select name="category_id" id="category" class="form-control" >
-                            @foreach($categories as $category)
+                            <option value="">-- Select Category --</option>
+
+                        @foreach($categories as $category)
                                 <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
 
