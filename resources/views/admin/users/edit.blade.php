@@ -13,7 +13,7 @@
 
 
 
-<div class="panel panel-default" id="formDiv">
+<div class="panel panel-default" id="editUserDetails">
     <div  id="titlePost">
         <h3> Create a new user</h3>
     </div>

@@ -137,6 +137,15 @@
             border-top: 1px solid lightskyblue;
         }
 
+        #editUserDetails{
+            margin: auto;
+            width: 900px;
+            margin-left: 350px;
+            padding-left: 40px;
+            padding-right: 40px;
+            margin-top: 80px;
+            border-top: 1px solid lightskyblue;
+        }
         #addUserDetails{
             margin: auto;
             width: 900px;

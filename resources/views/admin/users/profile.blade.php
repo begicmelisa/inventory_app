@@ -6,7 +6,7 @@
 
 <section class="content-header"><h1></h1></section>
 
-<div class="panel panel-default" id="formDiv">
+<div class="panel panel-default" id="editUserDetails">
     <div  id="titlePost">
         <br>
                 <?php // this way to get photo and display it  ?>
@@ -19,7 +19,7 @@
             <label>Update Profile Image</label>
             <input type="file" name="avatar">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
-            <input type="submit" class="pull-right btn btn-sm btn-primary" value="Upload" style="margin-right: 380px; margin-top: -25px;">
+            <input type="submit" class="pull-right btn btn-sm btn-primary" value="Upload" style="margin-right: 360px; margin-top: -25px;">
 
         </form>
     </div>
