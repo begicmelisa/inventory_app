@@ -23,7 +23,25 @@
 
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" name="title" class="form-control" value="{{ $post->title }}">
+                        <input type="text" name="title" class="form-control" value="{{ $post->title }}"/>
+                        <br>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="barcode">Barcode</label>
+                        <input type="text" name="barcode" value="{{ $post->barcode }}" class="form-control"/>
+                        <br>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="number" min="1" name="price" value="{{ $post->price }}" class="form-control"/>
+                        <br>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" min="1" name="quantity" value="{{ $post->quantity }}" class="form-control"/>
                         <br>
                     </div>
 
@@ -63,12 +81,6 @@
                     <div class="form-group">
                         <label for="featured">Featured image</label>
                         <input type="file" name="featured" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="price">Price</label>
-                        <textarea name="price" id="price" cols="5" rows="5" class="form-control">{{$post->price}}</textarea>
-                        <br>
                     </div>
 
                     <div class="form-group">

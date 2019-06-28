@@ -37,6 +37,12 @@
             </div>
 
             <div class="form-group">
+                <label for="gender">Gender</label>
+                <input type="text" name="gender" value="{{$user->gender}}" class="form-control">
+                <br>
+            </div>
+
+            <div class="form-group">
                 <label for="bornDate">Born Date</label>
                 <input type="date" name="bornDate" value="{{$user->bornDate}}" class="form-control">
                 <br>

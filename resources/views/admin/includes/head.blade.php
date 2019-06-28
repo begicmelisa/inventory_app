@@ -47,12 +47,17 @@
         }
         #tableCategoriesTags{
             width: 1200px;
-            margin-left: 180px;
+            margin-left: 130px;
             position: fixed;
             margin-top: 140px;
             height: 500px;
         }
-
+        #tableUsers{
+            width: 1500px;
+            margin-left: 50px;
+            position: fixed;
+            margin-top: 140px;
+        }
         #tableCategories{
             width: 1200px;
             margin-left: 180px;

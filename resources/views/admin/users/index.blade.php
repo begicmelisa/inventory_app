@@ -51,8 +51,8 @@
             </form>
         </div>
 
-        <div class="Row" style="text-align: center;" id="tableCategories" >
-            <div class="panel-heading" style="text-align: left;">
+        <div class="Row" style="text-align: center;" id="tableUsers" >
+            <div class="panel-heading" style="float: left;">
                 <a href="{{route('users')}}">All Users</a>
 
             </div><br>
@@ -121,7 +121,7 @@
     </div>
 </div>
 
-<div style="padding-top: 750px; padding-left: 600px;">
+<div style="padding-top: 760px; padding-left: 600px;">
     {{$users->links()}}
 </div>
 

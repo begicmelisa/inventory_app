@@ -84,6 +84,11 @@
                         <li><a href="{{route('purchase')}} "><i class="fa fa-plus"></i> Add</a></li>
                     </ul>
                 </li><br>
+
+               <!-- <li>
+                    <a href="{{route('purchase')}} "><i class="fa fa-shopping-cart"></i> Purchase</a>
+                </li><br> -->
+
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-picture-o" aria-hidden="true"></i>

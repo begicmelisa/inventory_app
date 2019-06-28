@@ -78,7 +78,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title'=>'required|max:50',
+            'title'=>'required|max:25',
             'content'=>'required',
             'featured'=>'required|image',
             'category_id'=>'required',
@@ -114,22 +114,24 @@ class PostsController extends Controller
         return view('admin.posts.purchase')->with('posts',$posts);
     }
 
-    public function purchase_update(Request $request, $id)
+    public function purchase_add( $id)
     {
-        $this->validate($request,[
-            'quantity'=>'required'
-        ]);
-
         $post=Post::find($id);
 
+        return view('admin.posts.edit')->with('post',$post)
+            ->with('categories',Category::all())
+            ->with('tags',Tag::all());
 
-        $post->quantity=$request->quantity;
-
-        $post->save();
-
-        Session::flash('success','Purchase added successfully.');
-        return redirect()->route('posts');
     }
+
+    public function searchBarcode(Request $request){
+        $search=$request->get('search');
+        $posts=Post::with('Category')->where('title', 'like', '%'.$search.'%')
+            ->orWhere('price', 'like', '%'.$search.'%')->paginate(1);
+
+        return view('admin.posts.purchase_edit')->with('posts',$posts);
+    }
+
 
     public function edit($id)
     {
@@ -140,11 +142,15 @@ class PostsController extends Controller
                                              ->with('tags',Tag::all());
     }
 
+
+
     public function update(Request $request, $id)
     {
         $this->validate($request,[
             'title'=>'required',
             'content'=>'required',
+            'barcode'=>'required',
+            'quantity'=>'required',
             'price'=>'required',
             'category_id'=>'required'
         ]);
@@ -159,6 +165,9 @@ class PostsController extends Controller
         }
 
         $post->title=$request->title;
+        $post->barcode=$request->barcode;
+        $post->quantity=$request->quantity;
+        $post->price=$request->price;
         $post->content=$request->content;
         $post->category_id=$request->category_id;
 

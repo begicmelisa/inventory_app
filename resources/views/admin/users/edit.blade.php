@@ -67,7 +67,7 @@
 
                 <div class="form-group">
                 <label for="bornDate">Born Date</label>
-                <input type="date" name="bornDate" value="{{$user->bornDate}}" class="form-control">
+                <input type="date" name="bornDate" value="{{Carbon\Carbon::parse($user->bornDate)->format('Y-m-d')}}" class="form-control">
                 <br>
             </div>
 

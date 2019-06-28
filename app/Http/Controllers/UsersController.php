@@ -21,7 +21,7 @@ class UsersController extends Controller
 
     public function index()
     {
-        $users=DB::table('users')->paginate(10);
+        $users=DB::table('users')->paginate(8);
         return view('admin.users.index')->with('users',$users);
     }
 
@@ -87,6 +87,7 @@ class UsersController extends Controller
         $user=User::find($id);
         $user->name=$request->name;
         $user->email=$request->email;
+        $user->gender=$request->gender;
         $user->address=$request->address;
         $user->phone=$request->phone;
         $user->hiringDate=$request->hiringDate;

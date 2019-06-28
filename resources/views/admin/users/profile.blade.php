@@ -41,7 +41,7 @@
 
             <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" name="address" value="{{$user->address}}" class="form-control">
+                <input type="text" name="address" value="{{$user-> address}}" class="form-control">
             </div>
 
             <div class="form-group">
@@ -56,23 +56,17 @@
                     @if($user->gender =="Male")
                         <option value="Male">M</option>
                         <option value="Female">F</option>
-
                     @else
                         <option value="Female">F</option>
                         <option value="Male">M</option>
                     @endif
                 </select>
-                <br>
-            </div>
-            <div class="form-group">
-                <label for="bornDate">Born Date</label>
-                <input type="date" name="bornDate"  value="{{$user->bornDate}}" class="form-control">
-                <br>
             </div>
 
             <div class="form-group">
-                <label for="address">Password</label>
-                <input type="text" name="address" value="{{$user->password}}" class="form-control">
+                <label for="bornDate">Born Date</label>
+                <input type="date" name="bornDate" value="{{Carbon\Carbon::parse($user->bornDate)->format('Y-m-d')}}" class="form-control">
+                <br>
             </div>
 
             <div class="form-group">

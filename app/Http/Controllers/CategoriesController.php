@@ -30,7 +30,7 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name'=>'required'
+            'name'=>'required|unique:categories|max:30'
             ]);
 
         $category = new Category;

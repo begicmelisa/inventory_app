@@ -67,14 +67,19 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('post/searchPost',['uses'=>'PostsController@searchPost','as'=>'post.searchPost']);
 
+    Route::get('post/searchBarcode',['uses'=>'PostsController@searchBarcode','as'=>'post.searchBarcode']);
+
     Route::get('post/searchTrashedPost',['uses'=>'PostsController@searchTrashedPost','as'=>'post.searchTrashedPost']);
 
     Route::get('post/searchPostTrashed',['uses'=>'PostsController@searchPostTrashed','as'=>'post.searchPostTrashed']);
 
 
-    //Route::post('post/update/{id}',['uses'=>'PostsController@update','as'=>'post.update']);
+    Route::post('post/purchase_add',['uses'=>'PostsController@purchase_add','as'=>'post.purchase_add']);
 
     Route::get('purchase',['uses'=>'PostsController@purchase','as'=>'purchase']);
+    Route::get('post/detail_product({id}',['uses'=>'PostsController@detail_product','as'=>'post.detail_product']);
+
+
 
 
     /* ---------------------------------------- CATEGORY ---------------------------------------- */
