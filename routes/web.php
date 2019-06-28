@@ -74,10 +74,10 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     Route::get('post/searchPostTrashed',['uses'=>'PostsController@searchPostTrashed','as'=>'post.searchPostTrashed']);
 
 
-    Route::post('post/purchase_add',['uses'=>'PostsController@purchase_add','as'=>'post.purchase_add']);
 
     Route::get('purchase',['uses'=>'PostsController@purchase','as'=>'purchase']);
-    Route::get('post/detail_product({id}',['uses'=>'PostsController@detail_product','as'=>'post.detail_product']);
+
+    Route::get('post/purchase_update/{id}',['uses'=>'PostsController@purchase_update','as'=>'post.purchase_update']);
 
 
 
@@ -135,7 +135,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('user/admin({id}',['uses'=>'UsersController@admin','as'=>'user.admin']);
 
-    Route::get('user/not-admin({id}',['uses'=>'UsersController@not_admin','as'=>'user.not.admin']);
+    Route::get('user/not-admin{id}',['uses'=>'UsersController@not_admin','as'=>'user.not.admin']);
 
     Route::get('user/delete({id}',['uses'=>'UsersController@destroy','as'=>'user.delete']);
 

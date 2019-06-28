@@ -36,7 +36,10 @@
 
         </div>
     <div class="panel-body" >
-        <form action="{{route('post.store')}}" method="post" enctype="multipart/form-data">
+        @foreach( $posts as $key =>$values)
+
+        <form action="{{route('post.purchase_update',['id'=>$values->id])}}" method="post" enctype="multipart/form-data">
+
             <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
 
             <div class="form-group"><br><br><br><br><br><br>
@@ -44,37 +47,42 @@
                 <input type="text" name="title" class="form-control" value="{{Auth::user()->name}}" readonly>
                 <br>
             </div>
-            <form action="{{route('post.store')}}" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
 
-            </form>
+
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" name="title" class="form-control">
+                <input type="text" name="title" value="{{$values->title}}" class="form-control">
                 <br>
             </div>
+
+
 
             <div class="form-group">
                 <label for="price">Price</label>
-                <input type="number" min="1" name="price" class="form-control">
+                <input type="number" min="1" value="{{$values->price}}" name="price" class="form-control">
                 <br>
             </div>
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="number" min="1"   name="quantity" value="{{$values->quantity}}"  class="form-control">
+                <br>
+            </div>
+
 
 
             <br><br><br>
             <div class="form-group">
-                <label for="quantity">Quantity</label>
-                <input type="number" min="1" name="quantity" class="form-control">
+                <label for="quantity_new">Add Quantity:</label>
+                <input type="number" min="1"   name="quantity_new" class="form-control">
                 <br>
             </div>
-
+@endforeach
 
             <div class="form-group">
                 <div class="text-center">
-                    <button class="btn btn-success" type="submit">Add Post</button>
+                    <button class="btn btn-success" type="submit">Update Quantity</button>
                 </div>
             </div>
-
         </form>
     </div>
 

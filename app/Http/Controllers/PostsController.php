@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Post;
 use App\Tag;
+use App\User;
 use Illuminate\Http\Request;
 use Session;
 use DB;
+use Illuminate\Support\Facades\Input;
 
 class PostsController extends Controller
 {
@@ -124,13 +126,27 @@ class PostsController extends Controller
 
     }
 
+
+
     public function searchBarcode(Request $request){
         $search=$request->get('search');
-        $posts=Post::with('Category')->where('title', 'like', '%'.$search.'%')
-            ->orWhere('price', 'like', '%'.$search.'%')->paginate(1);
+        $posts=Post::with('Category')->where('barcode', 'like', '%'.$search.'%')->paginate(8);
 
-        return view('admin.posts.purchase_edit')->with('posts',$posts);
+        return view('admin.posts.purchase')->with('posts',$posts) ->with('categories',Category::all())
+            ->with('tags',Tag::all());
     }
+
+    public function purchase_update($id)
+    {
+        $post=DB::table('posts')
+            ->where('quantity', Input::get('quantity') )
+            ->increment('quantity_new', Input::get('quantity_new'));
+
+       dd($post->quantity);
+
+        //return redirect()->back();
+    }
+
 
 
     public function edit($id)

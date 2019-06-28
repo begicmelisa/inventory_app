@@ -75,11 +75,7 @@
                 </div>
             </div>
         </form>
-      <!--  <div class="form-group">
-            <div class="text-center">
-                <a href="{{route('user.edit',['id'=>$user->id])}}" class="btn btn-success" type="submit">Upload Profile</a>
-            </div>
-        </div> -->
+
     </div>
 </div>
 
