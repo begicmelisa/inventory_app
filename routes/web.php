@@ -77,9 +77,15 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('purchase',['uses'=>'PostsController@purchase','as'=>'purchase']);
 
-    Route::get('post/purchase_update/{id}',['uses'=>'PostsController@purchase_update','as'=>'post.purchase_update']);
+
+    Route::post('post/purchase_update/{id}',['uses'=>'PostsController@purchase_update','as'=>'post.purchase_update']);
 
 
+
+
+    /* ---------------------------------------- PURCHASE ---------------------------------------- */
+
+    Route::get('purchases',['uses'=>'PurchasesController@index','as'=>'purchases']);
 
 
     /* ---------------------------------------- CATEGORY ---------------------------------------- */

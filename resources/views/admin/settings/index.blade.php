@@ -12,7 +12,7 @@
 <div class="panel panel-default" id="formDivSettings">
     <div  id="titlePost">
         <h3> Settings</h3>
-    </div>
+    </div><br>
 
     <div class="panel-body" >
         <form action="{{route('settings.update')}}" method="post" enctype="multipart/form-data">
@@ -22,21 +22,25 @@
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" name="name" value="{{$settings->name}}"  class="form-control">
+                <br>
             </div>
 
             <div class="form-group">
                 <label for="contact_number">Contact Number</label>
                 <input type="text" name="contact_number"   value="{{$settings->contact_number}}"  class="form-control">
+                <br>
             </div>
 
             <div class="form-group">
                 <label for="contact_email">Contact Email</label>
                 <input type="text" name="contact_email"   value="{{$settings->contact_email}}" class="form-control">
+                <br>
             </div>
 
             <div class="form-group">
                 <label for="address">Address</label>
                 <input type="text" name="address"   value="{{$settings->address}}" class="form-control">
+                <br>
             </div>
 
         </form>

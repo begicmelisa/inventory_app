@@ -52,12 +52,51 @@
             margin-top: 140px;
             height: 500px;
         }
-        #tableUsers{
-            width: 1500px;
-            margin-left: 50px;
+        #tableUsers, #tablePosts{
+            width: 1400px;
+            margin-left: 110px;
             position: fixed;
             margin-top: 140px;
         }
+
+        #btnSearchBarcode{
+            margin-left: 560px;
+            margin-top: -34px;
+        }
+        #searchBtnBarcode{
+            margin-right:100px;
+            margin-top: -60px;
+        }
+#createPurchase{
+
+    border-top: 1px solid lightskyblue;
+
+    width: 1400px;
+    height: 700px;
+    margin: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 80px;
+}
+        #createPost{
+            width: 1400px;
+            height: 700px;
+            margin: auto;
+
+            padding-left: 40px;
+            padding-right: 40px;
+            margin-top: 80px;
+            border-top: 1px solid lightskyblue;
+
+
+        }
+
+        #addPost{
+            margin-top: 260px;
+            margin-left: 500px;
+        }
+
+
         #tableCategories{
             width: 1200px;
             margin-left: 180px;
@@ -67,6 +106,7 @@
         .centerText{
             text-align: center;
         }
+
         #searchBtn{
             margin-left:  -750px;
             margin-top: 60px;
@@ -79,16 +119,32 @@
             width: 900px;
             height: 550px;
             margin: auto;
-            margin-left: 150px;
-            margin-top: 20px;
+
+            margin-left: 350px;
+            padding-left: 40px;
+            padding-right: 40px;
+            margin-top: 150px;
+            border-top: 1px solid lightskyblue;
         }
 
         #formDivAddUser{
             width: 900px;
             height: 400px;
+            margin-left: 350px;
+            padding-left: 40px;
+            padding-right: 40px;
+            margin-top: 150px;
+            border-top: 1px solid lightskyblue;
+        }
+
+        #addUserDetails{
             margin: auto;
-            margin-left: 150px;
-            margin-top: 20px;
+            width: 900px;
+            margin-left: 350px;
+            padding-left: 40px;
+            padding-right: 40px;
+            margin-top: 150px;
+            border-top: 1px solid lightskyblue;
         }
         #formDiv{
             width: 900px;
@@ -113,11 +169,11 @@
             margin-top: -34px;
         }
         #formDiv1{
-            width: 900px;
-            height: 950px;
+            width: 1400px;
+            height: 800px;
             margin: auto;
             margin-left: 150px;
-            margin-top: 20px;
+            margin-top: 150px;
         }
 
         #formDivInfoPosts{

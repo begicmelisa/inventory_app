@@ -39,7 +39,7 @@
                        <a href="{{route('tags')}}">All Tags</a>
 
                    </div><br>
-                   <table class="table table-bordered">
+                   <table class="table  ">
                        <thead>
                        <tr>
                            <th class="centerText">ID</th>

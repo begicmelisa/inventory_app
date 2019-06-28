@@ -3,7 +3,6 @@
 @include('admin.includes.errors')
 
 
-
 <section class="content-header">
     <h1>
 
@@ -13,10 +12,10 @@
 
 
 
-<div class="panel panel-default" id="formDiv">
+<div class="panel panel-default" id="addUserDetails">
     <div  id="titlePost">
         <h3> Create a new user</h3>
-    </div>
+    </div><br>
 
     <div class="panel-body" >
         <form action="{{route('user.update_add_user',['id'=>$user->id])}}" method="post" >
@@ -26,20 +25,17 @@
 
             <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" name="address" value="{{$user->address}}" class="form-control">
-                <br>
+                <input type="text" required name="address" value="{{$user->address}}" class="form-control">
             </div>
 
             <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="text" name="phone" value="{{$user->phone}}" class="form-control">
-                <br>
+                <input type="text" required name="phone" value="{{$user->phone}}" class="form-control">
             </div>
 
             <div class="form-group">
                 <label for="bornDate">Born Date</label>
-                <input type="date" name="bornDate" value="{{$user->bornDate}}" class="form-control">
-                <br>
+                <input type="date" required name="bornDate" value="{{$user->bornDate}}" class="form-control">
             </div>
 
             <div class="form-group">
@@ -48,23 +44,26 @@
                     <option value="Male">M</option>
                     <option value="Female">F</option>
                 </select>
-                <br>
             </div>
 
 
         @if(Auth::id() !== $user->id)
                 <div class="form-group">
                     <label for="hiringDate">Hiring Date</label>
-                    <input type="date" name="hiringDate" value="{{Carbon\Carbon::today()->toDateString()}}" class="form-control">
-                    <br>
+                    <input type="date" required name="hiringDate" value="{{Carbon\Carbon::today()->toDateString()}}" class="form-control">
                 </div>
             @endif
-
+<br><br>
             <div class="form-group">
                 <div class="text-center">
                     <button class="btn btn-success" type="submit">Update User</button>
                 </div>
             </div>
+         <!--   <div class="form-group">
+                <div class="text-center">
+                    <input type="submit" value="Back" href="{{route('users')}}" class="btn btn-success" type="submit">
+                </div>
+            </div> -->
 
         </form>
     </div>

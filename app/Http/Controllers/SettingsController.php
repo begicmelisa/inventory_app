@@ -39,7 +39,7 @@ class SettingsController extends Controller
 
         Session::flash('success','Settings updated successfully.');
 
-        return redirect()->route('settings');
+        return redirect()->route('settings.index');
 
 
     }

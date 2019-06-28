@@ -54,7 +54,7 @@
                         <div class="panel-heading" style="text-align: left;">
                             <a href="{{route('categories')}}">All Categories</a>
                         </div><br>
-                    <table class="table table-bordered">
+                    <table class="table  ">
                         <thead>
                         <tr>
                             <th class="centerText">ID</th>

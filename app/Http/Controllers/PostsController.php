@@ -102,6 +102,7 @@ class PostsController extends Controller
             'featured'=>'uploads/posts/' . $featured_new_name,
             'category_id'=>$request->category_id,
             'quantity'=>$request->quantity,
+            'quantity_new'=>$request->quantity_new,
             'barcode'=>$request->barcode,
         ]);
         $post->tags()->attach($request->tags);
@@ -136,15 +137,17 @@ class PostsController extends Controller
             ->with('tags',Tag::all());
     }
 
-    public function purchase_update($id)
+    public function purchase_update(Request $request,$id)
     {
-        $post=DB::table('posts')
-            ->where('quantity', Input::get('quantity') )
-            ->increment('quantity_new', Input::get('quantity_new'));
+        $post=Post::find($id);
+        $post->quantity_new=$request->quantity_new;
 
-       dd($post->quantity);
+        $post->quantity=$post->quantity+$post->quantity_new;
+        $post->save();
 
-        //return redirect()->back();
+
+
+        return redirect()->back();
     }
 
 
@@ -183,6 +186,7 @@ class PostsController extends Controller
         $post->title=$request->title;
         $post->barcode=$request->barcode;
         $post->quantity=$request->quantity;
+        $post->quantity_new=0;
         $post->price=$request->price;
         $post->content=$request->content;
         $post->category_id=$request->category_id;

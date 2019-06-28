@@ -5,7 +5,7 @@
 <div class="wrapper">
     <header class="main-header">
         <!-- Logo -->
-        <a href="/" class="logo">
+        <a href="{{route('home')}}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
@@ -81,6 +81,7 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
+                        <li><a href="{{route('purchases')}} "><i class="fa fa-list-alt"></i> List</a></li>
                         <li><a href="{{route('purchase')}} "><i class="fa fa-plus"></i> Add</a></li>
                     </ul>
                 </li><br>

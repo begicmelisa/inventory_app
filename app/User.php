@@ -25,4 +25,9 @@ class User extends Authenticatable
     ];
 
 
+    public function  purchase(){
+        return $this->belongsTo('App\Purchase');
+    }
+
+
 }

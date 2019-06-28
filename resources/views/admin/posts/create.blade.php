@@ -10,46 +10,48 @@
 
         </section>
 
-        <div class="panel panel-default" id="formDiv1">
+        <div class="panel panel-default" id="createPost">
             <div  id="titlePost">
                 <h3> Create a new product</h3>
             </div>
-
+            <br>
             <div class="panel-body" >
                 <form action="{{route('post.store')}}" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-
+<div style="float: left; width: 600px;  ">
                     <div class="form-group">
                         <label for="title">Author</label>
                         <input type="text" name="title" class="form-control" value="{{Auth::user()->name}}" readonly>
-                        <br>
                     </div>
 
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" name="title" class="form-control">
-                        <br>
                     </div>
 
                     <div class="form-group">
                         <label for="barcode">Barcode</label>
                         <input type="text" name="barcode" class="form-control">
-                        <br>
                     </div>
 
                     <div class="form-group">
                         <label for="price">Price</label>
                         <input type="number" min="1" name="price" class="form-control">
-                        <br>
                     </div>
 
                     <div class="form-group">
                         <label for="quantity">Quantity</label>
                         <input type="number" min="1" name="quantity" class="form-control">
-                        <br>
                     </div>
 
+    <div class="form-group">
+        <label for="content">Content</label>
+        <textarea name="content" id="content" cols="6" rows="7" class="form-control"></textarea>
+        <br>
+    </div>
+                </div>
 
+<div style="float: right; width: 600px;    ">
 
                     <div class="form-group">
                         <label for="category">Select a Category</label>
@@ -64,7 +66,6 @@
                         <br>
                     </div>
 
-
                     <div class="form-group">
                         <label for="tags">Select tags</label>
                    @foreach($tags as $tag)
@@ -73,31 +74,22 @@
                        </div>
                    @endforeach
                     </div>
-
-
+<br>
                     <div class="form-group">
                         <label for="featured">Featured image</label>
                         <input type="file" name="featured" class="form-control">
                     </div>
-
-
-
-                    <div class="form-group">
-                        <label for="content">Content</label>
-                        <textarea name="content" id="content" cols="6" rows="7" class="form-control"></textarea>
-                        <br>
-                    </div>
-
-                    <div class="form-group">
+                    <div class="form-group"  >
                         <div class="text-center">
-                            <button class="btn btn-success" type="submit">Add Post</button>
+                            <button id="addPost" class="btn btn-success" type="submit">Add Post</button>
                         </div>
                     </div>
 
                 </form>
             </div>
 
-        </div>
+        </form>
+            </div>
 
 
 

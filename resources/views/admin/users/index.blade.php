@@ -56,7 +56,7 @@
                 <a href="{{route('users')}}">All Users</a>
 
             </div><br>
-            <table class="table table-bordered">
+            <table class="table ">
                 <thead>
                 <tr>
                     <th class="centerText">ID</th>
@@ -99,8 +99,9 @@
                             <td>{{ \Carbon\Carbon::parse($values->created_at)->diffForHumans() }}</td>
                             <td>{{ \Carbon\Carbon::parse($values->updated_at)->diffForHumans() }}</td>
                             <td>
-                                @if(Auth::id() !== $values->id)
-                                    <a href="{{route('user.edit',['id'=>$values->id])}}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> </a>
+                                <a style="float: left;" href="{{route('user.edit',['id'=>$values->id])}}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> </a>
+
+                            @if(Auth::id() !== $values->id)
                                     <a href="{{route('user.delete',['id'=>$values->id])}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>
                                 @endif
                             </td>

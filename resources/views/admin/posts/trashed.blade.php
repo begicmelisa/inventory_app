@@ -35,11 +35,11 @@
         </div>
 
 
-        <div class="Row" style="text-align: center;" id="tableCategories" >
+        <div class="Row" style="text-align: center;" id="tablePosts" >
                     <div class="panel-heading" style="text-align: left;">
                         <a href="{{route('posts.trashed')}}">Trashed products</a>
                     </div><br>
-                    <table class="table table-bordered">
+                    <table class="table  ">
                         <thead>
                         <tr>
                             <th class="centerText">ID</th>

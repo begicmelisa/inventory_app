@@ -69,7 +69,6 @@ class UsersController extends Controller
         $user->phone=$request->phone;
         $user->hiringDate=$request->hiringDate;
         $user->bornDate=$request->bornDate;
-        $user->hiringDate=$request->hiringDate;
         $user->gender=$request->gender;
         $user->save();
 
@@ -105,6 +104,7 @@ class UsersController extends Controller
         $this->validate($request,[
             'name'=>'required',
             'email'=>'required|email',
+
         ]);
 
         $user =User::create([
