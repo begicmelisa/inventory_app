@@ -83,6 +83,7 @@
                     <ul class="treeview-menu">
                         <li><a href="{{route('sales')}} "><i class="fa fa-list-alt"></i> List</a></li>
                         <li><a href="{{route('sale.create')}}"><i class="fa fa-plus"></i> Add</a></li>
+
                     </ul>
                 </li><br>
                 <li class="treeview">
@@ -118,45 +119,17 @@
 
                     </ul>
                 </li><br>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-picture-o" aria-hidden="true"></i>
-                        <span>Posts</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{route('displayposts')}} "><i class="fa fa-list-alt"></i> List</a></li>
-                    </ul>
-                </li><br>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-clone"></i>
-                        <span>Category</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{route('categories')}}"><i class="fa fa-list-alt"></i> List</a></li>
-                        <li><a href="{{route('category.create')}}"><i class="fa fa-plus"></i> Add</a></li>
-                    </ul>
-                </li><br>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-tags"></i>
-                        <span>Tag</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{route('tags')}}"><i class="fa fa-list-alt"></i> List</a></li>
-                        <li><a href="{{route('tag.create')}}"><i class="fa fa-plus"></i> Add</a></li>
+                <li>
+                    <a href="{{route('displayposts')}}"><i class="fa fa-picture-o"></i> <span>Posts</span></a>
 
+                </li><br>
 
-                    </ul>
+                <li>
+                    <a href="{{route('categories')}}"><i class="fa fa-clone"></i> <span>Category</span></a>
+                </li><br>
+
+                <li>
+                    <a href="{{route('tags')}}"><i class="fa fa-tag" aria-hidden="true"></i><span>Tag</span></a>
                 </li>
                 @if(Auth::User()) <?php // add this line to check if user logged in or not ?>
             @if(Auth::user()->admin)

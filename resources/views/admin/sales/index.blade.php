@@ -61,14 +61,14 @@
                             <td>{{$values->id}}</td>
                             <td> {{Auth::user()->name}}</td>
                             <td>{{ $values->barcode }}</td>
-                            <td>{{$values->post->title}}</td>
+                            <td>procuct</td>
                             <td>{{ $values->price }}</td>
                             <td>{{$values->quantity}}</td>
                             <td>{{ \Carbon\Carbon::parse($values->created_at)->diffForHumans() }}</td>
                             <td>{{ \Carbon\Carbon::parse($values->updated_at)->diffForHumans() }}</td>
                             <td>
                                 <a href="{{route('purchase.edit',['id'=>$values->id])}}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> </a>
-                                <a href="{{route('purchase.delete',['id'=>$values->id])}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>
+                                <a href="{{route('sale.delete',['id'=>$values->id])}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>
                             </td>
 
                         </tr>

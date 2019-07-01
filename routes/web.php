@@ -114,6 +114,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('sale/searchBarcode',['uses'=>'SalesController@searchBarcode','as'=>'sale.searchBarcode']);
 
+    Route::get('sale/delete/{id}',['uses'=>'SalesController@destroy','as'=>'sale.delete']);
 
 
 

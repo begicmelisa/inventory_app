@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use Illuminate\Http\Request;
 use App\Category;
 use Session;
@@ -29,17 +30,24 @@ class CategoriesController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'name'=>'required|unique:categories|max:30'
-            ]);
+        $validator = Validator::make($request->all(), [
+            'name'      =>  'required|unique:categories|max:30'
+        ]);
 
-        $category = new Category;
-        $category->name=$request->name;
-        $category->save();
+        if ($validator->fails()) {
+            Session::flash('error', $validator->messages()->first());
 
-        Session::flash('success','You successfully created a category.');
+        }
+        else {
 
-        return redirect()->route('categories');
+            $category = new Category;
+            $category->name = $request->name;
+            $category->save();
+
+            Session::flash('success', 'You successfully created a category.');
+
+        }
+            return redirect()->route('categories');
 
     }
 

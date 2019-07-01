@@ -110,6 +110,10 @@ class SalesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sale=Sale::find($id);
+
+        $sale->delete();
+
+        return redirect()->route('sales');
     }
 }

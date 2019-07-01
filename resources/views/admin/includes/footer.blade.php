@@ -61,6 +61,48 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('adminlte/dist/js/demo.js')}}"></script>
 
+<script>
+    $(document).ready(function () {
+        $('.editBtn').on('click',function (){
+            $('#editModal').modal('show');
+            $tr=$(this).closest('tr');
+
+            var data=$tr.children("td").map(function () {
+               return $(this).text();
+            }).get();
+
+            console.log(data);
+
+
+            $('#name').val(data[0]);
+        });
+
+        $('#editFormId').on('submit', function (e) {
+            e.preventDefault();
+
+            var id=$('#id').val();
+
+
+        $.ajax({
+            type: "PUT",
+            url:  "category.update"+id,
+            data: $('#editFormId').serialize(),
+            success: function (response) {
+                console.log(response);
+                $('#editModal').modal('hide');
+                alert("Data Updated");
+
+                window.reload();
+            } ,
+            error: function (error) {
+                console.log(error);
+
+            }
+        });
+    });
+
+    });
+</script>
 
 </body>
 </html>
