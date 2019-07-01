@@ -15,12 +15,13 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('post_id');
-            $table->integer('quantity_new')->default(0);
+            $table->string('name');
+            $table->integer('quantity_new');
+            $table->integer('post_id');
+            $table->double('price');
+            $table->string('barcode');
+
             $table->timestamps();
-
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-
         });
     }
 

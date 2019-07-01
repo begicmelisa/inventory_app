@@ -59,7 +59,9 @@ class PostsController extends Controller
     public function searchPost(Request $request){
         $search=$request->get('search');
         $posts=Post::with('Category')->where('title', 'like', '%'.$search.'%')
-                                              ->orWhere('price', 'like', '%'.$search.'%')->paginate(8);
+            ->orWhere('barcode', 'like', '%'.$search.'%')
+            ->orWhere('quantity', 'like', '%'.$search.'%')
+        ->orWhere('price', 'like', '%'.$search.'%')->paginate(8);
 
         return view('admin.posts.index')->with('posts',$posts);
     }

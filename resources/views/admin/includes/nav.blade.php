@@ -82,7 +82,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="{{route('purchases')}} "><i class="fa fa-list-alt"></i> List</a></li>
-                        <li><a href="{{route('purchase')}} "><i class="fa fa-plus"></i> Add</a></li>
+                        <li><a href="{{route('purchase.create')}}"><i class="fa fa-plus"></i> Add</a></li>
                     </ul>
                 </li><br>
 
@@ -165,23 +165,7 @@
             @endif
             @endif
                 <br>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-cog"></i>
-                        <span>Settings</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="{{route('settings.index')}}"><i class="fa fa-list-alt"></i> Settings</a></li>
-                        @if(Auth::User()) <?php // add this line to check if user logged in or not ?>
-                        @if(Auth::user()->admin)
-                        <li><a href="{{route('settings')}}"><i class="fa fa-refresh"></i> Update Settings</a></li>
-                        @endif
-                        @endif
-                    </ul>
-                </li><br>
+
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-bell" aria-hidden="true"></i>
@@ -195,7 +179,23 @@
                         <li><a href="/addLocation"><i class="fa fa-plus"></i> Add</a></li>
                     </ul>
                 </li><br>
-
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-cog"></i>
+                        <span>Settings</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('settings.index')}}"><i class="fa fa-list-alt"></i> Settings</a></li>
+                        @if(Auth::User()) <?php // add this line to check if user logged in or not ?>
+                        @if(Auth::user()->admin)
+                            <li><a href="{{route('settings')}}"><i class="fa fa-refresh"></i> Update Settings</a></li>
+                        @endif
+                        @endif
+                    </ul>
+                </li><br>
             </ul>
             </div>
 

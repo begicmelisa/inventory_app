@@ -57,7 +57,7 @@
                     <img src="{{$post->featured}}" alt="{{$post->title}}" width="270px" height="150px">
 
                     <div class="form-group" style="float: right; margin-right:100px; margin-top: 115px;">
-                        <input type="file" name="featured" style="width: 220px;"  ">
+                        <input type="file" name="featured" style="width: 220px;">
                     </div>
                 </div>
 

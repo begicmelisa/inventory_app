@@ -87,6 +87,23 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('purchases',['uses'=>'PurchasesController@index','as'=>'purchases']);
 
+    Route::post('purchase/update/{id}',['uses'=>'PurchasesController@update','as'=>'purchase.update']);
+
+    Route::get('purchase/edit/{id}',['uses'=>'PurchasesController@edit','as'=>'purchase.edit']);
+
+    Route::get('purchase/create',['uses'=>'PurchasesController@create','as'=>'purchase.create']);
+
+    Route::post('purchase/store',['uses'=>'PurchasesController@store','as'=>'purchase.store']);
+
+    Route::get('purchase/searchBarcode',['uses'=>'PurchasesController@searchBarcode','as'=>'purchase.searchBarcode']);
+
+    Route::post('purchase/update_quantity/{id}',['uses'=>'PurchasesController@update_quantity','as'=>'purchase.update_quantity']);
+
+    Route::get('purchase/search',['uses'=>'PurchasesController@search','as'=>'purchase.search']);
+
+    Route::get('purchase/delete/{id}',['uses'=>'PurchasesController@destroy','as'=>'purchase.delete']);
+
+
 
     /* ---------------------------------------- CATEGORY ---------------------------------------- */
 

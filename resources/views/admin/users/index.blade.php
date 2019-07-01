@@ -30,7 +30,7 @@
             <fieldset>
                 <div class="form-group" >
                     <div class="col-lg-10 col-lg-offset-2" id="addBtn">
-                        <a href="{{route('user.create')}}" class="btn btn-success" style="height: 35px">New User</a>
+                        <a href="{{route('user.create')}}" class="btn btn-success" style="height: 35px">Add New</a>
                     </div>
                 </div>
             </fieldset>
@@ -41,7 +41,7 @@
         <div class="col-md-4" id="searchBtn">
             <form action="{{route('user.searchUser')}}" method="get">
                 <div class="form-group">
-                    <input type="search" name="search" class="form-control" placeholder="Search User" style="width: 350px;">
+                    <input type="search" name="search" class="form-control" placeholder="Search Users" style="width: 350px;">
                     <div id="btnSearch">
                                             <span class="form-control-btn">
                                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
@@ -86,15 +86,25 @@
                             <td> {{Carbon\Carbon::parse($values->bornDate)->format('Y-m-d')}}</td>
                             <td> {{Carbon\Carbon::parse($values->hiringDate)->format('Y-m-d')}}</td>
                             <td>
-                                @if(Auth::id() !== $values->id)
 
-                                @if(@$values->admin )
+                        @if(Auth::id() !== $values->id)
+                            @if(Auth::user()->admin)
+
+                                  @if(@$values->admin )
                                     <a href="{{route('user.not.admin',['id'=>$values->id])}}" class="btn btn-xs btn-danger" style="width: 120px">Remove permissions</a>
-                                @else
+                                  @else
                                     <a href="{{route('user.admin',['id'=>$values->id])}}" class="btn btn-xs btn-success" style="width: 120px">Make admin</a>
+                                  @endif
 
+                            @else
+                                    @if(@$values->admin )
+                                    <a href="#" class="btn btn-xs btn-danger" style="width: 120px">Remove permissions</a>
+                                    @else
+                                    <a href="#" class="btn btn-xs btn-success" style="width: 120px">Make admin</a>
                                     @endif
+                            @endif
                                 @endif
+
                             </td>
                             <td>{{ \Carbon\Carbon::parse($values->created_at)->diffForHumans() }}</td>
                             <td>{{ \Carbon\Carbon::parse($values->updated_at)->diffForHumans() }}</td>

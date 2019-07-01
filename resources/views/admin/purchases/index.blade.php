@@ -6,7 +6,7 @@
 
 <section class="content-header">
     <h1>
-        PRODUCTS
+        PURCHASE
         <!-- <small>Control panel</small>-->
     </h1>
 
@@ -14,33 +14,64 @@
 
 <div id="all">
 
+    <div class="col-md-6" id="add1">
+        <div class="col-lg-10 col-lg-offset-2" id="addBtn">
+            <a href="{{route('purchase.create')}}" class="btn btn-success" style="height: 35px">Add New</a>
+        </div>
+    </div>
 
-        <div class="Row" style="text-align: center;" id="tableCategories" >
+    <div>
+
+        <div class="col-md-4" id="searchBtn">
+            <form action="{{route('purchase.search')}}" method="get">
+                <div class="form-group">
+                    <input type="search" name="search" class="form-control" placeholder="Search Purchases" style="width: 350px;">
+                    <div id="btnSearch">
+                                            <span class="form-control-btn">
+                                                   <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                            </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="Row" style="text-align: center;" id="tablePosts" >
             <div class="panel-heading" style="text-align: left;">
-                <a href="{{route('purchases')}} ">Published products</a>
+                <a href="{{route('purchases')}} ">All Purchases</a>
             </div><br>
-            <table class="table table-bordered">
+            <table class="table ">
                 <thead>
                 <tr>
                     <th class="centerText">ID</th>
-                    <th class="centerText">Post Name</th>
-                    <th class="centerText">User</th>
+                    <th class="centerText">Author</th>
+                    <th class="centerText">Barcode</th>
+                    <th class="centerText">Product</th>
+                    <th class="centerText">Price</th>
+                    <th class="centerText">Quantity</th>
                     <th class="centerText">Created</th>
-                    <th class="centerText">Quantity New</th>
+                    <th class="centerText">Updated</th>
+
+                    <th class="centerText">Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 @if($purchases->count()>0)
                     @foreach( $purchases as $key =>$values)
                         <tr>
-
                             <td>{{$values->id}}</td>
-                            @foreach($purchases->post as $posts)
-                            <td>{{$posts->title}}</td>
-                            @endforeach
                             <td> {{Auth::user()->name}}</td>
-                            <td> {{Carbon\Carbon::parse($values->created_at)->format('Y-m-d')}}</td>
+                            <td>{{ $values->barcode }}</td>
+                            <td>{{$values->post->title}}</td>
+                            <td>{{ $values->price }}</td>
                             <td>{{$values->quantity_new}}</td>
+                            <td>{{ \Carbon\Carbon::parse($values->created_at)->diffForHumans() }}</td>
+                            <td>{{ \Carbon\Carbon::parse($values->updated_at)->diffForHumans() }}</td>
+                            <td>
+                                <a href="{{route('purchase.edit',['id'=>$values->id])}}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> </a>
+                                <a href="{{route('purchase.delete',['id'=>$values->id])}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>
+                            </td>
+
                         </tr>
                     @endforeach
 
@@ -52,6 +83,7 @@
 
                 @endif
 
+
                 </tbody>
             </table>
         </div>
@@ -59,5 +91,8 @@
     </div>
 </div>
 
+<div style="padding-top: 800px; padding-left: 600px;">
+    {{$purchases->links()}}
+</div>
 @include('admin.includes.footer')
 

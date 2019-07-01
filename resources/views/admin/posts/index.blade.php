@@ -16,7 +16,7 @@
 
     <div class="col-md-6" id="add1">
         <div class="col-lg-10 col-lg-offset-2" id="addBtn">
-            <a href="{{route('post.create')}}" class="btn btn-success" style="height: 35px">New Posts</a>
+            <a href="{{route('post.create')}}" class="btn btn-success" style="height: 35px">Add New</a>
         </div>
     </div>
 
