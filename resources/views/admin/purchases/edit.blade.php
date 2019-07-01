@@ -25,6 +25,10 @@
                 </div>
 
                 <div class="form-group">
+                    <input type="text" name="user_id" hidden value="{{Auth::user()->id}}" style="width: 600px;" class="form-control">
+                </div>
+
+                <div class="form-group">
                     <label for="price">Product Title</label>
                     <input type="text" value="{{$purchase->post->title}}" readonly name="price" class="form-control">
                 </div>
@@ -43,18 +47,14 @@
                     <input type="hidden" name="post_id"   value="{{$purchase->post->id}}" style="width: 600px;" class="form-control">
                 </div>
 
-
-
-
-                <br><br>
-
+                <div class="form-group">
+                    <input type="hidden" name="user_id" hidden value="{{Auth::user()->id}}" style="width: 600px;" class="form-control">
+                </div><br><br>
 
                 <div class="form-group">
                     <label for="quantity_new">Quantity New</label>
                     <input type="number" value="{{$purchase->quantity_new}}" min="1" name="quantity_new" class="form-control">
                 </div>
-
-
 
                 <div class="form-group"  >
                     <div class="text-center">

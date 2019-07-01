@@ -1,20 +1,19 @@
 <?php
 
 namespace App;
-use App\Post;
-use App\User;
+
 use Illuminate\Database\Eloquent\Model;
 
-class Purchase extends Model
+class Sale extends Model
 {
-
     protected $fillable = [
-        'quantity_new',
+        'quantity',
         'post_id',
         'user_id',
         'barcode',
         'price'
     ];
+
 
     public  function post(){
         return $this->belongsTo(Post::class);

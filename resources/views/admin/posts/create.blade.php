@@ -35,16 +35,9 @@
                         <input type="text" name="barcode" class="form-control">
                     </div>
 
-
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" name="title" class="form-control">
-                    </div>
-
-
                         <div class="form-group">
                         <label for="price">Price</label>
-                        <input type="number" min="1" name="price" class="form-control">
+                        <input type="number" min="1"  name="price" class="form-control">
                     </div>
 
                     <div class="form-group">

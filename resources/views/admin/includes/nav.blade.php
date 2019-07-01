@@ -75,6 +75,19 @@
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-shopping-cart"></i>
+                        <span>Sales</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('sales')}} "><i class="fa fa-list-alt"></i> List</a></li>
+                        <li><a href="{{route('sale.create')}}"><i class="fa fa-plus"></i> Add</a></li>
+                    </ul>
+                </li><br>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-shopping-cart"></i>
                         <span>Purchase</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -181,6 +194,19 @@
                 </li><br>
                 <li class="treeview">
                     <a href="#">
+                        <i class="fa fa-line-chart" aria-hidden="true"></i>
+                        <span>Chart</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="locations"><i class="fa fa-list-alt"></i> List</a></li>
+                        <li><a href="/addLocation"><i class="fa fa-plus"></i> Add</a></li>
+                    </ul>
+                </li><br>
+                <li class="treeview">
+                    <a href="#">
                         <i class="fa fa-cog"></i>
                         <span>Settings</span>
                         <span class="pull-right-container">
@@ -199,15 +225,14 @@
             </ul>
             </div>
 
-<div style="margin-top:140px; margin-left: 10px;">
-          <a href="https://www.facebook.com/" target="_blank"><button class="btn btn-primary btn-lg"><i class="fa fa-facebook-f"></i> </button></a>
-          <a href="https://www.instagram.com/?hl=hr" target="_blank"><button class="btn btn-primary btn-lg"><i class="fa fa-instagram"></i> </button></a>
-          <a href="https://www.global.ba/" target="_blank"><button class="btn btn-primary btn-lg"><i class="fa fa-globe"></i> </button></a>
-          <a href="https://www.amazon.com/" target="_blank"><button class="btn btn-primary btn-lg"><i class="fa fa-amazon"></i> </button></a>
-
-
-</div>
         </section>
+
+        <div style="margin-top:40px; margin-left: 10px;">
+            <a href="https://www.facebook.com/" target="_blank"><button class="btn btn-primary btn-lg"><i class="fa fa-facebook-f"></i> </button></a>
+            <a href="https://www.instagram.com/?hl=hr" target="_blank"><button class="btn btn-primary btn-lg"><i class="fa fa-instagram"></i> </button></a>
+            <a href="https://www.global.ba/" target="_blank"><button class="btn btn-primary btn-lg"><i class="fa fa-globe"></i> </button></a>
+            <a href="https://www.amazon.com/" target="_blank"><button class="btn btn-primary btn-lg"><i class="fa fa-amazon"></i> </button></a>
+        </div>
         <!-- /.sidebar -->
     </aside>
 

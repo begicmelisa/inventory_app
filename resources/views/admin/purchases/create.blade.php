@@ -62,8 +62,9 @@
                         <input type="hidden" name="barcode" hidden value="{{$values->barcode}}" style="width: 600px;" class="form-control">
                     </div>
 
-
-
+                    <div class="form-group">
+                        <input type="hidden" name="user_id" hidden value="{{Auth::user()->id}}" style="width: 600px;" class="form-control">
+                    </div>
 
                     <div class="form-group">
                         <label for="price">Price</label>

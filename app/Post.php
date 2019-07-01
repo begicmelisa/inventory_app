@@ -4,6 +4,7 @@ namespace App;
 use App\Purchase;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Sale;
 
 class Post extends Model
 {
@@ -35,8 +36,13 @@ class Post extends Model
         return $this->belongsTo('App\Category');
     }
 
-    public  function post() {
+    public  function purchase() {
         return $this->hasMany(Purchase::class);
+    }
+
+
+    public  function sales() {
+        return $this->hasMany(Sale::class);
     }
 
 

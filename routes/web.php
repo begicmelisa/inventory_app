@@ -14,7 +14,7 @@ use App\User;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () { return view('home'); });
+Route::get('/', function () { return view('admin/sales/index'); });
 
 
 
@@ -102,6 +102,20 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     Route::get('purchase/search',['uses'=>'PurchasesController@search','as'=>'purchase.search']);
 
     Route::get('purchase/delete/{id}',['uses'=>'PurchasesController@destroy','as'=>'purchase.delete']);
+
+
+    /* ---------------------------------------- SALE ---------------------------------------- */
+
+    Route::get('sales',['uses'=>'SalesController@index','as'=>'sales']);
+
+    Route::get('sale/create',['uses'=>'SalesController@create','as'=>'sale.create']);
+
+    Route::post('sale/store',['uses'=>'SalesController@store','as'=>'sale.store']);
+
+    Route::get('sale/searchBarcode',['uses'=>'SalesController@searchBarcode','as'=>'sale.searchBarcode']);
+
+
+
 
 
 

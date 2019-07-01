@@ -45,18 +45,18 @@ class PurchasesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name'=>'required',
             'quantity_new'=>'required',
             'post_id'=>'required',
+
             'price'=>'required',
             'barcode'=>'required',
 
         ]);
 
         $purchase= Purchase::create([
-            'name'=>$request->name,
             'quantity_new'=>$request->quantity_new,
             'post_id'=>$request->post_id,
+            'user_id'=>$request->user_id,
             'price'=>$request->price,
             'barcode'=>$request->barcode,
         ]);
