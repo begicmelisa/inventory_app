@@ -152,7 +152,7 @@
             @endif
                 <br>
 
-                <li class="treeview">
+              <!--  <li class="treeview">
                     <a href="#">
                         <i class="fa fa-bell" aria-hidden="true"></i>
                         <span>Notifications</span>
@@ -177,7 +177,7 @@
                         <li><a href="locations"><i class="fa fa-list-alt"></i> List</a></li>
                         <li><a href="/addLocation"><i class="fa fa-plus"></i> Add</a></li>
                     </ul>
-                </li><br>
+                </li><br> -->
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-cog"></i>

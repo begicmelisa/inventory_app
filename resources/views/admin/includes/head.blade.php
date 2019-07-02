@@ -201,7 +201,6 @@
             margin-top: 20px;
         }
 
-
         #loginDiv{
             width: 700px;
             height: 350px;

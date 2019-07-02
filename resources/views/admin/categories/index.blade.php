@@ -14,83 +14,8 @@
 
 <!-- ADD -->
 <div id="all">
-    <div class="col-md-6" id="add1">
 
-<button type="button" id="btnCategory" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"> Add New </button>
-
-<!-- create category -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"  aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add a new category</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-                <form action="{{route('category.store')}}" method="post" >
-                    <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-                    <div class="modal-body">
-
-
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" name="name" id="name" placeholder="Name Category" class="form-control">
-                        <br>
-                    </div>
-
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save</button>
-                        </div>
-                    </div>
-                 </form>
-            </div>
-
-        </div>
-    </div>
-    </div>
-<!-- END MODEL ADD -->
-
-    <!-- EDIT -->
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog"  aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit category</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form id="editFormId" method="put" >
-                    <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-                    <div class="modal-body">
-
-
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name"  class="form-control">
-                            <br>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Update</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
-<!-- END MODEL EDIT -->
-
-
-
-
-
-    <!-- END MODEL EDIT -->
+    @include('admin.categories.addnew')
 
     <div>
 

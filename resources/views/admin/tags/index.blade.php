@@ -12,12 +12,9 @@
 
 
        <div id="all">
+           @include('admin.tags.addnew')
 
-           <div class="col-md-6" id="add1">
-                           <div class="col-lg-10 col-lg-offset-2" id="addBtn">
-                               <a href="{{route('tag.create')}}" class="btn btn-success" style="height: 35px">New Tag</a>
-                           </div>
-           </div>
+
 
                <div>
 

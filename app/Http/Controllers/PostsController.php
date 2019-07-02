@@ -44,14 +44,18 @@ class PostsController extends Controller
 
         if($categories->count()== 0 ){
             Session::flash('info','You must have some categories before attempting to create a post.');
-            return view('admin.categories.create');
         }
         if( $tags->count()== 0){
             Session::flash('info','You must have some tages before attempting to create a post.');
-            return view('admin.tags.create');
         }
 
-        return view('admin.posts.create')->with('categories',$categories)
+        if( $tags->count()== 0 && $categories->count()== 0) {
+
+            Session::flash('info','You must have some categories and tags before attempting to create a post');
+
+        }
+
+            return view('admin.posts.create')->with('categories',$categories)
                                                ->with('tags', Tag::all());
     }
 

@@ -14,7 +14,11 @@
            <a style="color: dodgerblue;" href="{{route('posts')}} ">PUBLISHED POSTS</a>
         </div>
         <div class="panel-body">
-            <h1 class="text-center">{{ $posts_count }} </h1>
+            @if($posts_count=0)
+                {{"0"}}
+                @else
+                <h1 class="text-center">{{$posts_count}}</h1>
+            @endif
         </div>
     </div>
 </div>
@@ -25,7 +29,11 @@
            <a style="color: red;"  href="{{route('posts.trashed')}}">TRASHED POSTS</a>
         </div>
         <div class="panel-body">
-            <h1 class="text-center">{{$trashed_count}}</h1>
+            @if($trashed_count=0)
+                {{"0"}}
+            @else
+                <h1 class="text-center">{{$trashed_count}}</h1>
+            @endif
         </div>
     </div>
 </div>
@@ -36,7 +44,11 @@
             <a style="color: green;" href="{{route('users')}}" >USERS</a>
         </div>
         <div class="panel-body">
-            <h1 class="text-center">{{ $users_count }} </h1>
+            @if($users_count=0)
+                {{"0"}}
+            @else
+                <h1 class="text-center">{{$users_count}}</h1>
+            @endif
         </div>
     </div>
 </div>
@@ -48,7 +60,11 @@
           <a style="color: gray" href="{{route('categories')}}">CATEGORIES</a>
         </div>
         <div class="panel-body">
-            <h1 class="text-center">{{$categories_count}} </h1>
+            @if($categories_count=0)
+                {{"0"}}
+            @else
+                <h1 class="text-center">{{$categories_count}}</h1>
+            @endif
         </div>
     </div>
 </div>

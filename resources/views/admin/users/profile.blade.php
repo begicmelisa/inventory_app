@@ -69,6 +69,8 @@
                 <br>
             </div>
 
+ <a href="{{('a')}}">aa</a>
+
             <div class="form-group">
                 <div class="text-center">
                     <button class="btn btn-success" type="submit">Upload Profile</button>

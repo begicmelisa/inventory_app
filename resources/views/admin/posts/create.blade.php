@@ -45,6 +45,8 @@
                         <input type="number" min="1" name="quantity" class="form-control">
                     </div>
 
+
+
     <div class="form-group">
         <label for="content">Content</label>
         <textarea name="content" id="content" cols="6" rows="7" class="form-control"></textarea>
@@ -53,6 +55,7 @@
                 </div>
 
 <div style="float: right; width: 600px;    ">
+
 
                     <div class="form-group">
                         <label for="category">Select a Category</label>

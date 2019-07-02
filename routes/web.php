@@ -14,8 +14,6 @@ use App\User;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () { return view('admin/sales/index'); });
-
 
 
 Auth::routes();
@@ -198,3 +196,4 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
 
 });
+

@@ -62,46 +62,43 @@
 <script src="{{asset('adminlte/dist/js/demo.js')}}"></script>
 
 <script>
-    $(document).ready(function () {
-        $('.editBtn').on('click',function (){
-            $('#editModal').modal('show');
-            $tr=$(this).closest('tr');
+    $(document).ready(function() {
+        /**
+         * for showing edit item popup
+         */
 
-            var data=$tr.children("td").map(function () {
-               return $(this).text();
-            }).get();
+        $(document).on('click', "#edit-item", function() {
+            $(this).addClass('edit-item-trigger-clicked'); //useful for identifying which trigger was clicked and consequently grab data from the correct row and not the wrong one.
 
-            console.log(data);
+            var options = {
+                'backdrop': 'static'
+            };
+            $('#edit-modal').modal(options)
+        })
 
+        // on modal show
+        $('#edit-modal').on('show.bs.modal', function() {
+            var el = $(".edit-item-trigger-clicked"); // See how its usefull right here?
+            var row = el.closest(".data-row");
 
-            $('#name').val(data[0]);
-        });
+            // get the data
+            var id = el.data('item-id');
+            var name = row.children(".name").text();
+            var description = row.children(".description").text();
 
-        $('#editFormId').on('submit', function (e) {
-            e.preventDefault();
+            // fill the data in the input fields
+            $("#modal-input-id").val(id);
+            $("#modal-input-name").val(name);
+            $("#modal-input-description").val(description);
 
-            var id=$('#id').val();
+        })
 
-
-        $.ajax({
-            type: "PUT",
-            url:  "category.update"+id,
-            data: $('#editFormId').serialize(),
-            success: function (response) {
-                console.log(response);
-                $('#editModal').modal('hide');
-                alert("Data Updated");
-
-                window.reload();
-            } ,
-            error: function (error) {
-                console.log(error);
-
-            }
-        });
-    });
-
-    });
+        // on modal hide
+        $('#edit-modal').on('hide.bs.modal', function() {
+            $('.edit-item-trigger-clicked').removeClass('edit-item-trigger-clicked')
+            $("#edit-form").trigger("reset");
+        })
+    })
 </script>
 
 </body>
