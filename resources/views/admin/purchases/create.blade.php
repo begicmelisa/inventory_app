@@ -12,7 +12,7 @@
 
 <div class="panel panel-default" id="createPurchase">
     <div  id="titlePost">
-        <h3> New Purchase 11</h3>
+        <h3> NEW PURCHASE</h3>
     </div><br><br><br><br>
 
     <div>
@@ -44,14 +44,14 @@
                 <input type="hidden" name="_token" id="csrf-token" style="width: 600px;" value="{{ Session::token() }}" />
                 <div style="float: left; width: 700px;  ">
                     <div class="form-group">
-                        <label for="name">Author</label>
-                        <input type="text" name="name" class="form-control" style="width: 600px;" value="{{Auth::user()->name}}" readonly>
+                        <label for="postUser">Author</label>
+                        <input type="text" id="postUser" name="postUser" class="form-control" style="width: 600px;" value="{{Auth::user()->name}}" readonly>
                     </div>
 
 
                     <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" name="title" readonly value="{{$values->title}}" style="width: 600px;" class="form-control">
+                        <label for="postTitle">Title</label>
+                        <input type="text" name="postTitle" readonly value="{{$values->title}}" style="width: 600px;" class="form-control">
                     </div>
 
                     <div class="form-group">
@@ -76,11 +76,10 @@
                         <br>
                     </div>
                 </div>
-                <div style="width: 500px; float: right;   margin-right: 40px; margin-top: -85px;   height: 355px; padding-top: 7px;  ">
-                    <img src="{{$values->featured}}" alt="{{$values->title}}" width="490px" height="355px">
-
+                <div style="width: 500px; float: right;   margin-right: 40px; margin-top: -79px;   height: 355px; padding-top: 7px;  ">
+                    <img src="{{$values->featured}}" alt="{{$values->title}}" style=" object-fit: cover;" width="490px" height="355px">
                 </div>
-                <div style=" width: 1245px; height: 450px; padding-top: 355px;">
+                <div style=" width: 1240px; height: 450px; padding-top: 355px;">
                     <div class="form-group" >
                         <label for="quantity_new"  >Add Quantity:</label>
                         <input type="number"  min="1"   name="quantity_new" class="form-control">
@@ -89,7 +88,7 @@
                 </div>
                 <div class="form-group">
                     <div class="text-center">
-                        <button class="btn btn-success" type="submit">Update Quantity</button>
+                        <button class="btn btn-success" id="createPurchasebtn" type="submit">Add</button>
                     </div>
                 </div>
             </form>
@@ -97,10 +96,7 @@
             @endforeach
 
         @else
-            <tr>
-                <!-- class="text-center" -->
-                <th colspan="5" >No published posts.</th>
-            </tr>
+
 
         @endif
     </div>

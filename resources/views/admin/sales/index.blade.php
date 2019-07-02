@@ -4,28 +4,24 @@
 
 
 
-<section class="content-header">
-    <h1>
-        SALE
-        <!-- <small>Control panel</small>-->
-    </h1>
-
-</section>
-
+<div style="float: left; margin-left: 65px; width: 100%; height: 20px; ">
+    <section class="content-header"><h1>SALE</h1></section>
+</div><br><br><br>
 <div id="all">
 
-    <div class="col-md-6" id="add1">
+    <div class="col-md-6"  >
         <div class="col-lg-10 col-lg-offset-2" id="addBtn">
-            <a href="{{route('purchase.create')}}" class="btn btn-success" style="height: 35px">Add New</a>
+            <a href="{{route('sale.create')}}" class="btn btn-success" style="height: 35px">Add New</a>
         </div>
     </div>
 
+
     <div>
 
-        <div class="col-md-4" id="searchBtn">
-            <form action="{{route('purchase.search')}}" method="get">
+        <div class="col-md-4" id="searchBtn1">
+            <form action="{{route('sale.search')}}" method="get">
                 <div class="form-group">
-                    <input type="search" name="search" class="form-control" placeholder="Search Purchases" style="width: 350px;">
+                    <input type="search" name="search" class="form-control" placeholder="Search Product" style="width: 350px;">
                     <div id="btnSearch">
                                             <span class="form-control-btn">
                                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
@@ -36,14 +32,13 @@
         </div>
 
 
-        <div class="Row" style="text-align: center;" id="tablePosts" >
+        <div class="Row" style="text-align: center;" id="tableList" >
             <div class="panel-heading" style="text-align: left;">
-                <a href="{{route('sales')}} ">All Sales</a>
-            </div><br>
-            <table class="table ">
+                <a style="margin-left: -15px; margin-bottom: -60px; "   href="{{route('purchases')}}">Stock</a>
+            </div>
+            <table class="table  table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th class="centerText">ID</th>
                     <th class="centerText">Author</th>
                     <th class="centerText">Barcode</th>
                     <th class="centerText">Product</th>
@@ -58,16 +53,15 @@
                 @if($sales->count()>0)
                     @foreach( $sales as $key =>$values)
                         <tr>
-                            <td>{{$values->id}}</td>
-                            <td> {{Auth::user()->name}}</td>
+                            <td>{{ $values->postUser }}</td>
                             <td>{{ $values->barcode }}</td>
-                            <td>procuct</td>
+                            <td>{{ $values->postTitle }}</td>
                             <td>{{ $values->price }}</td>
-                            <td>{{$values->quantity}}</td>
+                            <td>{{$values->quantity_new}}</td>
                             <td>{{ \Carbon\Carbon::parse($values->created_at)->diffForHumans() }}</td>
                             <td>{{ \Carbon\Carbon::parse($values->updated_at)->diffForHumans() }}</td>
                             <td>
-                                <a href="{{route('purchase.edit',['id'=>$values->id])}}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> </a>
+                                <a href="{{route('sale.edit',['id'=>$values->id])}}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> </a>
                                 <a href="{{route('sale.delete',['id'=>$values->id])}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>
                             </td>
 
@@ -77,7 +71,7 @@
                 @else
                     <tr>
                         <!-- class="text-center" -->
-                        <th colspan="5" >No published posts.</th>
+                        <th colspan="8" >No products sold.</th>
                     </tr>
 
                 @endif

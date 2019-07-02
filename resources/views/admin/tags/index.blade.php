@@ -2,16 +2,16 @@
 
 @include('admin.includes.nav')
 
-       <section class="content-header">
-           <h1>
-               TAGS
-           </h1>
 
-       </section>
-
+<div style="float: left; margin-left: 160px; width: 100%; height: 20px; ">
+    <section class="content-header"><h1>TAGS</h1></section>
+</div><br><br><br>
 
 
        <div id="all">
+           <div id="btnCategory">
+           <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#exampleModal"> Add New </button>
+           </div>
            @include('admin.tags.addnew')
 
 
@@ -31,15 +31,13 @@
                        </form>
                    </div>
 
-               <div class="Row" style="text-align: center;" id="tableCategoriesTags" >
-                   <div class="panel-heading" style="text-align: left;">
-                       <a href="{{route('tags')}}">All Tags</a>
-
-                   </div><br>
-                   <table class="table  ">
-                       <thead>
+                   <div class="Row" style="text-align: center;" id="tableCategories" >
+                       <div class="panel-heading" style="text-align: left;">
+                           <a style="margin-left: -15px; margin-bottom: -60px;  "   href="{{route('tags')}}">All Tags</a>
+                       </div>
+                       <table class="table  table-striped table-bordered">
+                   <thead>
                        <tr>
-                           <th class="centerText">ID</th>
                            <th class="centerText">Tag</th>
                            <th class="centerText">Created</th>
                            <th class="centerText">Updated</th>
@@ -50,11 +48,9 @@
                        @if($tags->count()>0)
                            @foreach( $tags as $key =>$values)
                                <tr>
-                                   <td>{{$values->id}}</td>
                                    <td>{{$values->tag}}</td>
                                    <td>{{ \Carbon\Carbon::parse($values->created_at)->diffForHumans() }}</td>
                                    <td>{{ \Carbon\Carbon::parse($values->updated_at)->diffForHumans() }}</td>
-
                                    <td>
                                        <a href="{{route('tag.edit',['id'=>$values->id])}}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> </a>
                                        <a href="{{route('tag.delete',['id'=>$values->id])}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>

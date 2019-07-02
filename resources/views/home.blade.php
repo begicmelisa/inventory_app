@@ -67,7 +67,46 @@
             @endif
         </div>
     </div>
-</div>
+
+    <img src="{{Storage::url(Auth::user()->avatar)}}" style="object-fit: cover; width: 150px; height: 150px; float: left; border-radius: 50%; margin-right: 25px;" >
+
+
+    <div id="notificaitons">
+        <div class="Row" style="text-align: center;" id="" >
+            <div class="panel-heading" style="text-align: left;">
+      <!--          <a href="{{route('home')}} ">All Notifications</a>   -->
+            </div><br>
+
+            @if($notifications->count()>0)
+                @foreach( $notifications as $key =>$values)
+                  <div style="text-align: left;           border-radius: 10px;   border-top: 2px solid ghostwhite;
+  padding-left: 30px;  word-wrap: break-word;  height: 100%; font-size: 20px; ">
+
+                    <div class="card-header" style="font-size: 30px; font-weight:bold;">
+                             <span>{{$values->title}}</span><br>
+                         </div>
+                         <div>
+                             <span>{{$values->content}}</span>
+
+                             <div style="float: right; margin-right: 150px; color: grey;">
+                                 <br><span>{{Carbon\Carbon::parse($values->created_at)->format('d/m/Y')}} </span><span style="margin-left: 20px;">{{Carbon\Carbon::parse($values->created_at)->format('H:i')}}</span>
+                             </div>
+                         </div>
+                     </div><br><br>
+                @endforeach
+
+            @else
+                <a>notiii</a>
+            @endif
+    </div>
+
 
 </div>
+
+
+</div>
+    <div style="padding-top: 750px; padding-left: 600px;">
+        {{$notifications->links()}}
+    </div>
+
 @include('admin.includes.footer')

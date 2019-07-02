@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -50,16 +50,10 @@
             width: 500px;
         }
         #addBtn{
-            margin-left: 950px;
+            margin-left: 1400px;
             margin-top: 65px;
         }
-        #tableCategoriesTags{
-            width: 1200px;
-            margin-left: 130px;
-            position: fixed;
-            margin-top: 140px;
-            height: 500px;
-        }
+
         #tableUsers, #tablePosts{
             width: 1400px;
             margin-left: 110px;
@@ -74,6 +68,14 @@
         #searchBtnBarcode{
             margin-right:100px;
             margin-top: -60px;
+        }
+
+        #notificaitons{
+            float: right;
+            margin-top: 50px;
+            width: 1370px;
+            height: 500px;
+
         }
 #createPurchase{
 
@@ -99,9 +101,37 @@
 
         }
 
+        #editPurchasebtn{
+            width: 90px;
+            height: 40px;
+            margin-top: -20px;
+            margin-left: 1010px;
+        }
+
+        #createPurchasebtn{
+            width: 90px;
+            height: 40px;
+            margin-top: 10px;
+            margin-left: 1100px;
+        }
+
+        #createbtnPost{
+            margin-top: 270px;
+            margin-left: 500px;
+            width: 90px;
+            height: 40px;
+        }
+
         #addPost{
             margin-top: 260px;
             margin-left: 500px;
+        }
+
+        #tableList{
+            width: 1425px;
+            margin-left: 80px;
+            position: fixed;
+            margin-top: 140px;
         }
 
 
@@ -115,8 +145,22 @@
             text-align: center;
         }
 
-        #searchBtn{
+        #searchBtnuser{
+            margin-left:  -740px;
+            margin-top: 60px;
+        }
+
+        #searchBtn1{
             margin-left:  -750px;
+            margin-top: 60px;
+        }
+        #searchBtnTrashed{
+            margin-left:  -950px;
+            margin-top: 60px;
+        }
+
+        #searchBtn{
+            margin-left:  -850px;
             margin-top: 60px;
         }
         #divList{
@@ -173,7 +217,7 @@
         }
         #titlePost{
             height: 50px;
-            margin-left: 30px;
+            margin-left: 17px;
         }
         #validateDiv{
             width: 900px;
@@ -225,8 +269,11 @@
             padding-top: 20px;
         }
 #btnCategory {
-    margin-top: 65px;
-    margin-left: 965px;
+    margin-right: 220px;
+    width: 100px;
+    height: 50px;
+    float: right;
+    margin-top: 62px;
 }
         #add1{
             margin-left: 200px;}

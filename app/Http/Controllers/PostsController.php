@@ -87,7 +87,6 @@ class PostsController extends Controller
     {
         $this->validate($request,[
             'title'=>'required|max:25',
-            'content'=>'required',
             'featured'=>'required|image',
             'category_id'=>'required',
             'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
@@ -173,7 +172,6 @@ class PostsController extends Controller
     {
         $this->validate($request,[
             'title'=>'required',
-            'content'=>'required',
             'barcode'=>'required',
             'quantity'=>'required',
             'price'=>'required',

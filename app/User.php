@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\Notification;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -27,6 +27,10 @@ class User extends Authenticatable
 
     public function  purchase(){
         return $this->belongsTo('App\Purchase');
+    }
+
+    public function  notification(){
+        return $this->belongsTo('App\Notification');
     }
 
 

@@ -4,14 +4,9 @@
 
 
 
-<section class="content-header">
-    <h1>
-        TRASHED PRODUCTS
-        <!-- <small>Control panel</small>-->
-    </h1>
-
-</section>
-
+<div style="float: left; margin-left: 65px; width: 100%; height: 20px; ">
+    <section class="content-header"><h1>TRASHED PRODUCTS</h1></section>
+</div><br><br><br>
 <div id="all">
 
     <div class="col-md-6" id="add1">
@@ -21,7 +16,7 @@
 
     <div>
 
-        <div class="col-md-4" id="searchBtn">
+        <div class="col-md-4" id="searchBtnTrashed">
             <form action="{{route('post.searchTrashedPost')}}" method="get">
                 <div class="form-group">
                     <input type="search" name="search" class="form-control" placeholder="Search Trashed Posts" style="width: 350px;">
@@ -35,14 +30,14 @@
         </div>
 
 
-        <div class="Row" style="text-align: center;" id="tablePosts" >
-                    <div class="panel-heading" style="text-align: left;">
-                        <a href="{{route('posts.trashed')}}">Trashed products</a>
-                    </div><br>
-                    <table class="table  ">
+        <div class="Row" style="text-align: center;" id="tableList" >
+            <div class="panel-heading" style="text-align: left;">
+                <a style="margin-left: -15px; margin-bottom: -60px; "   href="{{route('posts')}}">Trashed products</a>
+            </div>
+            <table class="table  table-striped table-bordered">
+
                         <thead>
                         <tr>
-                            <th class="centerText">ID</th>
                             <th class="centerText">Image</th>
                             <th class="centerText">Title</th>
                             <th class="centerText">Price</th>
@@ -57,15 +52,14 @@
                       @if($posts->count()>0)
                           @foreach( $posts as $key =>$values)
                               <tr>
-                                  <td>{{$values->id}}</td>
                                   <td><img src="{{$values->featured}}" alt="{{$values->title}}" width="80px" height="50px"> </td>
-                                  <td>{{$values->title}}</td>
-                                  <td>{{$values->price}}</td>
-                                  <td>{{$values->category->name}}</td>
-                                  <td>Yes</td>
-                                  <td>{{ \Carbon\Carbon::parse($values->created_at)->diffForHumans() }}</td>
-                                  <td>{{ \Carbon\Carbon::parse($values->updated_at)->diffForHumans() }}</td>
-                                  <td>
+                                  <td style="padding-top: 20px;">{{$values->title}}</td>
+                                  <td style="padding-top: 20px;">{{$values->price}}</td>
+                                  <td style="padding-top: 20px;">{{$values->category->title}}</td>
+                                  <td style="padding-top: 20px;">Yes</td>
+                                  <td style="padding-top: 20px;">{{ \Carbon\Carbon::parse($values->created_at)->diffForHumans() }}</td>
+                                  <td style="padding-top: 20px;">{{ \Carbon\Carbon::parse($values->updated_at)->diffForHumans() }}</td>
+                                  <td style="padding-top: 20px;">
                                       <a href="{{route('post.restore',['id'=>$values->id])}}" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-repeat"></span> </a>
                                       <a href="{{route('post.kill',['id'=>$values->id])}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>
                                   </td>
@@ -76,7 +70,7 @@
 
                           <tr>
                               <!-- class="text-center" -->
-                              <th colspan="5" >No trashed posts.</th>
+                              <th colspan="10" >No trashed posts.</th>
                           </tr>
 
 

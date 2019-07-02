@@ -2,29 +2,30 @@
 
 
     <!-- create category -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="edit" tabindex="-1" role="dialog"  aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add a new tag</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit category</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{route('tag.store')}}" method="post" >
+                <form action="{{route('category.update','test')}}" method="post" >
+                    {{method_field('patch')}}
                     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                     <div class="modal-body">
-
+                        <input type="hidden" name="cat_id" id="cat_id" value="">
 
                         <div class="form-group">
-                            <label for="tag">Tag</label>
-                            <input type="text" name="tag" id="tag" placeholder="Title Tag" class="form-control">
+                            <label for="title">Title</label>
+                            <input type="text" name="title" id="title" placeholder="Title Category" class="form-control">
                             <br>
                         </div>
 
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </div>
                 </form>

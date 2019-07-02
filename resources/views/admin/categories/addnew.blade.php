@@ -1,6 +1,5 @@
 <div class="col-md-6" id="add1">
 
-    <button type="button" id="btnCategory" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"> Add New </button>
 
     <!-- create category -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"  aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -18,8 +17,8 @@
 
 
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" placeholder="Name Category" class="form-control">
+                            <label for="title">Title</label>
+                            <input type="text" name="title" id="title" placeholder="Title Category" class="form-control">
                             <br>
                         </div>
 

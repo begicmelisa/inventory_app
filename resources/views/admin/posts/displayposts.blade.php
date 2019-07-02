@@ -22,8 +22,8 @@ margin-top: 50px;">
 
                     <div style="float: right;  width: 250px; height: 50px; padding-top: 5px;"><span style="float: right; font-size: 30px; padding-right: 20px;" > 36 $</span></div>
                     <div >
-       <div style="float: left;"><img style="margin-top: 15px; margin-left: 30px; border-radius: 5px" src="{{$values->featured}}" alt="{{$values->title}}" width="300px" height="200px"></div>
-                        <div style="float: right; padding-right: 20px; margin-top: 50px;"><span>Category: {{$values->category->name}}</span></div>
+       <div style="float: left;"><img style="object-fit: cover; margin-top: 15px; margin-left: 30px; border-radius: 5px" src="{{$values->featured}}" alt="{{$values->title}}" width="300px" height="200px"></div>
+                        <div style="float: right; padding-right: 20px; margin-top: 50px;"><span>Category: {{$values->category->title}}</span></div>
 
                     </div>
 

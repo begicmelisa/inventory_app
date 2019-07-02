@@ -20,8 +20,8 @@
 
 
             <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" name="name"  placeholder="Name Category" class="form-control">
+                <label for="title">Name</label>
+                <input type="text" name="title"  placeholder="Title Category" class="form-control">
                 <br>
             </div>
 

@@ -49,7 +49,7 @@
 
     <div class="form-group">
         <label for="content">Content</label>
-        <textarea name="content" id="content" cols="6" rows="7" class="form-control"></textarea>
+        <textarea name="text" id="content" cols="6" rows="7" class="form-control"></textarea>
         <br>
     </div>
                 </div>
@@ -63,7 +63,7 @@
                             <option value="">-- Select Category --</option>
 
                         @foreach($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                <option value="{{$category->id}}">{{$category->title}}</option>
                             @endforeach
 
                         </select>
@@ -81,11 +81,12 @@
 <br>
                     <div class="form-group">
                         <label for="featured">Featured image</label>
-                        <input type="file" name="featured" class="form-control">
+                        <input type="file" name="featured"  >
                     </div>
+
                     <div class="form-group"  >
                         <div class="text-center">
-                            <button id="addPost" class="btn btn-success" type="submit">Add Post</button>
+                            <button id="createbtnPost" class="btn btn-success" type="submit">Add</button>
                         </div>
                     </div>
 

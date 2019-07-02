@@ -114,6 +114,11 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('sale/delete/{id}',['uses'=>'SalesController@destroy','as'=>'sale.delete']);
 
+    Route::get('sale/search',['uses'=>'SalesController@search','as'=>'sale.search']);
+
+    Route::get('sale/edit/{id}',['uses'=>'SalesController@edit','as'=>'sale.edit']);
+
+    Route::post('sale/update/{id}',['uses'=>'SalesController@update','as'=>'sale.update']);
 
 
 
@@ -132,7 +137,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('category/delete/{id}',['uses'=>'CategoriesController@destroy','as'=>'category.delete']);
 
-    Route::post('category/update/{id}',['uses'=>'CategoriesController@update','as'=>'category.update']);
+    Route::patch('category/update',['uses'=>'CategoriesController@update','as'=>'category.update']);
 
     Route::get('category/searchCat',['uses'=>'CategoriesController@searchCat','as'=>'category.searchCat']);
 

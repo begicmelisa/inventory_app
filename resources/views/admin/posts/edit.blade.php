@@ -53,15 +53,12 @@
 
             <div style="float: right; width: 600px;    ">
 <div >
-                <div style="width: 600px; float: right;  margin-top: 15px;   height: 160px; padding-top: 7px;  ">
-                    <img src="{{$post->featured}}" alt="{{$post->title}}" width="270px" height="150px">
-
+                <div style=" width: 600px; float: right;  margin-top: 15px;   height: 160px; padding-top: 7px;  ">
+                    <img src="{{$post->featured}}" style="object-fit: cover;" alt="{{$post->title}}" width="270px" height="150px">
                     <div class="form-group" style="float: right; margin-right:100px; margin-top: 115px;">
                         <input type="file" name="featured" style="width: 220px;">
                     </div>
                 </div>
-
-
 </div><br><br>
                 <div class="form-group" >
                     <label for="category" style="margin-top: 50px;">Select a Category</label>
@@ -71,7 +68,7 @@
                                     @if($post->category->id == $category->id)
                                     selected
                                     @endif
-                            >{{$category->name}}</option>
+                            >{{$category->title}}</option>
                         @endforeach
 
                     </select>
