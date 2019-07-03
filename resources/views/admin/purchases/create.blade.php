@@ -42,7 +42,7 @@
             <form action="{{route('purchase.store')}}" method="post" enctype="multipart/form-data">
 
                 <input type="hidden" name="_token" id="csrf-token" style="width: 600px;" value="{{ Session::token() }}" />
-                <div style="float: left; width: 700px;  ">
+                <div style="float: left; width: 700px; margin-top: -20px; ">
                     <div class="form-group">
                         <label for="postUser">Author</label>
                         <input type="text" id="postUser" name="postUser" class="form-control" style="width: 600px;" value="{{Auth::user()->name}}" readonly>
@@ -75,16 +75,22 @@
                         <input type="number" min="1" readonly  name="quantity" style="width: 600px;" value="{{$values->quantity}}"  class="form-control">
                         <br>
                     </div>
+
                 </div>
                 <div style="width: 500px; float: right;   margin-right: 40px; margin-top: -79px;   height: 355px; padding-top: 7px;  ">
                     <img src="{{$values->featured}}" alt="{{$values->title}}" style=" object-fit: cover;" width="490px" height="355px">
                 </div>
-                <div style=" width: 1240px; height: 450px; padding-top: 355px;">
+                <div style=" width: 1240px; height: 450px; padding-top: 298px;">
+                    <div class="form-group" >
+                        <label for="purchase_id"  >Purchase ID:</label>
+                        <input type="number"  min="1"   name="purchase_id" class="form-control">
+                    </div>
                     <div class="form-group" >
                         <label for="quantity_new"  >Add Quantity:</label>
                         <input type="number"  min="1"   name="quantity_new" class="form-control">
                         <br>
                     </div>
+
                 </div>
                 <div class="form-group">
                     <div class="text-center">

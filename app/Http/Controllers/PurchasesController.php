@@ -37,7 +37,8 @@ class PurchasesController extends Controller
             ->orWhere('quantity_new', 'like', '%'.$search.'%')
             ->orWhere('postTitle', 'like', '%'.$search.'%')
             ->orWhere('postUser', 'like', '%'.$search.'%')
-            ->orWhere('price', 'like', '%'.$search.'%')->paginate(8);
+            ->orWhere('postUser', 'like', '%'.$search.'%')
+            ->orWhere('purchase_id', 'like', '%'.$search.'%')->paginate(8);
 
         return view('admin.purchases.index')->with('purchases',$purchases);
     }
@@ -53,6 +54,7 @@ class PurchasesController extends Controller
             'price'=>'required',
             'barcode'=>'required',
             'postUser'=>'required',
+            'purchase_id'=>'required'
 
         ]);
 
@@ -64,6 +66,7 @@ class PurchasesController extends Controller
             'postTitle'=>$request->postTitle,
             'barcode'=>$request->barcode,
             'postUser'=>$request->postUser,
+            'purchase_id'=>$request->purchase_id
         ]);
 
         $id=$purchase->post_id;
@@ -150,6 +153,7 @@ dd($post->quantity);
         $purchase->post_id=$request->post_id;
         $purchase->postUser=$request->postUser;
         $purchase->postTitle=$request->postTitle;
+        $purchase->purchase_id=$request->purchase_id;
 
         $purchase->save();
 

@@ -17,6 +17,8 @@ class CreatePurchasesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('quantity_new')->default(0);
             $table->integer('post_id');
+            $table->integer('purchase_id');
+
             $table->string('postTitle');
             $table->string('postUser');
 

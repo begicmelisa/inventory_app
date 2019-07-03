@@ -56,6 +56,11 @@
                 <input type="number" value="{{$purchase->quantity_new}}" min="1" name="quantity_new" class="form-control">
             </div>
 
+            <div class="form-group">
+                <label for="purchase_id">Purchase ID</label>
+                <input type="number" value="{{$purchase->purchase_id}}" min="1" name="quantity_new" class="form-control">
+            </div>
+
             <div class="form-group"  >
                 <div class="text-center">
                     <button  style=" margin-top: 110px; margin-left: 500px;"  class="btn btn-success" type="submit">Update</button>

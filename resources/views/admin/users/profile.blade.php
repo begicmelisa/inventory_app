@@ -28,7 +28,7 @@
         <form action="{{route('user.update',['id'=>$user->id])}}" method="post" enctype="multipart/form-data">
             <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
 
-<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" name="name" value="{{$user->name}}" class="form-control">
@@ -72,7 +72,7 @@
 
             <div class="form-group">
                 <div class="text-center">
-                    <button class="btn btn-success" type="submit">Upload Profile</button>
+                    <button class="btn btn-success" style="margin-left: 720px; margin-top: -10px;" type="submit">Upload </button>
                 </div>
             </div>
         </form>

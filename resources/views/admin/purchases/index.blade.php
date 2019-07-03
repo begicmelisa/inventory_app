@@ -40,6 +40,7 @@
                 <thead>
                 <tr>
                     <th class="centerText">Author</th>
+                    <th class="centerText">Purchase ID</th>
                     <th class="centerText">Barcode</th>
                     <th class="centerText">Product</th>
                     <th class="centerText">Price</th>
@@ -55,6 +56,7 @@
                     @foreach( $purchases as $key =>$values)
                         <tr>
                             <td> {{$values->postUser}}</td>
+                            <td> {{$values->purchase_id}}</td>
                             <td>{{ $values->barcode }}</td>
                             <td>{{$values->postTitle}}</td>
                             <td>{{ $values->price }}</td>

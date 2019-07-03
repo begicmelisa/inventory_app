@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Notification;
 use Illuminate\Http\Request;
+use Validator;
+use Session;
 
 class NotificationsController extends Controller
 {
@@ -13,73 +16,35 @@ class NotificationsController extends Controller
      */
     public function index()
     {
-        $notifications=DB::table('notifications')->paginate(10);
+        $notifications=DB::table('notifications')->paginate(3);
         return view('home')->with('notifications',$notifications);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.notifications.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
-    {
-        //
+    {    $this->validate($request,[
+        'body'=>'required',
+        'title'=>'required',
+
+    ]);
+
+            $notification= Notification::create([
+                'user_id'=>$request->user_id,
+                'title'=>$request->title,
+                'body'=>$request->body,
+            ]);
+
+
+            Session::flash('success','successfully.');
+            return redirect()->route('home');
+
+
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

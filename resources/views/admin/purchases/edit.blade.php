@@ -61,6 +61,12 @@
                                 <input type="number" min="1"    name="quantity_new" style="width: 600px;" value="{{$purchase->quantity_new}}"  class="form-control">
                                 <br>
                             </div>
+
+                            <div class="form-group">
+                                <label for="purchase_id">Purchase ID</label>
+                                <input type="number" min="1"    name="purchase_id" style="width: 600px;" value="{{$purchase->quantity_new}}"  class="form-control">
+                                <br>
+                            </div>
                         </div>
                         <div style=" float: right;   margin-right: 40px; margin-top: -79px;   height: 355px; width: 500px; padding-top: 7px;  ">
                         </div>

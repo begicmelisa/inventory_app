@@ -27,7 +27,7 @@
 
             <div class="form-group">
                 <div class="text-center">
-                    <button class="btn btn-success" type="submit">Add Post</button>
+                    <button class="btn btn-success" type="submit">Add</button>
                 </div>
             </div>
         </form>

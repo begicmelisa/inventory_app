@@ -113,13 +113,6 @@ class PostsController extends Controller
         return redirect()->route('posts');
     }
 
-    public function searchBarcode(Request $request){
-        $search=$request->get('search');
-        $posts=Post::with('Category')->where('barcode', 'like', '%'.$search.'%')->paginate(8);
-
-        return view('admin.posts.purchase')->with('posts',$posts) ->with('categories',Category::all())
-            ->with('tags',Tag::all());
-    }
 
     public function edit($id)
     {

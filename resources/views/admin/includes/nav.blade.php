@@ -20,7 +20,7 @@
                 <span class="sr-only">Toggle navigation</span>
             </a>
 
-            <div class="navbar-custom-menu" >
+            <div class="navbar-custom-menu"   >
                 <ul class="nav navbar-nav" style="margin-right: 30px;">
                     <!-- Authentication Links -->
                   @if(Auth::guest())
@@ -30,8 +30,7 @@
 
                       <li class="dropdown">
 
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                              <img src="{{url('storage/profile_photos/default.jpg')}}" style="border-radius: 50px; width:25px; height: 25px; margin-top: -5px;" >
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >
 
                               {{Auth::user()->name}} <span class="caret"></span>
                           </a>
@@ -53,13 +52,10 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image" style="margin-left: 20px; ">
-
-                    <img src="{{url('storage/profile_photos/default.jpg')}}" style="border-radius: 50px; width:25px; height: 25px;" >
-
+                    <img src="{{Storage::url(Auth::user()->avatar)}}" style="object-fit: cover; width: 30px; height: 30px; float: left; border-radius: 50%; margin-right: 25px;" >
                 </div>
-                <div class="pull-left info" >
-
-                    <p style="font-size: 16x;"> {{Auth::user()->name}} </p>
+                <div class="pull-left info" style="padding-top: 7px;">
+                    <p> {{Auth::user()->name}} </p>
 
                 </div>
             </div><br>
@@ -128,11 +124,15 @@
                 </li><br>
 
                 <li>
-                    <a href="{{route('categories')}}"><i class="fa fa-clone"></i> <span>Category</span></a>
+                    <a href="{{route('categories')}}"><i class="fa fa-clone"></i> <span>Categories</span></a>
                 </li><br>
 
                 <li>
-                    <a href="{{route('tags')}}"><i class="fa fa-tag" aria-hidden="true"></i><span>Tag</span></a>
+                    <a href="{{route('tags')}}"><i class="fa fa-tag" aria-hidden="true"></i><span>Tags</span></a>
+                </li><br>
+
+                <li>
+                    <a href="{{route('notification.create')}}"><i class="fa fa-bell" aria-hidden="true"></i><span>Notifications</span></a>
                 </li>
                 @if(Auth::User()) <?php // add this line to check if user logged in or not ?>
             @if(Auth::user()->admin)

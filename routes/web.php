@@ -23,14 +23,6 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
 
-Route::get('/notify',function (){
-    $users=User::all();
-    $letter = collect(['title'=>'New Policy Update','We have updated our TOS and privacy Policy, Kidly Read it!']);
-
-    Notification::send($users,new DatabaseNotification($letter));
-
-    echo ("Notification Sent to All Users!");
-});
 
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
@@ -65,7 +57,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('post/searchPost',['uses'=>'PostsController@searchPost','as'=>'post.searchPost']);
 
-    Route::get('post/searchBarcode',['uses'=>'PostsController@searchBarcode','as'=>'post.searchBarcode']);
+   // Route::get('post/searchBarcode',['uses'=>'PostsController@searchBarcode','as'=>'post.searchBarcode']);
 
     Route::get('post/searchTrashedPost',['uses'=>'PostsController@searchTrashedPost','as'=>'post.searchTrashedPost']);
 
@@ -166,7 +158,9 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     Route::post('user/update/{id}',['uses'=>'UsersController@update','as'=>'user.update']);
 
     Route::get('user/edit/{id}',['uses'=>'UsersController@edit','as'=>'user.edit']);
+
     Route::get('user/add_user/{id}',['uses'=>'UsersController@add_user','as'=>'user.add_user']);
+
     Route::post('user/update_add_user/{id}',['uses'=>'UsersController@update_add_user','as'=>'user.update_add_user']);
 
     Route::get('user/create',['uses'=>'UsersController@create', 'as'=>'user.create']);
@@ -194,9 +188,12 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::post('settings/update',['uses'=>'SettingsController@update','as'=>'settings.update'])->middleware('admin');
 
-    /* ---------------------------------------- SETTINGS ---------------------------------------- */
+    /* ---------------------------------------- NOTIFICATIONS ---------------------------------------- */
 
 
+    Route::get('notification/create',['uses'=>'NotificationsController@create','as'=>'notification.create']);
+
+    Route::post('notification/store',['uses'=>'NotificationsController@store','as'=>'notification.store']);
 
 
 });

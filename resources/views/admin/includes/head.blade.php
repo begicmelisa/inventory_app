@@ -111,10 +111,10 @@ background: white;
 
         #notificaitons{
             float: right;
-            margin-top: 50px;
-            width: 1370px;
-            height: 500px;
-
+            margin-top: 80px;
+            width: 1375px;
+            height: 400px;
+            padding-right: 20px;
         }
 
         #editSale{
@@ -271,7 +271,8 @@ background: white;
             margin-left: 350px;
             padding-left: 40px;
             padding-right: 40px;
-            margin-top: 80px;
+            margin-top: 70px;
+            padding-top: -20px;
             border-top: 1px solid lightskyblue;
         }
         #addUserDetails{
@@ -282,6 +283,17 @@ background: white;
             padding-right: 40px;
             margin-top: 150px;
             border-top: 1px solid lightskyblue;
+        }
+
+        #formNotification{
+            border-top: 1px solid lightskyblue;
+
+            width: 900px;
+            height: 550px;
+            margin: auto;
+            margin-left: 350px;
+            margin-top: 140px;
+
         }
         #formDiv{
             width: 900px;
