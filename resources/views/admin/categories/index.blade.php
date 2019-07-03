@@ -56,7 +56,7 @@
                               <td>{{ \Carbon\Carbon::parse($values->updated_at)->diffForHumans() }}</td>
 
                               <td>
-                                  <button class="btn btn-primary btn-sm editBtn" data-catId="{{$values->id}}" data-mytitle="{{$values->title}}" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button>
+                                  <button class="btn btn-primary btn-sm editBtn" data-catid="{{$values->id}}" data-mytitle="{{$values->title}}" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button>
                                   <a href="{{route('category.delete',['id'=>$values->id])}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>
                               </td>
 

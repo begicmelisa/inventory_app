@@ -12,6 +12,8 @@
            <div id="btnCategory">
            <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#exampleModal"> Add New </button>
            </div>
+
+           @include('admin.tags.editTag')
            @include('admin.tags.addnew')
 
 
@@ -52,7 +54,7 @@
                                    <td>{{ \Carbon\Carbon::parse($values->created_at)->diffForHumans() }}</td>
                                    <td>{{ \Carbon\Carbon::parse($values->updated_at)->diffForHumans() }}</td>
                                    <td>
-                                       <a href="{{route('tag.edit',['id'=>$values->id])}}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> </a>
+                                       <button class="btn btn-primary btn-sm editBtn" data-tagid="{{$values->id}}" data-mytag="{{$values->tag}}" data-toggle="modal" data-target="#editTag"><span class="glyphicon glyphicon-pencil"></span></button>
                                        <a href="{{route('tag.delete',['id'=>$values->id])}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>
                                    </td>
 

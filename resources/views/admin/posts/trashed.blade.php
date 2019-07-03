@@ -32,7 +32,7 @@
 
         <div class="Row" style="text-align: center;" id="tableList" >
             <div class="panel-heading" style="text-align: left;">
-                <a style="margin-left: -15px; margin-bottom: -60px; "   href="{{route('posts')}}">Trashed products</a>
+                <a style="margin-left: -15px; margin-bottom: -60px; "   href="{{route('posts.trashed')}}">Trashed products</a>
             </div>
             <table class="table  table-striped table-bordered">
 
@@ -40,6 +40,8 @@
                         <tr>
                             <th class="centerText">Image</th>
                             <th class="centerText">Title</th>
+                            <th class="centerText">Barcode</th>
+                            <th class="centerText">Purchase Price</th>
                             <th class="centerText">Price</th>
                             <th class="centerText">Category</th>
                             <th class="centerText">Trashed</th>
@@ -54,8 +56,11 @@
                               <tr>
                                   <td><img src="{{$values->featured}}" alt="{{$values->title}}" width="80px" height="50px"> </td>
                                   <td style="padding-top: 20px;">{{$values->title}}</td>
+                                  <td style="padding-top: 20px;">{{$values->barcode}}</td>
+
+                                  <td style="padding-top: 20px;">{{$values->purchasePrice}}</td>
                                   <td style="padding-top: 20px;">{{$values->price}}</td>
-                                  <td style="padding-top: 20px;">{{$values->category->title}}</td>
+                                  <td style="padding-top: 20px;">{{$values->title}}</td>
                                   <td style="padding-top: 20px;">Yes</td>
                                   <td style="padding-top: 20px;">{{ \Carbon\Carbon::parse($values->created_at)->diffForHumans() }}</td>
                                   <td style="padding-top: 20px;">{{ \Carbon\Carbon::parse($values->updated_at)->diffForHumans() }}</td>
@@ -85,7 +90,7 @@
 
 
 
-<div style="padding-top: 800px; padding-left: 600px;">
+<div style="padding-top: 760px; padding-left: 600px;">
     {{$posts->links()}}
 </div>
 

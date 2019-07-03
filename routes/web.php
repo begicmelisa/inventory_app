@@ -152,7 +152,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('tag/edit/{id}',['uses'=>'TagsController@edit','as'=>'tag.edit']);
 
-    Route::post('tag/update/{id}',['uses'=>'TagsController@update','as'=>'tag.update']);
+    Route::patch('tag/update',['uses'=>'TagsController@update','as'=>'tag.update']);
 
     Route::get('tag/delete/{id}',['uses'=>'TagsController@destroy','as'=>'tag.delete']);
 
@@ -168,7 +168,6 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     Route::get('user/edit/{id}',['uses'=>'UsersController@edit','as'=>'user.edit']);
     Route::get('user/add_user/{id}',['uses'=>'UsersController@add_user','as'=>'user.add_user']);
     Route::post('user/update_add_user/{id}',['uses'=>'UsersController@update_add_user','as'=>'user.update_add_user']);
-
 
     Route::get('user/create',['uses'=>'UsersController@create', 'as'=>'user.create']);
 

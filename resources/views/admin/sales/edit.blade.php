@@ -10,8 +10,8 @@
 
 </section>
 
-<div class="panel panel-default" id="createPurchase">
-    <div  id="titlePost">
+<div class="panel panel-default" id="editSale">
+    <div  id="titleSale">
         <h3> SALE</h3>
     </div><br><br><br><br>
 
@@ -49,9 +49,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="price">Price</label>
+                        <label for="price">Price (per unit)</label>
                         <input type="number" min="1" readonly value="{{$sale->price}}" style="width: 600px;" name="price" class="form-control">
                     </div>
+
+                    <div class="form-group">
+                        <label for="profit">Profit  ($)</label>
+                        <input type="number" min="1" readonly value="{{$sale->profit}}" style="width: 600px;" name="profit" class="form-control">
+                    </div>
+
                     <div class="form-group">
                         <label for="quantity_new">Quantity</label>
                         <input type="number" min="1"    name="quantity_new" style="width: 600px;" value="{{$sale->quantity_new}}"  class="form-control">
@@ -63,7 +69,7 @@
                 </div>
                 <div class="form-group">
                     <div class="text-center">
-                        <button class="btn btn-success" id="editPurchasebtn" type="submit">Update</button>
+                        <button class="btn btn-success" id="updateSalebtn" type="submit">Update</button>
                     </div>
                 </div>
             </form>

@@ -46,7 +46,7 @@ class PostsController extends Controller
             Session::flash('info','You must have some categories before attempting to create a post.');
         }
         if( $tags->count()== 0){
-            Session::flash('info','You must have some tages before attempting to create a post.');
+            Session::flash('info','You must have some tags before attempting to create a post.');
         }
 
         if( $tags->count()== 0 && $categories->count()== 0) {
@@ -59,29 +59,25 @@ class PostsController extends Controller
                                                ->with('tags', Tag::all());
     }
 
-
     public function searchPost(Request $request){
         $search=$request->get('search');
         $posts=Post::with('Category')->where('title', 'like', '%'.$search.'%')
             ->orWhere('barcode', 'like', '%'.$search.'%')
             ->orWhere('quantity', 'like', '%'.$search.'%')
+            ->orWhere('purchasePrice', 'like', '%'.$search.'%')
         ->orWhere('price', 'like', '%'.$search.'%')->paginate(8);
 
         return view('admin.posts.index')->with('posts',$posts);
     }
 
-
     public function searchTrashedPost(Request $request){
         $search=$request->get('search');
 
-           $posts = Post::onlyTrashed()->where('title', 'like', '%' . $search . '%')
-                ->orWhere('price', 'like', '%' . $search . '%')->paginate(8);
+           $posts = Post::onlyTrashed()->where('title', 'like', '%' . $search . '%')->paginate(8);
 
 
         return view('admin.posts.trashed')->with('posts',$posts);
     }
-
-
 
     public function store(Request $request)
     {
@@ -89,10 +85,11 @@ class PostsController extends Controller
             'title'=>'required|max:25',
             'featured'=>'required|image',
             'category_id'=>'required',
-            'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
+            'price'=>'required',
+            'purchasePrice'=>'required',
             'tags'=>'required',
             'quantity'=>'required',
-            'barcode'=>'required',
+            'barcode'=>'required|unique:posts',
 
         ]);
 
@@ -104,10 +101,10 @@ class PostsController extends Controller
             'content'=>$request->content,
             'author'=>'',
             'price'=>$request->price,
+            'purchasePrice'=>$request->purchasePrice,
             'featured'=>'uploads/posts/' . $featured_new_name,
             'category_id'=>$request->category_id,
             'quantity'=>$request->quantity,
-            'quantity_new'=>$request->quantity_new,
             'barcode'=>$request->barcode,
         ]);
         $post->tags()->attach($request->tags);
@@ -116,24 +113,6 @@ class PostsController extends Controller
         return redirect()->route('posts');
     }
 
-    public function purchase()
-    {
-        $posts = Post::with('category')->get();
-        return view('admin.posts.purchase')->with('posts',$posts);
-    }
-
-    public function purchase_add( $id)
-    {
-        $post=Post::find($id);
-
-        return view('admin.posts.edit')->with('post',$post)
-            ->with('categories',Category::all())
-            ->with('tags',Tag::all());
-
-    }
-
-
-
     public function searchBarcode(Request $request){
         $search=$request->get('search');
         $posts=Post::with('Category')->where('barcode', 'like', '%'.$search.'%')->paginate(8);
@@ -141,21 +120,6 @@ class PostsController extends Controller
         return view('admin.posts.purchase')->with('posts',$posts) ->with('categories',Category::all())
             ->with('tags',Tag::all());
     }
-
-    public function purchase_update(Request $request,$id)
-    {
-        $post=Post::find($id);
-        $post->quantity_new=$request->quantity_new;
-
-        $post->quantity=$post->quantity+$post->quantity_new;
-        $post->save();
-
-
-
-        return redirect()->back();
-    }
-
-
 
     public function edit($id)
     {
@@ -166,8 +130,6 @@ class PostsController extends Controller
                                              ->with('tags',Tag::all());
     }
 
-
-
     public function update(Request $request, $id)
     {
         $this->validate($request,[
@@ -175,6 +137,7 @@ class PostsController extends Controller
             'barcode'=>'required',
             'quantity'=>'required',
             'price'=>'required',
+            'purchasePrice'=>'required',
             'category_id'=>'required'
         ]);
 
@@ -190,8 +153,8 @@ class PostsController extends Controller
         $post->title=$request->title;
         $post->barcode=$request->barcode;
         $post->quantity=$request->quantity;
-        $post->quantity_new=0;
         $post->price=$request->price;
+        $post->purchasePrice=$request->purchasePrice;
         $post->content=$request->content;
         $post->category_id=$request->category_id;
 
@@ -202,20 +165,21 @@ class PostsController extends Controller
         return redirect()->route('posts');
     }
 
-
     public function destroy($id)
     {
         $post=Post::find($id);
+        $post->isTrashed=1;
+        $post->save();
         $post->delete();
 
         Session::flash('success','The post was just trashed.');
         return redirect()->route('posts');
     }
 
-
     public function trashed()
     {
-        $posts =Post::onlyTrashed()->paginate(8);
+
+        $posts =Post::with('category')->onlyTrashed()->paginate(10);
 
         return view('admin.posts.trashed')->with('posts',$posts);
     }
@@ -228,10 +192,11 @@ class PostsController extends Controller
         return redirect()->route('posts.trashed');
     }
 
-
     public function restore($id)
     {
         $post =Post::withTrashed()->where('id',$id)->first();
+        $post->isTrashed=0;
+        $post->save();
         $post->restore();
 
         Session::flash('success','Post restored successfully.');

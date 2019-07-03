@@ -68,11 +68,15 @@ class CategoriesController extends Controller
 
     public function update(Request $request)
     {
-        $category=Category::findOrFail($request->cat_id);
+
+        $category = Category::findOrFail($request->id);
 
         $category->update($request->all());
 
+       // dd($request->all());
+
         return back();
+
     }
 
     public function destroy($id)

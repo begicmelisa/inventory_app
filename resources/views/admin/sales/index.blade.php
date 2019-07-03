@@ -42,7 +42,8 @@
                     <th class="centerText">Author</th>
                     <th class="centerText">Barcode</th>
                     <th class="centerText">Product</th>
-                    <th class="centerText">Price</th>
+                    <th class="centerText">Price (per unit)</th>
+                    <th class="centerText">Profit</th>
                     <th class="centerText">Quantity</th>
                     <th class="centerText">Created</th>
                     <th class="centerText">Updated</th>
@@ -56,7 +57,8 @@
                             <td>{{ $values->postUser }}</td>
                             <td>{{ $values->barcode }}</td>
                             <td>{{ $values->postTitle }}</td>
-                            <td>{{ $values->price }}</td>
+                            <td>{{ $values->price }}$</td>
+                            <td>{{ $values->profit}}$</td>
                             <td>{{$values->quantity_new}}</td>
                             <td>{{ \Carbon\Carbon::parse($values->created_at)->diffForHumans() }}</td>
                             <td>{{ \Carbon\Carbon::parse($values->updated_at)->diffForHumans() }}</td>
@@ -71,7 +73,7 @@
                 @else
                     <tr>
                         <!-- class="text-center" -->
-                        <th colspan="8" >No products sold.</th>
+                        <th colspan="10" >No products sold.</th>
                     </tr>
 
                 @endif

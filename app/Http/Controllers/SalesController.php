@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use Illuminate\Support\Facades\Session;
 
 use App\Post;
@@ -15,6 +16,7 @@ class SalesController extends Controller
     public function index()
     {
         $sales = Sale::with('post')->paginate(8);
+
         return view('admin.sales.index')->with('sales',$sales);
     }
 
@@ -53,6 +55,7 @@ class SalesController extends Controller
                 'post_id'=>$request->post_id,
                 'user_id'=>$request->user_id,
                 'price'=>$request->price,
+                'profit'=>$request->profit,
                 'barcode'=>$request->barcode,
                 'postUser'=>$request->postUser,
                 'postTitle'=>$request->postTitle,
@@ -60,15 +63,42 @@ class SalesController extends Controller
 
             $post->quantity = $post->quantity - $sale->quantity_new;
             $post->save();
-
+            $sale->profit=$sale->price*$sale->quantity_new;
+            $sale->save();
 
             Session::flash('success','successfully.');
+        return redirect()->route('sales');
 
         }
         else {
-            Session::flash('error', 'You can not delete!');
+            Session::flash('error', 'NNNNNNNNN!');
+            return redirect()->route('sales');
+
         }
-        return redirect()->route('sales');
+    }
+
+    public function destroy($id)
+    {
+       $sale=Sale::find($id);
+        $postId=$sale->post_id;
+
+        $post=Post::find($postId);
+
+        if($post==null)
+        {
+            Session::flash('warning','Updated successfully.');
+            return back();
+        }
+
+            $post->quantity = $post->quantity + $sale->quantity_new;
+            $post->save();
+
+            Sale::destroy($id);
+
+            Session::flash('success', 'successfully.');
+
+            return redirect()->route('sales');
+
     }
 
     public function searchBarcode(Request $request){
@@ -84,6 +114,7 @@ class SalesController extends Controller
             ->orWhere('quantity_new', 'like', '%'.$search.'%')
             ->orWhere('postTitle', 'like', '%'.$search.'%')
             ->orWhere('postUser', 'like', '%'.$search.'%')
+            ->orWhere('profit', 'like', '%'.$search.'%')
             ->orWhere('price', 'like', '%'.$search.'%')->paginate(8);
 
         return view('admin.sales.index')->with('sales',$sales);
@@ -136,6 +167,9 @@ class SalesController extends Controller
 
         $sale->save();
 
+        $sale->profit=$sale->price*$sale->quantity_new;
+        $sale->save();
+
         Session::flash('success','Updated successfully.');
         return redirect()->route('sales')->with('post',Post::all());
     }
@@ -146,14 +180,6 @@ class SalesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $sale=Sale::find($id);
-        $postId=$sale->post_id;
 
-        $post=Post::find($postId)->get();
-
-       dd($post);
-    }
 
 }

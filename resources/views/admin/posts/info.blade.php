@@ -38,28 +38,22 @@
 
                             <div class="form-group">
                                 <label for="category"> Category</label>
-                                <input type="text"   style="width: 600px;" class="form-control" value="{{$post->category->name}}">
+                                <input type="text"   style="width: 600px;" class="form-control" value="{{$post->category->title}}">
                                 <br>
                             </div>
 
-                            <div class="form-group">
-                                <label for="tags">Tags</label><br>
-                                @foreach($tags as $tag)
 
-                                    @foreach($post->tags as $t)
-                                        @if($tag->id==$t->id)
-                                            {{$tag->tag}},
-                                        @endif
-                                    @endforeach
-
-                                @endforeach
-                            </div>
-                            <br>
 
 
                             <div class="form-group">
                                 <label for="price">Price</label>
                                 <input type="text" name="price"   style="width: 600px; "  id="price" cols="5" rows="5" class="form-control" value="{{$post->price}} " />
+                                <br>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="purchasePrice">Purchase Price</label>
+                                <input type="text" name="purchasePrice"   style="width: 600px; "  id="purchasePrice" cols="5" rows="5" class="form-control" value="{{$post->purchasePrice}} " />
                                 <br>
                             </div>
 
@@ -76,6 +70,7 @@
 
 
                     </form>
+
                 </div>
 
 

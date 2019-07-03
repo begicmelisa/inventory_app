@@ -10,21 +10,25 @@
 
 </section>
 
-<div class="panel panel-default" id="createPurchase">
+<div class="panel panel-default" id="editPurchase">
     <div  id="titlePost">
-        <h3> NEW PURCHASE</h3>
+        <h3> EDIT PURCHASE</h3>
     </div><br><br><br><br>
 
     <div>
         <div class="col-md-6" id="add1"></div>
 
+        <div>
+
+
+        </div>
 
                 <div class="panel-body" >
 
                     <form action="{{route('purchase.update',['id'=>$purchase->id])}}" method="post" enctype="multipart/form-data">
 
                     <input type="hidden" name="_token" id="csrf-token" style="width: 600px;" value="{{ Session::token() }}" />
-                        <div style="float: left; width: 700px; padding-left: 50px; ">
+                        <div style="float: left; width: 700px;  ">
                             <div class="form-group">
                                 <label for="postUser">Author</label>
                                 <input type="text" id="postUser" name="postUser" class="form-control" style="width: 600px;" value="{{Auth::user()->name}}" readonly>
@@ -49,7 +53,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="price">Price</label>
+                                <label for="price">Price (per unit)</label>
                                 <input type="number" min="1" readonly value="{{$purchase->price}}" style="width: 600px;" name="price" class="form-control">
                             </div>
                             <div class="form-group">
@@ -58,13 +62,14 @@
                                 <br>
                             </div>
                         </div>
-
+                        <div style=" float: right;   margin-right: 40px; margin-top: -79px;   height: 355px; width: 500px; padding-top: 7px;  ">
+                        </div>
                         <div style=" width: 1240px; height: 450px; padding-top: 355px;">
 
                         </div>
                         <div class="form-group">
                             <div class="text-center">
-                                <button class="btn btn-success" id="editPurchasebtn" type="submit">Update</button>
+                                <button class="btn btn-success" id="updatePurchasebtn" type="submit">Update</button>
                             </div>
                         </div>
                     </form>

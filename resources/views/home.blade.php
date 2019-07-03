@@ -68,8 +68,6 @@
         </div>
     </div>
 
-    <img src="{{Storage::url(Auth::user()->avatar)}}" style="object-fit: cover; width: 150px; height: 150px; float: left; border-radius: 50%; margin-right: 25px;" >
-
 
     <div id="notificaitons">
         <div class="Row" style="text-align: center;" id="" >
@@ -109,4 +107,8 @@
         {{$notifications->links()}}
     </div>
 
+
+
+    <div class="panel-body">
+    </div>
 @include('admin.includes.footer')

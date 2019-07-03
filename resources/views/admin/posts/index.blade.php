@@ -42,6 +42,7 @@
                             <th class="centerText">Image</th>
                             <th class="centerText">Title</th>
                             <th class="centerText">Barcode</th>
+                            <th class="centerText">Purchase Price</th>
                             <th class="centerText">Price</th>
                             <th class="centerText">Quantity</th>
                             <th class="centerText">Category</th>
@@ -54,29 +55,53 @@
                         <tbody>
                      @if($posts->count()>0)
                          @foreach( $posts as $key =>$values)
-                             <tr>
-                                 <td><img style=" object-fit: cover;" src="{{$values->featured}}" alt="{{$values->title}}" width="80px" height="50px"> </td>
-                                 <td style="padding-top: 20px;">{{$values->title}}</td>
-                                 <td style="padding-top: 20px;">{{$values->barcode}}</td>
-                                 <td style="padding-top: 20px;">{{$values->price}}</td>
-                                 <td style="padding-top: 20px;">{{$values->quantity}}</td>
-                                 <td style="padding-top: 20px;">{{$values->category->title}}</td>
-                                 <td style="padding-top: 20px;">{{ \Carbon\Carbon::parse($values->created_at)->diffForHumans() }}</td>
-                                 <td style="padding-top: 20px;">{{ \Carbon\Carbon::parse($values->updated_at)->diffForHumans() }}</td>
-                                 <td style="padding-top: 20px;"> {{Auth::user()->name}}</td>
+                              @if($values->quantity==0)
 
-                                 <td style="padding-top: 20px;">
-                                     <a href="{{route('post.edit',['id'=>$values->id])}}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> </a>
-                                     <a href="{{route('post.delete',['id'=>$values->id])}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>
-                                 </td>
+                                  <tr style="color: darkgray;">
+                                      <td><img style=" object-fit: cover;" src="{{$values->featured}}" alt="{{$values->title}}" width="80px" height="50px"> </td>
+                                      <td style="padding-top: 20px;">{{$values->title}}</td>
+                                      <td style="padding-top: 20px;">{{$values->barcode}}</td>
+                                      <td style="padding-top: 20px;">{{$values->purchasePrice}}</td>
+                                      <td style="padding-top: 20px;">{{$values->price}}</td>
+                                      <td style="padding-top: 20px;">{{$values->quantity}}</td>
+                                      <td style="padding-top: 20px;">{{$values->category->title}}</td>
+                                      <td style="padding-top: 20px;">{{ \Carbon\Carbon::parse($values->created_at)->diffForHumans() }}</td>
+                                      <td style="padding-top: 20px;">{{ \Carbon\Carbon::parse($values->updated_at)->diffForHumans() }}</td>
+                                      <td style="padding-top: 20px;"> {{Auth::user()->name}}</td>
 
-                             </tr>
+                                      <td style="padding-top: 20px;">
+                                          <a href="{{route('post.edit',['id'=>$values->id])}}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> </a>
+                                          <a href="{{route('post.delete',['id'=>$values->id])}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>
+                                      </td>
+                                  </tr>
+                              @else
+                                  <tr>
+
+                                  <td><img style=" object-fit: cover;" src="{{$values->featured}}" alt="{{$values->title}}" width="80px" height="50px"> </td>
+                                  <td style="padding-top: 20px;">{{$values->title}}</td>
+                                  <td style="padding-top: 20px;">{{$values->barcode}}</td>
+                                      <td style="padding-top: 20px;">{{$values->purchasePrice}}</td>
+                                      <td style="padding-top: 20px;">{{$values->price}}</td>
+                                  <td style="padding-top: 20px;">{{$values->quantity}}</td>
+                                  <td style="padding-top: 20px;">{{$values->category->title}}</td>
+                                  <td style="padding-top: 20px;">{{ \Carbon\Carbon::parse($values->created_at)->diffForHumans() }}</td>
+                                  <td style="padding-top: 20px;">{{ \Carbon\Carbon::parse($values->updated_at)->diffForHumans() }}</td>
+                                  <td style="padding-top: 20px;"> {{Auth::user()->name}}</td>
+
+                                  <td style="padding-top: 20px;">
+                                      <a href="{{route('post.edit',['id'=>$values->id])}}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> </a>
+                                      <a href="{{route('post.delete',['id'=>$values->id])}}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> </a>
+                                  </td>
+                                  </tr>
+
+                              @endif
+
+
                          @endforeach
-
                      @else
                          <tr>
                              <!-- class="text-center" -->
-                             <th colspan="10" >No published posts.</th>
+                             <th colspan="12" >No published posts.</th>
                          </tr>
 
                      @endif

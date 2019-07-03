@@ -73,10 +73,40 @@ class PurchasesController extends Controller
         $post->save();
 
 
+        Session::flash('success','Added successfully.');
 
         return redirect()->route('purchases');
 
     }
+    public function destroy($id)
+    {
+        $purchase = Purchase::find($id);
+        $postId = $purchase->post_id;
+
+        $post=Post::find($postId);
+    if($post==null)
+    {
+        Session::flash('warning','aaaaaaaaaa.');
+        return back();
+    }
+    if($post->quantity>=$purchase->quantity_new)
+    {
+        $post->quantity=$post->quantity-$purchase->quantity_new;
+        $post->save();
+
+        Purchase::destroy($id);
+
+        Session::flash('success', 'successfully.');
+
+        return back();
+
+    }
+        Session::flash('error', 'successfully.');
+
+        return back();
+
+    }
+
 
     public function show($id)
     {
@@ -85,9 +115,11 @@ class PurchasesController extends Controller
 
     public function edit($id)
     {
-        $purchase=Purchase::find($id);
 
-        return view('admin.purchases.edit')->with('purchase',$purchase);
+        $purchase = Purchase::with('post')->find($id);
+
+        return view('admin.purchases.edit')->with('purchase',$purchase)->with('post',Post::all());
+
     }
 
     public function update_quantity(Request $request,$id)
@@ -125,26 +157,5 @@ dd($post->quantity);
         return redirect()->route('purchases')->with('post',Post::all());
     }
 
-    public function destroy($id)
-    {
-        $purchase=Purchase::find($id);
 
-        $idPost=$purchase->post_id;
-
-        $post=Post::all()->find($idPost);
-        if($purchase->quantity_new<=$post->quantity){
-            $post->quantity=$post->quantity-$purchase->quantity_new;
-            $post->save();
-
-            $purchase->delete();
-            Session::flash('success','You successfully deleted the category.');
-
-        }
-        else {
-            Session::flash('error', 'You can not delete!');
-        }
-
-
-        return redirect()->route('purchases');
-    }
 }

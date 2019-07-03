@@ -31,6 +31,8 @@
                       <li class="dropdown">
 
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                              <img src="{{url('storage/profile_photos/default.jpg')}}" style="border-radius: 50px; width:25px; height: 25px; margin-top: -5px;" >
+
                               {{Auth::user()->name}} <span class="caret"></span>
                           </a>
                           <ul class="dropdown-menu" role="menu">
@@ -50,9 +52,9 @@
         <section class="sidebar">
             <!-- Sidebar user panel -->
             <div class="user-panel">
-                <div class="pull-left image" style="height: 15px;">
+                <div class="pull-left image" style="margin-left: 20px; ">
 
-
+                    <img src="{{url('storage/profile_photos/default.jpg')}}" style="border-radius: 50px; width:25px; height: 25px;" >
 
                 </div>
                 <div class="pull-left info" >

@@ -21,6 +21,10 @@
     @if(Session::has('error'))
     toastr.error("{{Session::get('error')}}");
     @endif
+
+    @if(Session::has('warning'))
+    toastr.warning("{{Session::get('warning')}}");
+    @endif
 </script>
 
 <!-- jQuery 3 -->
@@ -69,13 +73,39 @@
        console.log('Modal Opened');
        var button = $(event.relatedTarget)
        var title = button.data('mytitle')
-       var cat_id = button.data('catId')
+       var id = button.data('catid')
 
        var modal = $(this)
        modal.find('.modal-body #title').val(title)
-       modal.find('.modal-body #cat_id').val(cat_id)
+       modal.find('.modal-body #id').val(id)
    })
 </script>
 
+<script>
+    $('#editTag').on('show.bs.modal',function (event) {
+        console.log('Modal Opened');
+        var button = $(event.relatedTarget)
+        var tag = button.data('mytag')
+        var id = button.data('tagid')
+
+        var modal = $(this)
+        modal.find('.modal-body #tag').val(tag)
+        modal.find('.modal-body #id').val(id)
+    })
+</script>
+<script>
+    var expanded =false;
+    function showCheckboxes() {
+        var checkboxes=document.getElementById("checkboxes");
+        if(!expanded){
+            checkboxes.style.display="block";
+            expanded=true;
+        }
+        else{
+            checkboxes.style.display="none";
+            expanded=false;
+        }
+    }
+</script>
 </body>
 </html>

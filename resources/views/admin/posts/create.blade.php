@@ -22,7 +22,7 @@
                     <div class="form-group">
                         <label for="title">Author</label>
                         <input type="text" name="title" class="form-control" value="{{Auth::user()->name}}" readonly>
-                    </div>
+                    </div><br>
 
                     <div class="form-group">
                         <label for="title">Title</label>
@@ -35,10 +35,15 @@
                         <input type="text" name="barcode" class="form-control">
                     </div>
 
-                        <div class="form-group">
+                    <div class="form-group">
                         <label for="price">Price</label>
                         <input type="number" min="1"  name="price" class="form-control">
                     </div>
+
+                        <div class="form-group">
+                            <label for="purchasePrice"> Purchase Price</label>
+                            <input type="number" min="1"  name="purchasePrice" class="form-control">
+                        </div>
 
                     <div class="form-group">
                         <label for="quantity">Quantity</label>
@@ -47,11 +52,7 @@
 
 
 
-    <div class="form-group">
-        <label for="content">Content</label>
-        <textarea name="text" id="content" cols="6" rows="7" class="form-control"></textarea>
-        <br>
-    </div>
+
                 </div>
 
 <div style="float: right; width: 600px;    ">
@@ -70,19 +71,36 @@
                         <br>
                     </div>
 
-                    <div class="form-group">
-                        <label for="tags">Select tags</label>
-                   @foreach($tags as $tag)
-                       <div class="checkbox">
-                            <label><input type="checkbox" name="tags[]" value="{{$tag->id}}">{{ $tag->tag  }}</label>
-                       </div>
-                   @endforeach
-                    </div>
+    <div class="form-group">
+        <label for="category">Select Tag</label>
+
+ <div class="multiselect">
+     <div class="selectBox" onclick="showCheckboxes()">
+             <select   class="form-control" style="width: 600px;">
+             <option value="">-- Select Tags --</option>
+         </select>
+         <div class="overSelect"></div>
+ </div>
+     <div id="checkboxes" >
+         @foreach($tags as $tag)
+             <label style="font-weight: normal;"><input type="checkbox" name="tags[]" value="{{$tag->id}}">{{ $tag->tag  }}</label>
+
+             @endforeach
+     </div>
+ </div>
+    </div>
+
 <br>
                     <div class="form-group">
                         <label for="featured">Featured image</label>
                         <input type="file" name="featured"  >
                     </div>
+
+    <div class="form-group"><br>
+        <label for="content">Content</label>
+        <textarea name="text" id="content" cols="6" rows="7" class="form-control"></textarea>
+        <br>
+    </div>
 
                     <div class="form-group"  >
                         <div class="text-center">

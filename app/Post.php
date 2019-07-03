@@ -18,6 +18,7 @@ class Post extends Model
         'author',
         'featured',
         'price',
+        'purchasePrice',
         'barcode',
         'quantity',
    ];

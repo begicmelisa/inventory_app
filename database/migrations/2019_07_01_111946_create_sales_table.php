@@ -21,6 +21,7 @@ class CreateSalesTable extends Migration
             $table->string('postUser');
             $table->integer('user_id');
             $table->double('price');
+            $table->double('profit')->nullable();
             $table->string('barcode');
             $table->timestamps();
         });

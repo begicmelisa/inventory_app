@@ -4,9 +4,9 @@
 
 
 
-<div style="float: left; margin-left: 65px; width: 100%; height: 20px; ">
+<div style="float: left; margin-left: 70px; width: 100%; height: 20px; ">
     <section class="content-header"><h1>EMPLOYEES</h1></section>
-</div><br><br><br
+</div><br><br><br>
 
 <div id="all">
 
@@ -109,10 +109,10 @@
         </div>
 
     </div>
-</div>
 
 <div style="padding-top: 760px; padding-left: 600px;">
     {{$users->links()}}
+</div>
 </div>
 
 

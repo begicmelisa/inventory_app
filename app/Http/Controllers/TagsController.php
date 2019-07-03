@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 use App\Tag;
 use Session;
@@ -52,18 +53,13 @@ class TagsController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $this->validate($request,[
-           'tag'=>'required'
-        ]);
+        $tag = Tag::findOrFail($request->id);
 
-        $tag=Tag::find($id);
-        $tag->tag=$request->tag;
-        $tag->save();
+        $tag->update($request->all());
 
-        Session::flash('success','Tag updated successfully.');
-        return redirect()->route('tags');
+        return back();
     }
 
 

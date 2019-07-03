@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('barcode');
             $table->text('content')->nullable();
             $table->double('price');
+            $table->double('purchasePrice');
             $table->boolean('isTrashed')->default(0);
             $table->integer('category_id');
             $table->integer('quantity');

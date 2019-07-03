@@ -68,13 +68,17 @@
 
                             <div class="form-group">
                                 <label for="price">Price</label>
-                                <input type="number" min="1" readonly value="{{$values->price}}" style="width: 600px;" name="price" class="form-control">
+                                <input type="number" min="1" readonly value="{{$values->price}}" style="width: 600px;" name="price" class="form-control prc">
                             </div>
+
+
                             <div class="form-group">
                                 <label for="quantity">Quantity</label>
-                                <input type="number" min="1" readonly  name="quantity" style="width: 600px;" value="{{$values->quantity}}"  class="form-control">
+                                <input type="number" min="1" readonly  name="quantity" style="width: 600px;" value="{{$values->quantity}}"  class="form-control prc">
                                 <br>
                             </div>
+
+
                         </div>
                         <div style="width: 500px; float: right;   margin-right: 40px; margin-top: -79px;   height: 355px; padding-top: 7px;  ">
                             <img src="{{$values->featured}}" alt="{{$values->title}}" style=" object-fit: cover;" width="490px" height="355px">

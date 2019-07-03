@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -23,7 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user=Auth::user() ;
+
         $notifications=DB::table('notifications')->orderby('created_at','desc')->paginate(3);
-        return view('home')->with('notifications',$notifications);
+        return view('home')->with('notifications',$notifications)->with('user',$user);
     }
 }

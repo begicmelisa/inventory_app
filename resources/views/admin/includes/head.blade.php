@@ -43,6 +43,45 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
     <style>
+
+        .multiselect{
+            width: 200px;
+        }
+        .selectBox{
+            position: relative;
+        }
+        .selectBox select{
+            width: 100%;
+
+        }
+        .overSelect{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        #checkboxes{
+            display: none;
+            border: 1px #dadada solid;
+            width: 600px;
+            z-index:2;
+            padding-left: 20px;
+            position: absolute;
+background: white;
+
+        }
+        #checkboxes label{
+            display: block;
+        }
+
+
+
+        .avatar{
+            border-radius: 100%;
+            max-width: 100px;
+        }
         #addCategories{
             margin-left: 650px;
             margin-top: 70px;
@@ -77,6 +116,28 @@
             height: 500px;
 
         }
+
+        #editSale{
+            border-top: 1px solid lightskyblue;
+
+            width: 900px;
+            height: 700px;
+            margin: auto;
+            padding-left: 50px;
+            padding-right: 40px;
+            margin-top: 80px;
+        }
+
+        #editPurchase{
+            border-top: 1px solid lightskyblue;
+
+            width: 900px;
+            height: 700px;
+            margin: auto;
+            padding-left: 100px;
+            padding-right: 40px;
+            margin-top: 80px;
+        }
 #createPurchase{
 
     border-top: 1px solid lightskyblue;
@@ -108,6 +169,20 @@
             margin-left: 1010px;
         }
 
+        #updateSalebtn {
+            width: 90px;
+            height: 40px;
+            margin-top: 28px;
+            margin-left: 420px;
+        }
+
+        #updatePurchasebtn{
+            width: 90px;
+            height: 40px;
+            margin-top: -300px;
+            margin-left: 370px;
+        }
+
         #createPurchasebtn{
             width: 90px;
             height: 40px;
@@ -116,7 +191,7 @@
         }
 
         #createbtnPost{
-            margin-top: 270px;
+            margin-top: 30px;
             margin-left: 500px;
             width: 90px;
             height: 40px;
@@ -192,6 +267,7 @@
         #editUserDetails{
             margin: auto;
             width: 900px;
+            height: 720px;
             margin-left: 350px;
             padding-left: 40px;
             padding-right: 40px;
@@ -214,6 +290,11 @@
             margin-left: 150px;
             margin-top: 20px;
 
+        }
+
+        #titleSale{
+            height: 50px;
+            margin-left: 60px;
         }
         #titlePost{
             height: 50px;
