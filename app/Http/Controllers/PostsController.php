@@ -44,14 +44,18 @@ class PostsController extends Controller
 
         if($categories->count()== 0 ){
             Session::flash('info','You must have some categories before attempting to create a post.');
-            return view('admin.categories.create');
         }
         if( $tags->count()== 0){
-            Session::flash('info','You must have some tages before attempting to create a post.');
-            return view('admin.tags.create');
+            Session::flash('info','You must have some tags before attempting to create a post.');
         }
 
-        return view('admin.posts.create')->with('categories',$categories)
+        if( $tags->count()== 0 && $categories->count()== 0) {
+
+            Session::flash('info','You must have some categories and tags before attempting to create a post');
+
+        }
+
+            return view('admin.posts.create')->with('categories',$categories)
                                                ->with('tags', Tag::all());
     }
 
@@ -83,7 +87,6 @@ class PostsController extends Controller
     {
         $this->validate($request,[
             'title'=>'required|max:25',
-            'content'=>'required',
             'featured'=>'required|image',
             'category_id'=>'required',
             'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
@@ -169,7 +172,6 @@ class PostsController extends Controller
     {
         $this->validate($request,[
             'title'=>'required',
-            'content'=>'required',
             'barcode'=>'required',
             'quantity'=>'required',
             'price'=>'required',
@@ -213,7 +215,8 @@ class PostsController extends Controller
 
     public function trashed()
     {
-        $posts =Post::onlyTrashed()->paginate(8);
+
+        $posts =Post::with('category')->onlyTrashed()->paginate(10);
 
         return view('admin.posts.trashed')->with('posts',$posts);
     }

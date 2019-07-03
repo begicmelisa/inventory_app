@@ -21,7 +21,7 @@ class UsersController extends Controller
 
     public function index()
     {
-        $users=DB::table('users')->paginate(8);
+        $users=DB::table('users')->paginate(10);
         return view('admin.users.index')->with('users',$users);
     }
 
@@ -95,7 +95,7 @@ class UsersController extends Controller
         $user->save();
 
         Session::flash('success','User updated successfully.');
-        return redirect()->route('users');
+        return back();
     }
 
 

@@ -14,8 +14,6 @@ use App\User;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () { return view('admin/sales/index'); });
-
 
 
 Auth::routes();
@@ -116,6 +114,11 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('sale/delete/{id}',['uses'=>'SalesController@destroy','as'=>'sale.delete']);
 
+    Route::get('sale/search',['uses'=>'SalesController@search','as'=>'sale.search']);
+
+    Route::get('sale/edit/{id}',['uses'=>'SalesController@edit','as'=>'sale.edit']);
+
+    Route::post('sale/update/{id}',['uses'=>'SalesController@update','as'=>'sale.update']);
 
 
 
@@ -134,7 +137,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('category/delete/{id}',['uses'=>'CategoriesController@destroy','as'=>'category.delete']);
 
-    Route::post('category/update/{id}',['uses'=>'CategoriesController@update','as'=>'category.update']);
+    Route::patch('category/update',['uses'=>'CategoriesController@update','as'=>'category.update']);
 
     Route::get('category/searchCat',['uses'=>'CategoriesController@searchCat','as'=>'category.searchCat']);
 
@@ -149,7 +152,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     Route::get('tag/edit/{id}',['uses'=>'TagsController@edit','as'=>'tag.edit']);
 
-    Route::post('tag/update/{id}',['uses'=>'TagsController@update','as'=>'tag.update']);
+    Route::patch('tag/update',['uses'=>'TagsController@update','as'=>'tag.update']);
 
     Route::get('tag/delete/{id}',['uses'=>'TagsController@destroy','as'=>'tag.delete']);
 
@@ -165,7 +168,6 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     Route::get('user/edit/{id}',['uses'=>'UsersController@edit','as'=>'user.edit']);
     Route::get('user/add_user/{id}',['uses'=>'UsersController@add_user','as'=>'user.add_user']);
     Route::post('user/update_add_user/{id}',['uses'=>'UsersController@update_add_user','as'=>'user.update_add_user']);
-
 
     Route::get('user/create',['uses'=>'UsersController@create', 'as'=>'user.create']);
 
@@ -198,3 +200,4 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
 
 });
+

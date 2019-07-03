@@ -17,12 +17,11 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('barcode');
-            $table->text('content');
+            $table->text('content')->nullable();
             $table->double('price');
             $table->boolean('isTrashed')->default(0);
             $table->integer('category_id');
             $table->integer('quantity');
-            $table->integer('quantity_new')->default(0);
             $table->string('author');
             $table->string('featured');
 

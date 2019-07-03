@@ -13,7 +13,9 @@ class Purchase extends Model
         'post_id',
         'user_id',
         'barcode',
-        'price'
+        'price',
+        'postTitle',
+        'postUser'
     ];
 
     public  function post(){

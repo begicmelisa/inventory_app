@@ -15,8 +15,10 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('quantity');
+            $table->integer('quantity_new');
             $table->integer('post_id');
+            $table->string('postTitle');
+            $table->string('postUser');
             $table->integer('user_id');
             $table->double('price');
             $table->string('barcode');

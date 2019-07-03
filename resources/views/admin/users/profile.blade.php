@@ -10,7 +10,7 @@
     <div  id="titlePost">
         <br>
                 <?php // this way to get photo and display it  ?>
-        <img src="{{Storage::url($user->avatar)}}" style="width: 150px; height: 150px; float: left; border-radius: 50%; margin-right: 25px;" >
+        <img src="{{Storage::url($user->avatar)}}" style="object-fit: cover; width: 150px; height: 150px; float: left; border-radius: 50%; margin-right: 25px;" >
         <br>
         <h2>{{$user->name}}'s Profile</h2>
                                 <?php  // add this action by route function and use the name of route?>
@@ -68,6 +68,7 @@
                 <input type="date" name="bornDate" value="{{Carbon\Carbon::parse($user->bornDate)->format('Y-m-d')}}" class="form-control">
                 <br>
             </div>
+
 
             <div class="form-group">
                 <div class="text-center">

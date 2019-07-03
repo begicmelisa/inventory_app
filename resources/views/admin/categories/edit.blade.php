@@ -35,8 +35,8 @@
 
 
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" name="name"  value="{{$category->name}}" class="form-control">
+                        <label for="title">Title</label>
+                        <input type="text" name="title"  value="{{$category->title}}" class="form-control">
                         <br>
                     </div>
 

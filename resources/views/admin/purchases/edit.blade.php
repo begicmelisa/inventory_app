@@ -10,63 +10,74 @@
 
 </section>
 
-<div class="panel panel-default" id="createPost">
+<div class="panel panel-default" id="editPurchase">
     <div  id="titlePost">
-        <h3> Update Purchase</h3>
+        <h3> EDIT PURCHASE</h3>
+    </div><br><br><br><br>
+
+    <div>
+        <div class="col-md-6" id="add1"></div>
+
+        <div>
+
+
+        </div>
+
+                <div class="panel-body" >
+
+                    <form action="{{route('purchase.update',['id'=>$purchase->id])}}" method="post" enctype="multipart/form-data">
+
+                    <input type="hidden" name="_token" id="csrf-token" style="width: 600px;" value="{{ Session::token() }}" />
+                        <div style="float: left; width: 700px;  ">
+                            <div class="form-group">
+                                <label for="postUser">Author</label>
+                                <input type="text" id="postUser" name="postUser" class="form-control" style="width: 600px;" value="{{Auth::user()->name}}" readonly>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="postTitle">Title</label>
+                                <input type="text" name="postTitle" readonly value="{{$purchase->postTitle}}" style="width: 600px;" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="hidden" name="post_id"   value="{{$purchase->id}}" style="width: 600px;" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="hidden" name="barcode" hidden value="{{$purchase->barcode}}" style="width: 600px;" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="hidden" name="user_id" hidden value="{{Auth::user()->id}}" style="width: 600px;" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price">Price</label>
+                                <input type="number" min="1" readonly value="{{$purchase->price}}" style="width: 600px;" name="price" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="quantity_new">Quantity</label>
+                                <input type="number" min="1"    name="quantity_new" style="width: 600px;" value="{{$purchase->quantity_new}}"  class="form-control">
+                                <br>
+                            </div>
+                        </div>
+                        <div style=" float: right;   margin-right: 40px; margin-top: -79px;   height: 355px; width: 500px; padding-top: 7px;  ">
+                        </div>
+                        <div style=" width: 1240px; height: 450px; padding-top: 355px;">
+
+                        </div>
+                        <div class="form-group">
+                            <div class="text-center">
+                                <button class="btn btn-success" id="updatePurchasebtn" type="submit">Update</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+
     </div>
-    <br>
-
-        <form action="{{route('purchase.update',['id'=>$purchase->id])}}" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-            <div style="float: left; width: 600px;  ">
-                <div class="form-group">
-                    <label for="title">Author</label>
-                    <input type="text" name="title" class="form-control" value="{{Auth::user()->name}}" readonly>
-                </div>
-
-                <div class="form-group">
-                    <input type="text" name="user_id" hidden value="{{Auth::user()->id}}" style="width: 600px;" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="price">Product Title</label>
-                    <input type="text" value="{{$purchase->post->title}}" readonly name="price" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="price">Price</label>
-                    <input type="text" value="{{$purchase->post->price}}" readonly name="price" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="barcode">Barcode</label>
-                    <input type="text" value="{{$purchase->post->barcode}}" readonly name="barcode" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <input type="hidden" name="post_id"   value="{{$purchase->post->id}}" style="width: 600px;" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <input type="hidden" name="user_id" hidden value="{{Auth::user()->id}}" style="width: 600px;" class="form-control">
-                </div><br><br>
-
-                <div class="form-group">
-                    <label for="quantity_new">Quantity New</label>
-                    <input type="number" value="{{$purchase->quantity_new}}" min="1" name="quantity_new" class="form-control">
-                </div>
-
-                <div class="form-group"  >
-                    <div class="text-center">
-                        <button  style=" margin-top: 110px; margin-left: 500px;"  class="btn btn-success" type="submit">Update</button>
-                    </div>
-                </div>
-
-            </div>
-        </form>
-    </div>
-</div>
-
 
 
 

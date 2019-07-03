@@ -35,6 +35,8 @@ class PurchasesController extends Controller
         $search=$request->get('search');
         $purchases=Purchase::with('post')->where('barcode', 'like', '%'.$search.'%')
             ->orWhere('quantity_new', 'like', '%'.$search.'%')
+            ->orWhere('postTitle', 'like', '%'.$search.'%')
+            ->orWhere('postUser', 'like', '%'.$search.'%')
             ->orWhere('price', 'like', '%'.$search.'%')->paginate(8);
 
         return view('admin.purchases.index')->with('purchases',$purchases);
@@ -47,9 +49,10 @@ class PurchasesController extends Controller
         $this->validate($request,[
             'quantity_new'=>'required',
             'post_id'=>'required',
-
+            'postTitle'=>'required',
             'price'=>'required',
             'barcode'=>'required',
+            'postUser'=>'required',
 
         ]);
 
@@ -58,7 +61,9 @@ class PurchasesController extends Controller
             'post_id'=>$request->post_id,
             'user_id'=>$request->user_id,
             'price'=>$request->price,
+            'postTitle'=>$request->postTitle,
             'barcode'=>$request->barcode,
+            'postUser'=>$request->postUser,
         ]);
 
         $id=$purchase->post_id;
@@ -68,10 +73,40 @@ class PurchasesController extends Controller
         $post->save();
 
 
+        Session::flash('success','Added successfully.');
 
         return redirect()->route('purchases');
 
     }
+    public function destroy($id)
+    {
+        $purchase = Purchase::find($id);
+        $postId = $purchase->post_id;
+
+        $post=Post::find($postId);
+    if($post==null)
+    {
+        Session::flash('warning','aaaaaaaaaa.');
+        return back();
+    }
+    if($post->quantity>=$purchase->quantity_new)
+    {
+        $post->quantity=$post->quantity-$purchase->quantity_new;
+        $post->save();
+
+        Purchase::destroy($id);
+
+        Session::flash('success', 'successfully.');
+
+        return back();
+
+    }
+        Session::flash('error', 'successfully.');
+
+        return back();
+
+    }
+
 
     public function show($id)
     {
@@ -80,10 +115,10 @@ class PurchasesController extends Controller
 
     public function edit($id)
     {
-        $purchase=Purchase::find($id);
 
-        return view('admin.purchases.edit')->with('purchase',$purchase)
-            ->with('post',Post::all());
+        $purchase = Purchase::with('post')->find($id);
+
+        return view('admin.purchases.edit')->with('purchase',$purchase)->with('post',Post::all());
 
     }
 
@@ -113,33 +148,14 @@ dd($post->quantity);
 
         $purchase->price=$request->price;
         $purchase->post_id=$request->post_id;
+        $purchase->postUser=$request->postUser;
+        $purchase->postTitle=$request->postTitle;
 
         $purchase->save();
 
-        Session::flash('success','Purchase updated successfully.');
-        return redirect()->route('purchases');
+        Session::flash('success','Updated successfully.');
+        return redirect()->route('purchases')->with('post',Post::all());
     }
 
-    public function destroy($id)
-    {
-        $purchase=Purchase::find($id);
 
-        $idPost=$purchase->post_id;
-
-        $post=Post::all()->find($idPost);
-        if($purchase->quantity_new<=$post->quantity){
-            $post->quantity=$post->quantity-$purchase->quantity_new;
-            $post->save();
-
-            $purchase->delete();
-            Session::flash('success','You successfully deleted the category.');
-
-        }
-        else {
-            Session::flash('error', 'You can not delete!');
-        }
-
-
-        return redirect()->route('purchases');
-    }
 }

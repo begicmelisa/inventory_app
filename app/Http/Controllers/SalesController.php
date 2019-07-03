@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use Illuminate\Support\Facades\Session;
 
 use App\Post;
@@ -34,27 +35,31 @@ class SalesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'quantity'=>'required',
+            'quantity_new'=>'required',
             'post_id'=>'required',
             'price'=>'required',
             'barcode'=>'required',
+            'postUser'=>'required',
+            'postTitle'=>'required',
 
         ]);
 
         $id=$request->post_id;
         $post=Post::find($id);
 
-        if($post->quantity>=$request->quantity) {
+        if($post->quantity>=$request->quantity_new) {
 
             $sale= Sale::create([
-                'quantity'=>$request->quantity,
+                'quantity_new'=>$request->quantity_new,
                 'post_id'=>$request->post_id,
                 'user_id'=>$request->user_id,
                 'price'=>$request->price,
                 'barcode'=>$request->barcode,
+                'postUser'=>$request->postUser,
+                'postTitle'=>$request->postTitle,
             ]);
 
-            $post->quantity = $post->quantity - $sale->quantity;
+            $post->quantity = $post->quantity - $sale->quantity_new;
             $post->save();
 
 
@@ -62,9 +67,33 @@ class SalesController extends Controller
 
         }
         else {
-            Session::flash('error', 'You can not delete!');
+            Session::flash('error', 'NNNNNNNNN!');
         }
         return redirect()->route('sales');
+    }
+
+    public function destroy($id)
+    {
+       $sale=Sale::find($id);
+        $postId=$sale->post_id;
+
+        $post=Post::find($postId);
+
+        if($post==null)
+        {
+            Session::flash('warning','Updated successfully.');
+            return back();
+        }
+
+            $post->quantity = $post->quantity + $sale->quantity_new;
+            $post->save();
+
+            Sale::destroy($id);
+
+            Session::flash('success', 'successfully.');
+
+            return redirect()->route('sales');
+
     }
 
     public function searchBarcode(Request $request){
@@ -73,6 +102,18 @@ class SalesController extends Controller
 
         return view('admin.sales.create')->with('sales',$sales);
     }
+
+    public function search(Request $request){
+        $search=$request->get('search');
+        $sales=Sale::with('post')->where('barcode', 'like', '%'.$search.'%')
+            ->orWhere('quantity_new', 'like', '%'.$search.'%')
+            ->orWhere('postTitle', 'like', '%'.$search.'%')
+            ->orWhere('postUser', 'like', '%'.$search.'%')
+            ->orWhere('price', 'like', '%'.$search.'%')->paginate(8);
+
+        return view('admin.sales.index')->with('sales',$sales);
+    }
+
 
     public function show($id)
     {
@@ -87,7 +128,9 @@ class SalesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sale=Sale::find($id);
+
+        return view('admin.sales.edit')->with('sale',$sale);
     }
 
     /**
@@ -99,7 +142,27 @@ class SalesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'barcode'=>'required',
+            'quantity_new'=>'required',
+        ]);
+
+        $sale=Sale::with('post')->find($id);
+
+
+
+        $sale->quantity_new=$request->quantity_new;
+        $sale->barcode=$request->barcode;
+
+        $sale->price=$request->price;
+        $sale->post_id=$request->post_id;
+        $sale->postUser=$request->postUser;
+        $sale->postTitle=$request->postTitle;
+
+        $sale->save();
+
+        Session::flash('success','Updated successfully.');
+        return redirect()->route('sales')->with('post',Post::all());
     }
 
     /**
@@ -108,12 +171,6 @@ class SalesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $sale=Sale::find($id);
 
-        $sale->delete();
 
-        return redirect()->route('sales');
-    }
 }

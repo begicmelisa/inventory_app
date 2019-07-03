@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Sale extends Model
 {
     protected $fillable = [
-        'quantity',
+        'quantity_new',
         'post_id',
         'user_id',
         'barcode',
-        'price'
+        'price',
+        'postTitle',
+        'postUser'
     ];
 
 

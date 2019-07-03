@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Category;
 use Session;
 use DB;
+use Illuminate\Database\Eloquent\Model;
+
+
 class CategoriesController extends Controller
 {
 
@@ -23,7 +26,7 @@ class CategoriesController extends Controller
 
     public function searchCat(Request $request){
         $search=$request->get('search');
-        $categories=DB::table('categories')->where('name', 'like', '%'.$search.'%')->paginate(8);
+        $categories=DB::table('categories')->where('title', 'like', '%'.$search.'%')->paginate(8);
 
         return view('admin.categories.index',['categories'=>$categories]);
     }
@@ -31,7 +34,7 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name'      =>  'required|unique:categories|max:30'
+            'title'      =>  'required|unique:categories|max:30'
         ]);
 
         if ($validator->fails()) {
@@ -41,7 +44,7 @@ class CategoriesController extends Controller
         else {
 
             $category = new Category;
-            $category->name = $request->name;
+            $category->title = $request->title;
             $category->save();
 
             Session::flash('success', 'You successfully created a category.');
@@ -63,17 +66,17 @@ class CategoriesController extends Controller
         return view('admin.categories.edit')->with('category',$category);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $category=Category::find($id);
 
-        $category->name=$request->name;
-        $category->save();
+        $category = Category::findOrFail($request->id);
 
-        Session::flash('success','You successfully updated the category.');
+        $category->update($request->all());
 
+       // dd($request->all());
 
-        return redirect()->route('categories');
+        return back();
+
     }
 
     public function destroy($id)

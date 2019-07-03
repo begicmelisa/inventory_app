@@ -29,7 +29,7 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin/home';
 
     /**
      * Create a new controller instance.
@@ -43,6 +43,6 @@ class ResetPasswordController extends Controller
 
     public function  showResetForm(Request $request, $token = null)
     {
-        return view('admin.passwords.reset')->with(['token'=>$token,'email'=> $request->email]);
+        return view('auth.passwords.reset')->with(['token'=>$token,'email'=> $request->email]);
     }
 }

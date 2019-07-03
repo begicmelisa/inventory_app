@@ -2,6 +2,8 @@
 
 
 <body class="hold-transition skin-blue sidebar-mini">
+
+
 <div class="wrapper">
     <header class="main-header">
         <!-- Logo -->
@@ -49,13 +51,12 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image" style="height: 15px;">
-                    <img src="/public/storage/profile_photos/{{ Auth::user()->avatar }}"  alt="{{Auth::user()->name}}"
-                                                    style="width:32px; height:32px; position:absolute; top:15px; left: 25px; border-radius:50%">
+
+
 
                 </div>
                 <div class="pull-left info" >
-                   <!-- <img src="/public/storage/profile_photos/{{Auth::user()->avatar}}" alt="{{Auth::user()->name}}"
-                   style=" width: 32px; height:32px; position: absolute;  top: 10px; left: 10px;border-radius: 50px; "> -->
+
                     <p style="font-size: 16x;"> {{Auth::user()->name}} </p>
 
                 </div>
@@ -88,8 +89,8 @@
                 </li><br>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-shopping-cart"></i>
-                        <span>Purchase</span>
+                        <i class="fa fa-list"></i>
+                        <span>Stock</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -115,7 +116,7 @@
                     <ul class="treeview-menu">
                         <li><a href="{{route('posts')}} "><i class="fa fa-list-alt"></i> List</a></li>
                         <li><a href="{{route('post.create')}}"><i class="fa fa-plus"></i> Create</a></li>
-                        <li><a href="{{route('posts.trashed')}}"><i class="fa fa-trash"></i> Trashed Posts</a></li>
+                        <li><a href="{{route('posts.trashed')}}"><i class="fa fa-history"></i> Trashed Posts</a></li>
 
                     </ul>
                 </li><br>
@@ -152,7 +153,7 @@
             @endif
                 <br>
 
-                <li class="treeview">
+              <!--  <li class="treeview">
                     <a href="#">
                         <i class="fa fa-bell" aria-hidden="true"></i>
                         <span>Notifications</span>
@@ -177,7 +178,7 @@
                         <li><a href="locations"><i class="fa fa-list-alt"></i> List</a></li>
                         <li><a href="/addLocation"><i class="fa fa-plus"></i> Add</a></li>
                     </ul>
-                </li><br>
+                </li><br> -->
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-cog"></i>

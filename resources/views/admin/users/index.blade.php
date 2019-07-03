@@ -4,44 +4,23 @@
 
 
 
-<section class="content-header">
-    <h1>
-        USERS
-    </h1>
-
-</section>
+<div style="float: left; margin-left: 65px; width: 100%; height: 20px; ">
+    <section class="content-header"><h1>EMPLOYEES</h1></section>
+</div><br><br><br
 
 <div id="all">
 
-    <div class="col-md-6" id="add1">
-
-
-       <!-- <div class="col-lg-10 col-lg-offset-2" id="addBtn">
-            <a href="{{route('tag.create')}}" class="btn btn-success" style="height: 35px">New Tag</a>
-        </div> -->
-
-
-    </div>
-    <div class="col-md-6" id="add1">
-
-        <form method="POST" action="{{route('user.create')}}" enctype="multipart/form-data">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-            <fieldset>
-                <div class="form-group" >
-                    <div class="col-lg-10 col-lg-offset-2" id="addBtn">
-                        <a href="{{route('user.create')}}" class="btn btn-success" style="height: 35px">Add New</a>
-                    </div>
-                </div>
-            </fieldset>
-        </form>
+    <div class="col-md-6"  >
+        <div class="col-lg-10 col-lg-offset-2" id="addBtn">
+            <a href="{{route('user.create')}}" class="btn btn-success" style="height: 35px">Add New</a>
+        </div>
     </div>
     <div>
 
-        <div class="col-md-4" id="searchBtn">
+        <div class="col-md-4" id="searchBtnuser"  >
             <form action="{{route('user.searchUser')}}" method="get">
                 <div class="form-group">
-                    <input type="search" name="search" class="form-control" placeholder="Search Users" style="width: 350px;">
+                    <input type="search" name="search" class="form-control" placeholder="Search Employee" style="width: 350px;">
                     <div id="btnSearch">
                                             <span class="form-control-btn">
                                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
@@ -51,12 +30,12 @@
             </form>
         </div>
 
-        <div class="Row" style="text-align: center;" id="tableUsers" >
-            <div class="panel-heading" style="float: left;">
-                <a href="{{route('users')}}">All Users</a>
 
-            </div><br>
-            <table class="table ">
+        <div class="Row" style="text-align: center;" id="tableList" >
+            <div class="panel-heading" style="text-align: left;">
+                <a style="margin-left: -15px; margin-bottom: -60px; "   href="{{route('purchases')}}">Stock</a>
+            </div>
+            <table class="table  table-striped table-bordered">
                 <thead>
                 <tr>
                     <th class="centerText">ID</th>
@@ -130,10 +109,10 @@
         </div>
 
     </div>
-</div>
 
 <div style="padding-top: 760px; padding-left: 600px;">
     {{$users->links()}}
+</div>
 </div>
 
 

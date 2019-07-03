@@ -19,7 +19,6 @@
 
     <div class="panel-body" >
         <form action="{{route('user.update_add_user',['id'=>$user->id])}}" method="post" >
-
             <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
 
 
