@@ -196,5 +196,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     Route::post('notification/store',['uses'=>'NotificationsController@store','as'=>'notification.store']);
 
 
+
+
 });
 

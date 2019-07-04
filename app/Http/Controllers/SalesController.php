@@ -15,7 +15,7 @@ class SalesController extends Controller
 
     public function index()
     {
-        $sales = Sale::with('post')->paginate(8);
+        $sales = Sale::with('post')->paginate(10);
 
         return view('admin.sales.index')->with('sales',$sales);
     }
@@ -66,7 +66,7 @@ class SalesController extends Controller
             $sale->profit=$sale->price*$sale->quantity_new;
             $sale->save();
 
-            Session::flash('success','successfully.');
+            Session::flash('success','Successfully.');
         return redirect()->route('sales');
 
         }

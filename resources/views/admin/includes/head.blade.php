@@ -111,7 +111,7 @@ background: white;
 
         #notificaitons{
             float: right;
-            margin-top: 80px;
+            margin-top: 60px;
             width: 1375px;
             height: 400px;
             padding-right: 20px;

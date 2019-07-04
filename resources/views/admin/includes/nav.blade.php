@@ -134,8 +134,7 @@
                 <li>
                     <a href="{{route('notification.create')}}"><i class="fa fa-bell" aria-hidden="true"></i><span>Notifications</span></a>
                 </li>
-                @if(Auth::User()) <?php // add this line to check if user logged in or not ?>
-            @if(Auth::user()->admin)
+
                 <br>
                     <li class="treeview">
                         <a href="#">
@@ -147,40 +146,16 @@
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="{{route('users')}}"><i class="fa fa-list-alt"></i> List</a></li>
+                            @if(Auth::User()) <?php // add this line to check if user logged in or not ?>
+                            @if(Auth::user()->admin)
                             <li><a href="{{route('user.create')}}"><i class="fa fa-plus"></i> Add</a></li>
+                            @endif
+                            @endif
                         </ul>
                     </li>
 
-            @endif
-            @endif
                 <br>
 
-              <!--  <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-bell" aria-hidden="true"></i>
-                        <span>Notifications</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="locations"><i class="fa fa-list-alt"></i> List</a></li>
-                        <li><a href="/addLocation"><i class="fa fa-plus"></i> Add</a></li>
-                    </ul>
-                </li><br>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-line-chart" aria-hidden="true"></i>
-                        <span>Chart</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="locations"><i class="fa fa-list-alt"></i> List</a></li>
-                        <li><a href="/addLocation"><i class="fa fa-plus"></i> Add</a></li>
-                    </ul>
-                </li><br> -->
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-cog"></i>

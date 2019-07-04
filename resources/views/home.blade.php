@@ -7,11 +7,11 @@
             <h1>HOME</h1>
         </section>
 <br><br>
-<div style="margin-left: 100px; margin-top: 20px;">
-<div class="col-lg-3" style="width: 350px;">
+<div style="margin-left: 100px; margin-top: 0px;">
+<div class="col-lg-3" style="width: 350px; ">
     <div class="panel panel-info">
         <div class="panel-heading text-center">
-            <a style="color: dodgerblue;" href="{{route('users')}}" >SALES</a>
+            <a style="color: dodgerblue;" href="{{route('sales')}}" >SALES</a>
 
         </div>
         <div class="panel-body">
@@ -26,7 +26,7 @@
 <div class="col-lg-3" style="width: 350px; ">
     <div class="panel panel-default">
         <div class="panel-heading text-center" style="background: 	#ffe0cc">
-           <a style="color: 	#ff6600;"  href="{{route('posts.trashed')}}">STOCK</a>
+           <a style="color: 	#ff6600;"  href="{{route('purchases')}}">STOCK</a>
         </div>
         <div class="panel-body">
 
@@ -55,7 +55,7 @@
     <div class="col-lg-3" style="width: 350px;">
         <div class="panel panel-danger">
             <div class="panel-heading text-center" style="background: #ffcccc;">
-                <a style="color: red" href="{{route('categories')}}">TRASHED PRODUCT</a>
+                <a style="color: red" href="{{route('posts.trashed')}}">TRASHED PRODUCT</a>
             </div>
             <div class="panel-body">
 
@@ -88,7 +88,10 @@
                            </div>
                             </div>
 
-                            <div style=" margin-left: -20px;">
+
+                            <div style=" margin-left: -20px; padding-right: 20px; margin-top: -20px;"><br>
+                                <span style="font-weight: bold;">{{$values->title}}</span><br><br>
+
                                 <span>{{$values->body}}</span><br>
 
                                 <div style="float: right; margin-right: 35px;   margin-top: 15px;  color: grey;">
@@ -99,7 +102,7 @@
                     @endforeach
 
                 @else
-                    <a>aaaaaaaaaaaaaaaaaaaaaaaa</a>
+                    <a>No notification yet.</a>
                 @endif
             </div>
 
@@ -109,7 +112,7 @@
 
     </div>
 
-    <div style="padding-top: 690px; padding-left: 600px;">
+    <div style="padding-top: 770px; padding-left: 600px;">
         {{$notifications->links()}}
     </div>
 

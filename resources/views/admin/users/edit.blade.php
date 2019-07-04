@@ -66,7 +66,7 @@
                 @endif
 
             <div class="form-group">
-                <div class="text-center" style="margin-top: 60px; margin-left: 690px;  width: 100px; height: 50px;">
+                <div class="text-center" style="margin-top: -10px; margin-left: 690px;  width: 100px; height: 50px;">
                     <button class="btn btn-success" style=" width: 90px;
             height: 40px;" type="submit">Update  </button>
                 </div>

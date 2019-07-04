@@ -148,7 +148,8 @@ class UsersController extends Controller
         $name=$user->name;
         $user->delete();
 
-        Session::flash('success','User deleted.');
+        Session::flash('success','User deleted successfully.');
+
         return redirect()->back();
     }
 

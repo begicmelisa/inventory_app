@@ -33,12 +33,11 @@
 
         <div class="Row" style="text-align: center;" id="tableList" >
             <div class="panel-heading" style="text-align: left;">
-                <a style="margin-left: -15px; margin-bottom: -60px; "   href="{{route('purchases')}}">Stock</a>
+                <a style="margin-left: -15px; margin-bottom: -60px; "   href="{{route('users')}}">All Employees</a>
             </div>
             <table class="table  table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th class="centerText">ID</th>
                     <th class="centerText">Name</th>
                     <th class="centerText">Email</th>
                     <th class="centerText">Address</th>
@@ -56,7 +55,6 @@
                 @if($users->count()>0)
                     @foreach( $users as $key =>$values)
                         <tr>
-                            <td>{{$values->id}}</td>
                             <td>{{$values->name}}</td>
                             <td>{{$values->email}}</td>
                             <td>{{$values->address}}</td>
@@ -99,7 +97,7 @@
 
                 @else
                     <tr>
-                        <th colspan="5" >No users.</th>
+                        <th colspan="11" >No users.</th>
                     </tr>
 
                 @endif

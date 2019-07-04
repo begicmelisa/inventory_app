@@ -85,7 +85,7 @@
 
     </div>
 </div>
-<div style="padding-top: 800px; padding-left: 600px;">
+<div style="padding-top: 780px; padding-left: 600px;">
     {{$sales->links()}}
 </div>
 

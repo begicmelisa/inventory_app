@@ -34,7 +34,7 @@
 
         <div class="Row" style="text-align: center;" id="tableList" >
             <div class="panel-heading" style="text-align: left;">
-                <a style="margin-left: -15px; margin-bottom: -60px; "   href="{{route('posts')}}">All products</a>
+                <a style="margin-left: -15px;  "   href="{{route('posts')}}">All products</a>
             </div>
             <table class="table  table-striped table-bordered">
                         <thead>
@@ -113,7 +113,7 @@
             </div>
         </div>
 
-<div style="padding-top: 800px; padding-left: 600px;">
+<div style="padding-top: 780px; padding-left: 600px;">
     {{$posts->links()}}
 </div>
 @include('admin.includes.footer')

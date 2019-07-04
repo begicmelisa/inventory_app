@@ -39,8 +39,8 @@ class NotificationsController extends Controller
             ]);
 
 
-            Session::flash('success','successfully.');
-            return redirect()->route('home');
+            Session::flash('success','You successfully created notification.');
+            return redirect()->route('home')->with('notification',$notification);
 
 
 

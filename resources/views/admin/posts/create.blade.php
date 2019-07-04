@@ -98,7 +98,7 @@
 
     <div class="form-group"><br>
         <label for="content">Content</label>
-        <textarea name="text" id="content" cols="6" rows="7" class="form-control"></textarea>
+        <textarea name="content" id="content" cols="6" rows="7" class="form-control"></textarea>
         <br>
     </div>
 

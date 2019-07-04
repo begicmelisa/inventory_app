@@ -17,7 +17,7 @@ class PostsController extends Controller
     public function index()
     {
 
-        $posts = Post::with('category')->paginate(8);
+        $posts = Post::with('category')->paginate(7);
         return view('admin.posts.index')->with('posts',$posts);
     }
 
@@ -51,7 +51,7 @@ class PostsController extends Controller
 
         if( $tags->count()== 0 && $categories->count()== 0) {
 
-            Session::flash('info','You must have some categories and tags before attempting to create a post');
+            Session::flash('info','You must have some categories and tags before attempting to create a post.');
 
         }
 

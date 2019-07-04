@@ -12,7 +12,7 @@ class PurchasesController extends Controller
 
     public function index()
     {
-        $purchases = Purchase::with('post')->paginate(8);
+        $purchases = Purchase::with('post')->paginate(10);
         return view('admin.purchases.index')->with('purchases',$purchases);
     }
 
@@ -76,7 +76,7 @@ class PurchasesController extends Controller
         $post->save();
 
 
-        Session::flash('success','Added successfully.');
+        Session::flash('success','Purchase created successfully.');
 
         return redirect()->route('purchases');
 
@@ -99,12 +99,12 @@ class PurchasesController extends Controller
 
         Purchase::destroy($id);
 
-        Session::flash('success', 'successfully.');
+        Session::flash('success', 'Successfully deleted purchase.');
 
         return back();
 
     }
-        Session::flash('error', 'successfully.');
+        Session::flash('error', 'Can not delete purchase.');
 
         return back();
 
@@ -157,7 +157,7 @@ dd($post->quantity);
 
         $purchase->save();
 
-        Session::flash('success','Updated successfully.');
+        Session::flash('success','Purchase updated successfully.');
         return redirect()->route('purchases')->with('post',Post::all());
     }
 

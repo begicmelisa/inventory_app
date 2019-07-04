@@ -54,7 +54,7 @@
                       @if($posts->count()>0)
                           @foreach( $posts as $key =>$values)
                               <tr>
-                                  <td><img src="{{$values->featured}}" alt="{{$values->title}}" width="80px" height="50px"> </td>
+                                  <td><img style="object-fit: cover;" src="{{$values->featured}}" alt="{{$values->title}}" width="80px" height="50px"> </td>
                                   <td style="padding-top: 20px;">{{$values->title}}</td>
                                   <td style="padding-top: 20px;">{{$values->barcode}}</td>
 

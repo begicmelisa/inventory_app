@@ -41,8 +41,7 @@ class TagsController extends Controller
            'tag'=>$request->tag
         ]);
 
-        Session::flash('success','Tag created successfully.');
-        return redirect()->route('tags');
+        return back();
     }
 
 
@@ -58,6 +57,9 @@ class TagsController extends Controller
         $tag = Tag::findOrFail($request->id);
 
         $tag->update($request->all());
+
+        Session::flash('success','Tag updated successfully.');
+
 
         return back();
     }
